@@ -8,3 +8,11 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+def get_events():
+    conn = sqlite3.connect('rgsq.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM event")
+    event = cursor.fetchall()
+    conn.close()
+    return events
