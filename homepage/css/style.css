@@ -1,0 +1,17 @@
+.navbar-brand {
+  display: flex;
+  align-items: center;   
+  gap: 10px;              
+}
+
+.navbar-logo {
+  height: 30px;          
+}
+
+.navbar-title {
+  font-size: 13px;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;  
+  justify-content: center; 
+}
