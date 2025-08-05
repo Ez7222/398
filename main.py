@@ -21,7 +21,7 @@ with app.app_context():
 
 # display the homepage
 @app.route('/')
-def home():
+def Home():
     return render_template('homepage.html')
 
 # display the event list
