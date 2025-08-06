@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>RGSQ</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/templates/homepage.html">
+                <img src="{{url_for('static',filename='images/logo.png')}}" alt="Logo" class="navbar-logo">
+                <div class="navbar-title"> RGSQ <br>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class ="nav-item">
+                        <a class="nav-link" href="templates/homepage.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Society</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="About the society.html">About the society</a>
+                            <a class="dropdown-item" href="Governance.html">Governance</a>
+                            <a class="dropdown-item" href="Committees.html">Committees</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Eventlist.html">Event List</a>
+                            <a class="dropdown-item" href="Create.html">Creat Event</a>
+                            <a class="dropdown-item" href="#">Update Event</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            PROJECTS
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="AustraliaGeographyCompitions.html">Australia Geography
+                                Compitions</a>
+                            <a class="dropdown-item" href="Lambertcenter.html">Lambert center</a>
+                            <a class="dropdown-item" href="Queenslandbydegrees.html">Queensland by Degrees</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Resources
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Libaray.html">Libaray</a>
+                            <a class="dropdown-item" href="VenueHire">Venue Hire</a>
+                            <a class="dropdown-item" href="Bulletin.html">Bulletin</a>
+                            <a class="dropdown-item" href="Geographywebsite.html">Geography website</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Membership
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+                            <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Username
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+                            <a class="dropdown-item" href="Index.html">Home</a>
+                            <a class="dropdown-item" href="login.html">Login</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h2>Create Event</h2>
+        <form>
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <label for "eventName" class="form-label">Event Name</label>
+                    <input type="text" class="form-control" id="eventName" required>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <label for "artistName" class="form-label">Artist/s Name/s</label>
+                    <input type="text" class="form-control" id="eventName">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <label for "musicGenre" class="form-label">Select Music Genre</label>
+                    <select class="form-select" id="musicGenre">
+                        <option selected>Choose</option>
+                        <option value="Free">Free</option>
+                        <option value="Public user">Public user</option>
+                        <option value="Member-only">Member-only</option>
+                       
+                    </select>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <label for "eventImage" class="form-label">Event Image Upload</label>
+                    <input type="file" class="form-control" id="eventImage" accept="Image/*">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <label for "eventLocation" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="eventLocation">
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <label for "eventTime" class="form-label">dd/mm/yyyy</label>
+                    <input type="datetime-local" class="form-control" id="eventTime">
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-12 col-md-6 mb-3">
+                    <label for "totalTickets" class="form-label">Total Tickets</label>
+                    <input type="number" class="form-control" id="totalTickets" min="1">
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <label for "ticketPrice" class="form-label">Ticket Price</label>
+                    <input type="number" class="form-control" id="ticketPrice" min="0" step="0.01"
+                        placeholder="Enter Ticket Price">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="eventDescription" class="form-label">Description</label>
+                    <textarea class="form-control" id="eventDescription" rows="4"></textarea>
+                </div>
+            </div>
+            <a href="Index.html" class="btn btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-primary">Create Event</button>
+        </form>
+    </div>
+</body>
