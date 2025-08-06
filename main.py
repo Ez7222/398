@@ -34,6 +34,10 @@ def Eventlist():
     total_pages = (len(event_list) + per_page - 1) // per_page
     return render_template('Eventlist.html',events = events_paginated, page=page, total_pages = total_pages)
 
+@app.route('/Create.html')
+def Create():
+    return render_template('Create.html')
+
 def get_events():
     conn = sqlite3.connect('rgsq.db')
     cursor = conn.cursor()
