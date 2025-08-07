@@ -98,3 +98,89 @@
   font-weight: 500;
   padding: 6px 12px;
 }
+
+.membership-body{
+    padding: 20px;
+}
+.page-title{
+  background-color: #3f5f65;
+  color:white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.intro-text {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.section{
+  margin-bottom: 30px;
+}
+
+.section-title {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.membership-body a{
+  color:#2a73a5;
+  text-decoration: none;
+}
+
+.membership-body a:hover{
+  text-decoration: underline;
+}
+
+.join-btn{
+  margin: 20px 0;
+}
+
+.page-title {
+    background-color: #3f5f65;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-heading {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.membership-option {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-left: 4px solid #3f5f65;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.membership-option label {
+    display: block;
+    line-height: 1.5;
+}
+
+.next-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3f5f65;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.next-btn:hover {
+    background-color: #345256;
+}
+
+.consent-info {
+    margin-top: 20px;
+}

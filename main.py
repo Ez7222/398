@@ -46,4 +46,13 @@ def get_events():
     conn.close()
     return events
 
+@app.route('/Memberbenefits.html')
+def Memberbenefits():
+    return render_template('Memberbenefits.html')
+
+@app.route('/JoinRGSQ.html')
+def join_rgsq():
+    return render_template('JoinRGSQ.html')
+
+
 
