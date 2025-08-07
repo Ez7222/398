@@ -105,99 +105,67 @@
         </div>
     </nav>
     <div class="container">
-
-        <div class="joinpage-title">JOIN RGSQ</div>
-
-
+        <h2 class="joinpage-title">🎓 JOIN RGSQ</h2>
         <p class="page-description">
-            Membership of RGSQ opens the door to a wide variety of fascinating and interesting activities in a
-            friendly and encouraging environment. Learning through geography, whether gained through formal learning
-            or experience through travel, fieldwork and expeditions, helps us all to be more socially and
-            environmentally sensitive, better informed, and more responsible in our community.
+            Membership of RGSQ opens the door to a wide variety of fascinating and interesting activities in a friendly and encouraging environment.
+            Learning through geography, whether gained through formal learning or experience through travel, fieldwork and expeditions, helps us all to be more
+            socially and environmentally sensitive, better informed, and more responsible in our community.
         </p>
 
+        <h3 class="section-title">📋 Please select membership option from the list below:</h3>
+        
+        <form method="POST" action="/submit_membership">
+            <div class="membership-options">
+                <label class="membership-option">
+                    <input type="radio" name="membership" value="household" checked>
+                    <strong>Household Bundle - $90.00 (AUD)</strong><br>
+                    <span class="option-description">Bundle (up to 5 members)<br>Subscription period: 1 year<br>No automatically recurring payments<br>
+                    A group of up to 5 family members under 18 living at the same address, with one vote.</span>
+                </label>
 
-        <div class="section-title">Please select membership option from the list below:</div>
+                <label class="membership-option">
+                    <input type="radio" name="membership" value="ordinary">
+                    <strong>Ordinary Member - $70.00 (AUD)</strong><br>
+                    <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
+                    For individuals aged 18 and older with full member privileges.</span>
+                </label>
 
+                <label class="membership-option">
+                    <input type="radio" name="membership" value="school">
+                    <strong>School/Educational Institution - $85.00 (AUD)</strong><br>
+                    <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
+                    Membership for a school or educational organisation with one voting representative.</span>
+                </label>
 
-        <div class="membership-options">
+                <label class="membership-option">
+                    <input type="radio" name="membership" value="student">
+                    <strong>Student</strong><br>
+                    <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
+                    For full-time students in Australia. Under 18s need parental consent.</span>
+                </label>
 
+                <label class="membership-option">
+                    <input type="radio" name="membership" value="under35">
+                    <strong>Under 35s - $35.00 (AUD)</strong><br>
+                    <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
+                    For members under age 35 with equivalent voting rights to ordinary members.</span>
+                </label>
 
-            <label class="membership-option">
-                <input type="radio" name="membership" checked>
-                <strong>Household Bundle - $90.00 (AUD)</strong><br>
-                Bundle (up to 5 members)<br>
-                Subscription period: 1 year<br>
-                No automatically recurring payments<br>
-                <div class="option-description">
-                    A group of up to 5 family members under 18 living at the same address, with one vote.
-                </div>
-            </label>
+                <label class="membership-option">
+                    <input type="radio" name="membership" value="youth">
+                    <strong>Youth</strong><br>
+                    <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
+                    For people under the age of 18. Must have consent from a parent/legal guardian.</span>
+                </label>
+            </div>
 
+            <button type="submit" class="submit-button">Next</button>
+        </form>
 
-            <label class="membership-option">
-                <input type="radio" name="membership">
-                <strong>Ordinary Member - $70.00 (AUD)</strong><br>
-                Subscription period: 1 year<br>
-                No automatically recurring payments<br>
-                <div class="option-description">
-                    For individuals aged 18 and older with full member privileges.
-                </div>
-            </label>
-
-
-            <label class="membership-option">
-                <input type="radio" name="membership">
-                <strong>School/Educational Institution - $85.00 (AUD)</strong><br>
-                Subscription period: 1 year<br>
-                No automatically recurring payments<br>
-                <div class="option-description">
-                    Membership for a school or educational organisation with one voting representative.
-                </div>
-            </label>
-
-
-            <label class="membership-option">
-                <input type="radio" name="membership">
-                <strong>Student</strong><br>
-                Subscription period: 1 year<br>
-                No automatically recurring payments<br>
-                <div class="option-description">
-                    For full-time students in Australia. Under 18s need parental consent.
-                </div>
-            </label>
-
-
-            <label class="membership-option">
-                <input type="radio" name="membership">
-                <strong>Under 35s - $35.00 (AUD)</strong><br>
-                Subscription period: 1 year<br>
-                No automatically recurring payments<br>
-                <div class="option-description">
-                    For members under age 35 with equivalent voting rights to ordinary members.
-                </div>
-            </label>
-
-
-            <label class="membership-option">
-                <input type="radio" name="membership">
-                <strong>Youth</strong><br>
-                Subscription period: 1 year<br>
-                No automatically recurring payments<br>
-                <div class="option-description">
-                    For people under the age of 18. Must have consent from a parent/legal guardian.
-                </div>
-            </label>
-
-        </div>
-
-
-        <div style="margin-top: 20px;">
-            <button class="btn btn-primary">Next</button>
-        </div>
-        <p style="margin-top: 20px;">
-            Download the <a href="#">RGSQ Legal Consent Form</a> which is required for applications from people under
-            the age of 18.
+        <p class="consent-note">
+            📎 Download the 
+            <a href="https://www.rgsq.org.au/resources/Documents/Membership/RGSQ%20Consent%20Form%20U18.pdf" target="_blank">RGSQ Legal Consent Form</a> 
+            which is required for applications from people under the age of 18.
         </p>
     </div>
 </body>

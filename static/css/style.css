@@ -214,3 +214,25 @@
     font-size: 0.9rem;
     color: #555;
 }
+
+.submit-button {
+    margin-top: 20px;
+    background-color: #3f5f65;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #2f4f55;
+}
+
+.consent-note {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #333;
+}
