@@ -12,6 +12,7 @@
         crossorigin="anonymous"></script>
     <title>RGSQ</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -26,7 +27,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class ="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="templates/homepage.html">Home</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -103,86 +104,101 @@
             </div>
         </div>
     </nav>
-     <div class="section">
-        <div class="page-title">JOIN RGSQ</div>
-        <p class="intro-text">
-            Membership of RGSQ opens the door to a wide variety of fascinating and interesting activities in a friendly and encouraging environment. 
-            Learning through geography, whether gained through formal learning or experience through travel, fieldwork and expeditions, helps us all 
-            to be more socially and environmentally sensitive, better informed, and more responsible in our community.
+    <div class="container">
+
+        <div class="joinpage-title">JOIN RGSQ</div>
+
+
+        <p class="page-description">
+            Membership of RGSQ opens the door to a wide variety of fascinating and interesting activities in a
+            friendly and encouraging environment. Learning through geography, whether gained through formal learning
+            or experience through travel, fieldwork and expeditions, helps us all to be more socially and
+            environmentally sensitive, better informed, and more responsible in our community.
         </p>
 
-        <h3 class="form-heading">Please select membership option from the list below:</h3>
 
-        <form>
-            <div class="membership-option">
-                <label>
-                    <input type="radio" name="membership" value="household" checked>
-                    <strong>Household Bundle - $90.00 (AUD)</strong><br>
-                    Bundle (up to 5 members)<br>
-                    Subscription period: 1 year<br>
-                    No automatically recurring payments<br>
-                    <small>A group of up to 5 family members under 18 living at the same address, with one vote.</small>
-                </label>
-            </div>
+        <div class="section-title">Please select membership option from the list below:</div>
 
-            <div class="membership-option">
-                <label>
-                    <input type="radio" name="membership" value="ordinary">
-                    <strong>Ordinary Member - $70.00 (AUD)</strong><br>
-                    Subscription period: 1 year<br>
-                    No automatically recurring payments<br>
-                    <small>For individuals aged 18 and older with full member privileges.</small>
-                </label>
-            </div>
 
-            <div class="membership-option">
-                <label>
-                    <input type="radio" name="membership" value="institution">
-                    <strong>School/Educational Institution - $85.00 (AUD)</strong><br>
-                    Subscription period: 1 year<br>
-                    No automatically recurring payments<br>
-                    <small>Membership for a school or educational organisation with one voting representative.</small>
-                </label>
-            </div>
+        <div class="membership-options">
 
-            <div class="membership-option">
-                <label>
-                    <input type="radio" name="membership" value="student">
-                    <strong>Student</strong><br>
-                    Subscription period: 1 year<br>
-                    No automatically recurring payments<br>
-                    <small>For full-time students in Australia. Under 18s need parental consent.</small>
-                </label>
-            </div>
 
-            <div class="membership-option">
-                <label>
-                    <input type="radio" name="membership" value="under35">
-                    <strong>Under 35s - $35.00 (AUD)</strong><br>
-                    Subscription period: 1 year<br>
-                    No automatically recurring payments<br>
-                    <small>For members under age 35 with equivalent voting rights to ordinary members.</small>
-                </label>
-            </div>
+            <label class="membership-option">
+                <input type="radio" name="membership" checked>
+                <strong>Household Bundle - $90.00 (AUD)</strong><br>
+                Bundle (up to 5 members)<br>
+                Subscription period: 1 year<br>
+                No automatically recurring payments<br>
+                <div class="option-description">
+                    A group of up to 5 family members under 18 living at the same address, with one vote.
+                </div>
+            </label>
 
-            <div class="membership-option">
-                <label>
-                    <input type="radio" name="membership" value="youth">
-                    <strong>Youth</strong><br>
-                    Subscription period: 1 year<br>
-                    No automatically recurring payments<br>
-                    <small>For people over the age of 18. Under 16 must attend with supervision.</small>
-                </label>
-            </div>
 
-            <button class="next-btn" type="submit">Next</button>
-        </form>
+            <label class="membership-option">
+                <input type="radio" name="membership">
+                <strong>Ordinary Member - $70.00 (AUD)</strong><br>
+                Subscription period: 1 year<br>
+                No automatically recurring payments<br>
+                <div class="option-description">
+                    For individuals aged 18 and older with full member privileges.
+                </div>
+            </label>
 
-        <p class="consent-info">
-            Download the <a href="#">RGSQ Legal Consent Form</a> which is required for applications from people under the age of 18.
+
+            <label class="membership-option">
+                <input type="radio" name="membership">
+                <strong>School/Educational Institution - $85.00 (AUD)</strong><br>
+                Subscription period: 1 year<br>
+                No automatically recurring payments<br>
+                <div class="option-description">
+                    Membership for a school or educational organisation with one voting representative.
+                </div>
+            </label>
+
+
+            <label class="membership-option">
+                <input type="radio" name="membership">
+                <strong>Student</strong><br>
+                Subscription period: 1 year<br>
+                No automatically recurring payments<br>
+                <div class="option-description">
+                    For full-time students in Australia. Under 18s need parental consent.
+                </div>
+            </label>
+
+
+            <label class="membership-option">
+                <input type="radio" name="membership">
+                <strong>Under 35s - $35.00 (AUD)</strong><br>
+                Subscription period: 1 year<br>
+                No automatically recurring payments<br>
+                <div class="option-description">
+                    For members under age 35 with equivalent voting rights to ordinary members.
+                </div>
+            </label>
+
+
+            <label class="membership-option">
+                <input type="radio" name="membership">
+                <strong>Youth</strong><br>
+                Subscription period: 1 year<br>
+                No automatically recurring payments<br>
+                <div class="option-description">
+                    For people under the age of 18. Must have consent from a parent/legal guardian.
+                </div>
+            </label>
+
+        </div>
+
+
+        <div style="margin-top: 20px;">
+            <button class="btn btn-primary">Next</button>
+        </div>
+        <p style="margin-top: 20px;">
+            Download the <a href="#">RGSQ Legal Consent Form</a> which is required for applications from people under
+            the age of 18.
         </p>
     </div>
 </body>
-
 </html>
-

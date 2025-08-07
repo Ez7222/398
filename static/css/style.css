@@ -15,6 +15,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .nav-item {
   margin-right: 20px;
 }
@@ -33,7 +34,7 @@
 }
 
 .hero-banner {
-  background-image: url("/static/images/hero.jpg"); 
+  background-image: url("/static/images/hero.jpg");
   background-size: cover;
   background-position: center;
   height: 350px;
@@ -44,7 +45,7 @@
 
 .hero-container {
   width: 100%;
-  max-width: 1200px;     
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -56,7 +57,7 @@
   text-align: center;
   font-size: 36px;
   font-weight: 600;
-  transform: translateY(50px); 
+  transform: translateY(50px);
 }
 
 
@@ -90,7 +91,7 @@
 }
 
 .card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transform: translateY(-5px);
 }
 
@@ -99,88 +100,117 @@
   padding: 6px 12px;
 }
 
-.membership-body{
-    padding: 20px;
-}
-.page-title{
-  background-color: #3f5f65;
-  color:white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+
+/* Membership Benefits Page */
+
+.benefits-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
 }
 
-.intro-text {
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
-.section{
+.benefits-title {
+  background-color: #3f5f65;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 2rem;
+  text-align: center;
   margin-bottom: 30px;
 }
 
-.section-title {
-  margin-top: 30px;
+.benefits-intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.btn-join {
+  display: inline-block;
+  background-color: #2a73a5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
   font-weight: bold;
-  font-size: 1.3rem;
-}
-
-.membership-body a{
-  color:#2a73a5;
+  margin-bottom: 30px;
   text-decoration: none;
+  transition: background-color 0.3s;
 }
 
-.membership-body a:hover{
-  text-decoration: underline;
+.btn-join:hover {
+  background-color: #1c567d;
 }
 
-.join-btn{
+.benefit-card {
+  background-color: white;
+  padding: 20px;
   margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.page-title {
+.benefit-card h2 {
+  margin-bottom: 10px;
+  color: #3f5f65;
+}
+
+.benefit-card p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+
+/* Join RGSQ Page */
+.joinpage-title {
     background-color: #3f5f65;
     color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.6rem;
     font-weight: bold;
-    font-size: 1.5rem;
-    padding: 10px;
-    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
 }
 
-.form-heading {
+.page-description {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.section-title {
     margin-top: 30px;
     font-weight: bold;
     font-size: 1.2rem;
+    color: #234;
+}
+
+.membership-options {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .membership-option {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-left: 4px solid #3f5f65;
-    background-color: #f5f5f5;
-    border-radius: 4px;
+    background-color: #f7f7f7;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease;
 }
 
-.membership-option label {
-    display: block;
-    line-height: 1.5;
+.membership-option:hover {
+    background-color: #eef6f8;
 }
 
-.next-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #3f5f65;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.membership-option input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
 }
 
-.next-btn:hover {
-    background-color: #345256;
-}
-
-.consent-info {
-    margin-top: 20px;
+.option-description {
+    font-size: 0.9rem;
+    color: #555;
 }
