@@ -100,6 +100,22 @@
   padding: 6px 12px;
 }
 
+.homeintro-text {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.homeintro-text h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.homeintro-text p {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.8;
+}
 
 /* Membership Benefits Page */
 
