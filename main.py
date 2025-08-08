@@ -55,8 +55,8 @@ def join_rgsq():
     return render_template('JoinRGSQ.html')
 
 @app.route('/Aboutsociety.html')
-def about_society():
-    return render_template('Aboutsociety/html')
+def Aboutsociety():
+    return render_template('Aboutsociety.html')
 
 
 
