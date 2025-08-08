@@ -253,3 +253,51 @@
     font-size: 0.9rem;
     color: #333;
 }
+
+.about-section {
+  background-color:white;
+  padding: 50px 20px;
+  font-family: 'Times New Roman', Times, serif
+}
+
+.about-title{
+  background-color: rgb(77, 77, 222);
+  color:whitesmoke;
+  padding: 10px 20px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.about-text{
+  font-size: 20px;
+  line-height: 1.7;
+  color:black;
+  margin-bottom: 20px;
+  font-family:'Times New Roman',sans-serif;
+}
+
+.about-quote {
+  font-size: 25px;
+  font-style: italic;
+  color:rgba(5, 132, 252, 0.881);
+  font-weight: 600;
+  margin:40px 0;
+  text-align:center;
+}
+
+.quote-mark {
+  font-size: 30px;
+  color:rgba(5, 132, 252, 0.881);
+  vertical-align: top;
+}
+
+
+.about-note {
+  font-size: 11px;
+  color:black;
+  text-align: right;
+  margin-top: 10px;
+}
