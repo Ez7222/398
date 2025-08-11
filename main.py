@@ -64,10 +64,7 @@ def Aboutsociety():
     return render_template('Aboutsociety.html')
 
 # showing the login in page.
-@app.route('/login.html')
+@app.route('/Login.html')
 def login():
-    return render_template('login.html')
-
-
-
+    return render_template('Login.html')
 
