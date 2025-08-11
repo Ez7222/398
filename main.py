@@ -34,10 +34,12 @@ def Eventlist():
     total_pages = (len(event_list) + per_page - 1) // per_page
     return render_template('Eventlist.html',events = events_paginated, page=page, total_pages = total_pages)
 
+# display the create event page.
 @app.route('/Create.html')
 def Create():
     return render_template('Create.html')
 
+# handle the creation of a new event.
 def get_events():
     conn = sqlite3.connect('rgsq.db')
     cursor = conn.cursor()
@@ -46,18 +48,23 @@ def get_events():
     conn.close()
     return events
 
+# showing the member benefits page.
 @app.route('/Memberbenefits.html')
 def Memberbenefits():
     return render_template('Memberbenefits.html')
 
+# shwoing the join RGSQ page.
 @app.route('/JoinRGSQ.html')
 def join_rgsq():
     return render_template('JoinRGSQ.html')
 
+# shwoing the society page.
 @app.route('/Aboutsociety.html')
 def Aboutsociety():
     return render_template('Aboutsociety.html')
 
-
-
+# showing the login in page.
+@app.route('/Login.html')
+def login():
+    return render_template('Login.html')
 
