@@ -79,4 +79,9 @@ def contact():
 def forgot_password():
     return render_template('Forgotpassword.html')
 
+#showing the library page.
+@app.route('/Library.html')
+def library():
+    return render_template('Library.html')
+
 
