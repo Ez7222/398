@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>RGSQ</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('Home') }}">
+                <img src="{{url_for('static',filename='images/logo.png')}}" alt="Logo" class="navbar-logo">
+                <div class="navbar-title">RGSQ</div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('Home') }}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Society</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Aboutsociety.html">About the society</a>
+                            <a class="dropdown-item" href="Governance.html">Governance</a>
+                            <a class="dropdown-item" href="Committees.html">Committees</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Eventlist.html">Event List</a>
+                            <a class="dropdown-item" href="Create.html">Create Event</a>
+                            <a class="dropdown-item" href="Update Event.html">Update Event</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            PROJECTS
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="AustraliaGeographyCompitions.html">Australia Geography
+                                Compitions</a>
+                            <a class="dropdown-item" href="Lambertcenter.html">Lambert center</a>
+                            <a class="dropdown-item" href="Queenslandbydegrees.html">Queensland by Degrees</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Resources
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Libaray.html">Libaray</a>
+                            <a class="dropdown-item" href="VenueHire">Venue Hire</a>
+                            <a class="dropdown-item" href="Bulletin.html">Bulletin</a>
+                            <a class="dropdown-item" href="Geographywebsite.html">Geography website</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Membership
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+                            <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Username
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+                            <a class="dropdown-item" href="Join RGSQ.html">Join RGSQ</a>
+                            <a class="dropdown-item" href="Login.html">Login</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <div class="container contact-section">
+        <h2 class="text-center">Contact Us</h2>
+        <div class="row g-5">
+
+            <div class="col-md-6 contact-info">
+                <b>Street address:</b><br />
+                The Royal Geographical Society of Queensland Ltd<br />
+                Level 1/28 Fortescue St<br />
+                Spring Hill Qld 4000<br />
+
+                <br /><b>Mailing address:</b><br />
+                The Royal Geographical Society of Queensland Ltd<br />
+                PO Box 625<br />
+                Spring Hill Qld 4004<br />
+
+                <br /><b>Phone:</b> 07 3368 2066<br />
+                <b>Email:</b> <a href="mailto:info@rgsq.org.au">info@rgsq.org.au</a><br />
+
+                <br />
+                <p>
+                    Office hours are generally 9:00 AM to 2:30 PM, Monday to Friday. We have a small staff, so it's best
+                    to check availability before visiting.
+                </p>
+                <p class="text-danger">
+                    <b>The RGSQ office is usually closed for the Christmas and New Year holidays:</b> actual dates will
+                    be posted closer to the time.
+                </p>
+                <div class="contact-icons">
+                    <img src="{{ url_for('static', filename='images/Contact.png') }}" alt="Contact">
+                </div>
+
+                <div class="transport-info">
+                    <b><a href="https://translink.com.au/" target="_blank">Translink Public Transport</a></b>
+                    <p>
+                        Provides current information about the best route to RGSQ. Bus routes with stops convenient to
+                        RGSQ include:
+                    </p>
+                    <ul>
+                        <li><b>373 - Chermside to City</b> – from Ashgrove via Newmarket, Kelvin Grove and Red Hill –
+                            stops in Leichhardt St</li>
+                    </ul>
+                    <p><b>The Spring Hill Loop</b> stops near RGSQ at stop 178 Little Edward St or stop 172 at St
+                        Andrews, Spring Hill.</p>
+                    <p>
+                        Operating hours:
+                    <ul>
+                        <li>Weekdays: 6am – 9:15pm (last service 9:15pm)</li>
+                        <li>Saturdays: 7:56am – 9:15pm (last service 9:15pm)</li>
+                        <li>Sundays: 8am – 6:46pm (last service 6:46pm)</li>
+                    </ul>
+                    </p>
+                    <p>
+                        <b>Car Parking:</b> Paid during the day, cheaper in evenings. Wickham Terrace car park ~$6
+                        during evening. Street parking is free after 7 PM but limited.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="map-title">GREGORY PLACE – RGSQ HEADQUARTERS</div>
+                <div class="map-box">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3530.0339073380123!2d153.0253366762076!3d-27.460798016011353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915a03b36b98a9%3A0x1f129c84f80ef6c0!2sThe%20Royal%20Geographical%20Society%20of%20Queensland%20Ltd!5e0!3m2!1sen!2sau!4v1691306402839!5m2!1sen!2sau"
+                        width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

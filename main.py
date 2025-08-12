@@ -68,3 +68,7 @@ def Aboutsociety():
 def login():
     return render_template('Login.html')
 
+# showing the contact us page.
+@app.route('/Contact.html')
+def contact():
+    return render_template('Contact.html')
