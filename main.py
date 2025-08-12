@@ -68,3 +68,8 @@ def Aboutsociety():
 def login():
     return render_template('Login.html')
 
+#showing the forgot passsword page.
+@app.route('/Forgotpassword.html')
+def forgot_password():
+    return render_template('Forgotpassword.html')
+
