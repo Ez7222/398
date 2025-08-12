@@ -137,7 +137,7 @@
 }
 
 .benefits-intro {
-  font-size: 1.1rem;
+  font-size: 18px;
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -183,7 +183,7 @@
   color: white;
   padding: 12px 20px;
   border-radius: 8px;
-  font-size: 1.6rem;
+  font-size: 26px;
   font-weight: bold;
   margin-top: 20px;
   display: inline-block;
@@ -191,7 +191,7 @@
 
 .page-description {
   margin-top: 15px;
-  font-size: 1rem;
+  font-size: 16px;
   color: #333;
   line-height: 1.6;
 }
@@ -199,7 +199,7 @@
 .section-title {
   margin-top: 30px;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 20px;
   color: #234;
 }
 
@@ -228,7 +228,7 @@
 }
 
 .option-description {
-  font-size: 0.9rem;
+  font-size: 15px;
   color: #555;
 }
 
@@ -239,7 +239,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
@@ -250,7 +250,7 @@
 
 .consent-note {
   margin-top: 20px;
-  font-size: 0.9rem;
+  font-size: 15px;
   color: #333;
 }
 
@@ -343,28 +343,28 @@
   color: #2b7045;
   font-weight: bold;
   margin-bottom: 10px;
-  font-size: 1.1rem;
+  font-size: 18px;
 }
 
 .Libaray-banner{
   background-color: #0861af;
   color: white;
-  padding: 3rem 0;
+  padding: 48px 0;
   text-align: center;
   font-size: x-large;
   font-weight: 700;
-  letter-spacing: 0.2rem;
+  letter-spacing: 4px;
 }
 
 .Libaray-section{
-  padding: 2rem 0;
+  padding: 32px 0;
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
 }
 
 .Libaray-section p{
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
   font-size: x-large;
   line-height: 1.5;
   color:#333;
@@ -375,7 +375,7 @@
   color: white;
   padding: 10px 0;
   text-align: center;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .footer-container{
