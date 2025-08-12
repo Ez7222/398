@@ -369,3 +369,31 @@
   line-height: 1.5;
   color:#333;
 }
+
+.footer{
+  background-color: #0861af;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.footer-container{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-link{
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-link:hover{
+  color: #0d6efd;
+}
+
+.footer-separator{
+  padding: 0 5px;
+}
