@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template,request
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3
@@ -72,3 +73,10 @@ def login():
 @app.route('/Contact.html')
 def contact():
     return render_template('Contact.html')
+
+#showing the forgot passsword page.
+@app.route('/Forgotpassword.html')
+def forgot_password():
+    return render_template('Forgotpassword.html')
+
+
