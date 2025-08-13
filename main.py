@@ -84,4 +84,8 @@ def forgot_password():
 def library():
     return render_template('Library.html')
 
+#showing the venuehire page.
+@app.route('/Venuehire.html')
+def venue_hire():
+    return render_template('Venuehire.html')
 
