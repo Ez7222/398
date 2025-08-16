@@ -89,3 +89,7 @@ def library():
 def venue_hire():
     return render_template('Venuehire.html')
 
+@app.route('/Bulletin.html')
+def bulletin():
+    return render_template('Bulletin.html')
+
