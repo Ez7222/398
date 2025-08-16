@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>RGSQ</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('Home') }}">
+                <img src="{{url_for('static',filename='images/logo.png')}}" alt="Logo" class="navbar-logo">
+                <div class="navbar-title">RGSQ</div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('Home') }}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Society</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Aboutsociety.html">About the society</a>
+                            <a class="dropdown-item" href="Governance.html">Governance</a>
+                            <a class="dropdown-item" href="Committees.html">Committees</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Eventlist.html">Event List</a>
+                            <a class="dropdown-item" href="Create.html">Create Event</a>
+                            <a class="dropdown-item" href="Update Event.html">Update Event</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            PROJECTS
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="AustraliaGeographyCompitions.html">Australia Geography
+                                Compitions</a>
+                            <a class="dropdown-item" href="Lambertcenter.html">Lambert center</a>
+                            <a class="dropdown-item" href="Queenslandbydegrees.html">Queensland by Degrees</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Resources
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Library.html">Library</a>
+                            <a class="dropdown-item" href="Venuehire.html">Venue Hire</a>
+                            <a class="dropdown-item" href="Bulletin.html">Bulletin</a>
+                            <a class="dropdown-item" href="Geographywebsite.html">Geography website</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Membership
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+                            <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                        </div>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Username
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+                            <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                            <a class="dropdown-item" href="Login.html">Login</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <div class="container my-4">
+        <div class="p-3 px-mb-4 rounded-3" style="background: #0861af; color:white">
+            <h2 class="m-0"> The Bulletin</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-6 rounded-3 shadow-sm">
+                <h3 class="mb-3 mt-5" style="color:#0861af;">The Bulletin 2025:</h3>
+                <ul>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2025/2025_RGSQ%20Bulletin%20July%20Vol%2060%20no%2006.pdf?version=1750646245000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI1LzIwMjVfUkdTUSUyMEJ1bGxldGluJTIwSnVseSUyMFZvbCUyMDYwJTIwbm8lMjAwNi5wZGY~dmVyc2lvbj0xNzUwNjQ2MjQ1MDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU1MzM2MjUzfSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=aLH7T4VZ7PyPhfEFbW6db8MJ5DzMsBevrg9ROV-fPkfcfSx00ho1-v63BFYvI86gF9RKtwowClQMn2zRa2J5Ca-8zMxpG3YzEIh52RNwc9tyF4eg~ckoaCL5c~gOpprUiLTROYSGLe8j0O6~8oJdbRMvqFVx5KilQGzHhevt810hEkPQQgYv08Oob5ww7RUOmhApnBsCVtpN2GyPiif0IZDFbVS4EMfZtsWacnFkkfoY2qAUkHG5oYruzNEHC3CrYjtrP61EvP06x1NbVXNZhjg2rS~32MF132NpJ-3kM3qUwTPzvYVi~fJfXp~OpffRazYicHyjEVLebgl78xEnWQ__&Key-Pair-Id=K27MGQSHTHAGGF">2025 RGSQ Bulletin July Vol 60 no 06</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2025/2025_RGSQ%20Bulletin%20June%20Vol%2060%20no%2005.pdf?version=1748168756000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI1LzIwMjVfUkdTUSUyMEJ1bGxldGluJTIwSnVuZSUyMFZvbCUyMDYwJTIwbm8lMjAwNS5wZGY~dmVyc2lvbj0xNzQ4MTY4NzU2MDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU1MzM2MjgyfSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=TVRksK6uCJtTbXpFb2voUAb6CF-7XX5~Q9y8EfUK7DSuFN3SdilbW0af4T9X3T--T8~B0gr9rpdPoSohthPL3pKlO~oQeQlq~ODPW3QArDsNYP3EbnRa-fujdtLNTR3AxFYnm3y1AwlPtLdGPy5MS48dj3h08SjQJnIZHTQ2TjoZnrtEeO2-mPwz9PJ3S-nF61g8sGJ7NJDbW76UG3I~IlFoo24HFGHoxGI39sU11-YnLCojsOJqT~yut~lu~Sj-otRnuNFDjm5hDVDkOLqXTf-HcwixWReOUYiyL45Mok9bJ8i4Wh-oWQeJA2bfJAnx484QAe88EH4MYWPl0YBh-A__&Key-Pair-Id=K27MGQSHTHAGGF">2025_RGSQ Bulletin June Vol 60 no 05</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2025/2025_RGSQ%20Bulletin%20May%20Vol%2060%20no%2004.pdf?version=1745808392000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI1LzIwMjVfUkdTUSUyMEJ1bGxldGluJTIwTWF5JTIwVm9sJTIwNjAlMjBubyUyMDA0LnBkZj92ZXJzaW9uPTE3NDU4MDgzOTIwMDAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTUzMzYyOTl9LCJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn19fV19&Signature=Wyk3V5LLjfEhEwJENmSzS3kroWijKjM6Q1chMNtzkNDqa0FF9lVocphTlqGRfNYaJX4HRNOZzprjjp2KSUSFW8OKZjiSzNHLICwMjKtuUyPLEdqNqnP3ovvcewEATjs1PD~cbJcsKSC5MMCnIoqrcLQQIqt-9HWeYPYZPwG309O-aM7EuaGN~294ZqxHrukdU6AGtiVthSBky8TpR-NeJzisX~7piIj9ercGIErJD1P87Q-viIZiq~MXA2yrOhfc4NdEZoiUtZ~qZVunw79hsLO6CXFEzcSszUz~9tW5trbBHWXwkvuIRLKo~XSbClPQStxEz2ONxtv8MlNtP~h9Bg__&Key-Pair-Id=K27MGQSHTHAGGF">2025 RGSQ Bulletin May Vol 60 no 04</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2025/2025_RGSQ%20Bulletin%20April%20Vol%2060%20no%2003.pdf?version=1742866961000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI1LzIwMjVfUkdTUSUyMEJ1bGxldGluJTIwQXByaWwlMjBWb2wlMjA2MCUyMG5vJTIwMDMucGRmP3ZlcnNpb249MTc0Mjg2Njk2MTAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTMzNjMxM30sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=HHOAbsnRwUsSqi-jGlt7DdqbcRvYjFfiqfbUBNK~OjPvwYnDmbmbjup8iWEy34lgqeaFixZHHgU3OTCdwk3Bzn36kl6lkbT3wX3Yh8Nyu9d3rFnzqYeFhJqXG2FWba7BIcFc~qEVKz~voZViYGQXogkNficKmfIJVGiqMTf5hMLmBihqQ4ETKa4KJZ65gN4IdJ6udIDGDmbR0HAwOAcLRcZRCsC~ACvOHGJGF2yXM4GgFRLdCt4Lloc6rttvDzVTq3Hpj6A8ku8UO6hiatlN9jyNuUQ-LF48zrVyT-99phOaUro4hqNic7PABaG7CY5QbHpm75NDi3bpQFYFPgefjg__&Key-Pair-Id=K27MGQSHTHAGGF">2025 RGSQ Bulletin April Vol 60 no 03</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2025/2025_RGSQ%20Bulletin%20March%20Vol%2060%20no%2002.pdf?version=1740530530000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI1LzIwMjVfUkdTUSUyMEJ1bGxldGluJTIwTWFyY2glMjBWb2wlMjA2MCUyMG5vJTIwMDIucGRmP3ZlcnNpb249MTc0MDUzMDUzMDAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTMzNjMyN30sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=H8ZPYbEXM9fDieqV2xiOIkPEjVDB8DF7JCdDy1VuaQ8YBfzuu~3z7RS6vZM0TKsyR7gY-Q4bAd3lYqKRkRVvWau1~Hocd9~EQnGWDtovncv8x1tOEgRIvL0ZP9-WyMqecS-c4kneLgW8KOEy9ddKgNSzQ7rBnp6Q-JomQSaCRv1gCNHfgSfjQhGI8L5fAVRsFyFSZmL8r02Yi5cM~ddn1NR6GM3teeS8X07ZyE-iR6ci3kjpGOpL4UpPNml2tMouCZH-L1kqkPAL6wLziABry8iGmw7FXGbrb9UsJmQkZuiLq9rtAAjyrLnlO7Bv3sfRkEKRT2d4c1HICz8lWG8icw__&Key-Pair-Id=K27MGQSHTHAGGF">2025 RGSQ Bulletin March Vol 60 no 02</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2025/2025_RGSQ%20Bulletin%20February%20Vol%2060%20no%2001.pdf?version=1737507877000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI1LzIwMjVfUkdTUSUyMEJ1bGxldGluJTIwRmVicnVhcnklMjBWb2wlMjA2MCUyMG5vJTIwMDEucGRmP3ZlcnNpb249MTczNzUwNzg3NzAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTMzNjM0MH0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=PzRe7vpOs8NTbnJNF8jbcgYqXoc~OSA37EStOgaGHMpcK2js1G5J~WJlA8mmI3sjvtm0y1hirKXzD67T~I6Y0HsLnEiOG98XkFfVohY48~qHM~rDAgRLEqT8JHxt5dvp925H2ww8kLtdVRnivcFSyp57OK57zI637Ep4jxN5E4iFVJgPJPmvpDTyhNDr4M2JuKz7v-k6fp4gjM8A-rLKbYEgBabFWe5c0wwODZ1~uMlxfHC5KTLY-hxyjZxVoY7HyvC-NqBvPLvjJWUMjfJxvhcQIK5X8cYrBXBkJmOocLRL6EBEJ9bL1tY~dO9jAlXCjg6EZsVx56deN27aJj1IUA__&Key-Pair-Id=K27MGQSHTHAGGF">2025_RGSQ Bulletin February Vol 60 no 01</a>
+                    </li>
+                </ul>
+
+                <hr style="border: 1px solid black; margin: 20px 20px;">
+            
+                <h3 class="mb-3 mt-3" style="color:#0861af;">The Bulletin 2024:</h3>
+                <ul>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20February%20Vol%2059%20no%2001.pdf?version=1705969036000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwRmVicnVhcnklMjBWb2wlMjA1OSUyMG5vJTIwMDEucGRmP3ZlcnNpb249MTcwNTk2OTAzNjAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTMzNzY0MH0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=MME91GNe~IefLWPpji~BmZTCNujDcPDyiYvAY9IhnyU6EVzoK6-0P~yjO9wz2sNBtQXD56w3fRJRL1oliLRb8zFtEoUAhMd-oCiYSAWI4nDKKs-Pod94O~VmANfOR9JjiYTRucvsgc6cJ3q0UgBFj0pJrkFnKD3W4FdvZbDW8RwllC53KZggFfNv7BkAIf0A6C-C70RCOQn02Gp0k5~K2adPHbNqr5VgxF4Aj4MaYB74hZAxHNWwFJV~SiKShy6ZmoFDNjoih7jvMZgkypPk7hmAmxdsLQapDwcnX7MsrnkOnUXLeSRhiUEkaeZ3E6xk2A0BTKYP2rA-YCQe3p8hvg__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin February Vol 59 no 01</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20March%20Vol%2059%20no%2002.pdf?version=1708909990000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwTWFyY2glMjBWb2wlMjA1OSUyMG5vJTIwMDIucGRmP3ZlcnNpb249MTcwODkwOTk5MDAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTMzNzY1Nn0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=fXXdLPCQIbPVZFRFtu8f854eHQmzeLusDHYUVCpUh8h73W985BoMKVu7xhGo-PZQv2F5r4Esdz75Dl2ioxoMtUOe4Meh3RIVhhAwRWyMOwP-EoB6kFlhxJG7Mt0bT~t~E172aHi4EdNsfH9mGssdeSaxgDFfKWAYdR8LYEpi5cOqHiqblBSkT4SxSOg8VRGsBzhzkW3JnV3RA13AL6iPL~ETMaipdovyEEElIh1eq1b8GXRL6nOLP88T6VeuyaV78oySG8hCQoeA3CL~ml2Vonum5A9bkAP~songOEMiezNaYn3Ea6moMtyAP~oaJ8zBCPDmF992z34rL7qomobX9Q__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin March Vol 59 no 02</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20April%20Vol%2059%20no%2003.pdf?version=1711413980000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwQXByaWwlMjBWb2wlMjA1OSUyMG5vJTIwMDMucGRmP3ZlcnNpb249MTcxMTQxMzk4MDAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTMzNzY3MX0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=hcu7Y02PpxmEU86qtMMp~rSvxNvWTz5mSnpmIgR-oKaQLHJT0hpqjbOhlsHpJOAQp7T~Nqwwwz0MFbW3bFDdhXBttjdSWJoqU58wRqFR7Imv3333qIIf-Iw8UeKBOrSp6Ve3Ec-f4R6r5KKga4xBCM9lFmkna1CWrjGri7vbcy~gJsPrfo2szqMlv5Ccct9pZLj3J6BBC7sk0fN7VlhwYLMrCBVYI3NeRr4W9iiazl1TflL9TPMMYg1Ekc4K6BTQGPT58N7Q9-G6d7fbba16QyAHKg8sIZecNefkUlKv5llZAFvkBgpGEbRmK7iw8g0lVwVP74sOmVk6p8m13YGC~A__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin April Vol 59 no 03</a>
+                    </li>
+                    <li>
+                       <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20May%20Vol%2059%20no%2004%20updated.pdf?version=1714624544000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwTWF5JTIwVm9sJTIwNTklMjBubyUyMDA0JTIwdXBkYXRlZC5wZGY~dmVyc2lvbj0xNzE0NjI0NTQ0MDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU1MzM3NjgyfSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=WyHVKNGCe61UydND1ftKejs1l9aba7MLD4eXHqkwM9PNT7XRGLk2YKA926ApK3B7AH7hkLQoHnOwqvQFP6qNuEoTFNxcBb3QfVL522owoGqdpEE2xrQQE~bCkENE1GPfcXoulWjXwlWlRtO4PQek4PKwAvnkfGQUBsLaOCW4BX4eCr35irZY2jQQ59wOOpkv8djLX6bApv7KOzCBIvpLuft5~sOuGgPcpTbGYkNrvIvjb1hm66TrkZkQ2m7em3vwNsPGHgrSdV~HmyL9KJsEx3A8mFDV7gJ5abrxssqh4rjtGIajBVSEJjExFvtkzYwMbSi8eOwf5udSDq2dP-VOyQ__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin May Vol 59 no 04</a>
+                    </li>  
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20June%20Vol%2059%20no%2005.pdf?version=1716516999000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwSnVuZSUyMFZvbCUyMDU5JTIwbm8lMjAwNS5wZGY~dmVyc2lvbj0xNzE2NTE2OTk5MDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU1MzM3NzA0fSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=mmtfTX3r9uetJ5agFPaHxR26M6G-5Pz9XWV4tMrqBEXteOZkt5-AgLDuffX~AhlbXMKpCKgv3RnBbXBi53UpB0I4-QPDYBeB~6ogsvfZjVdrA0Mf1u6IN8zljI0yvYZUKujnIHn1AKPJF59b9ZoiYG-pYC3CMVz9hMpid~aHGQ8~h4Q8MMFhzqp6oYXPed1Ia1~5NoExQHbspzgehb0d74W8wHpkg3HHg8G62vCt1Asnj0mgCf7leFgziJOYPEOknuSDXT1CNAop7dQ~cee8YcnRrintU-HmggzLSaWgYqaXuA43x4i-MgHL4Fo~NPBo0WuwuZuRGIDUqOUJ7ov0ZQ__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin June Vol 59 no 05</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20July%20Vol%2059%20no%2006.pdf?version=1719192593000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwSnVseSUyMFZvbCUyMDU5JTIwbm8lMjAwNi5wZGY~dmVyc2lvbj0xNzE5MTkyNTkzMDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU1MzM3NzE0fSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=caTkg1j9a7ek3Geo1Id~RJqOBmkh6nBiCqSthQ9jlgg1~DBKf6t~OJcsI4zyvLU0loqd2FeNBmNeSPJQ0dU33HRmykOx6ZgPNLq5uM8Pc~bq7qus2-NfFhtLhryIrpbOThEmaAlHNYccdH6Gq7M8dIkx3XBt4Lead-J1AM~PY~alZOiR0Blg1KxSQNOwZbtEKJbJ5SglU-Pi5VouXHCnaqWX18tHjgvChFMuYDXp2xwfQpXrpnXIxR4xZB7U81OTNzbAxUD~EWSKRF89fveRPGE8LBSeNTXzq~dnbUiXYddUEurW~piJcQu9Mhsv18omY-ZFrl~th8DsaqJWA-pkPw__&Key-Pair-Id=K27MGQSHTHAGGF">2024_RGSQ Bulletin July Vol 59 no 06</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20August%20Vol%2059%20no%2007.pdf?version=1721359764000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwQXVndXN0JTIwVm9sJTIwNTklMjBubyUyMDA3LnBkZj92ZXJzaW9uPTE3MjEzNTk3NjQwMDAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTUzMzc3MzN9LCJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn19fV19&Signature=cJt5m9VnA9hrxOAnEv-sHadgNG6FoEbd4wjZ39sAmBB0P7STogYOZrIntim0Ige9FVGFJmO9KqJ7dqtIg8ipkysplhv38pcIiX0Qmh-wcedOSGQnhquZWwD4Ef0jYEvCkf8~gQq0tn8vqnzALta7rTaO4Vw63G7M~3hD0RPGD6btSE6vcIKtrZtn8EPsWghEm1nbZqMzgHbcydprLUBoWvbtlo6a01AORu5h7gUYFWW1byORMrN39xe5HmJO4bkUrByStA~doGubQgVOdrhDInix-n3V~ocAuusZjGw2kzWYbLDWFBLU63wg23Id67GQQf8RhFZsxo182Xe5o6AH~Q__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin August Vol 59 no 07</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20September%20Vol%2059%20no%2008.pdf?version=1724642911000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwU2VwdGVtYmVyJTIwVm9sJTIwNTklMjBubyUyMDA4LnBkZj92ZXJzaW9uPTE3MjQ2NDI5MTEwMDAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTUzMzc3NDl9LCJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn19fV19&Signature=mrVFGEHhBI~JgmdM2gRi~~xPZq4YG7xN2Kv9LWfBF7Ok2QGi2YdVDykbrbpDCdcxnCLUvseTeZDykvDpIZdxxnNp0UGbGa8WyVuUXxOaDigrj~Xi5td~1z78K7UWyJv4Fz3Ym0eLcKRgWcVbW9uIxRds5JlXQeHJghVkscT5xVATeReH814x1wJMPhwKMbeoOsygTKEeU4OZI3mLkoNjzFzKG83p-24mLOEXj19dwTkQYTV-rmQUINlSne85Ng87JSlDnroecL9oHIi9Ml2pxHyn1xCQCjGH7v1~VCkYfmKwq9qtETGRorsILaWqROXNULvAEGdslg4J1eI5-vDj7g__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin September Vol 59 no 08</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20October%20%20Vol%2059%20no%2009.pdf?version=1727137092000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwT2N0b2JlciUyMCUyMFZvbCUyMDU5JTIwbm8lMjAwOS5wZGY~dmVyc2lvbj0xNzI3MTM3MDkyMDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU1MzM3NzYwfSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=Ue7BudP7dS-321V9SbRWMHDeozE~2k3025ITr~u9IC5lXbBqr99fbuLFF46en4rPI9vVNOJl4BMKoP8Lz~IOCob-sRyi2wV2vzmwtd5rTC3y44vBaLhL7hegNF-bwEMjXgJodgsJVWTDjQCrmOx9gdP~zCrd8fb2VGSiRKuq2Rb4ZvpajglWVop-5juGTdgWuahXw5NeHGYwNkvFghHs373J8hxfUvXbWZkjUxQ4DeiOMOF2qSUlmevmocgBxorjM7Yk-sOwYa9XGj73xyrE0Uf0Ee-o-d4XqXxgtj9L7PlYXGWcgc4qUl8bSeaFPB9fPDMi0HySPKttSxVdm3Qy3g__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin October Vol 59 no 09</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20November%20Vol%2059%20no%2010.pdf?version=1729560258000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwTm92ZW1iZXIlMjBWb2wlMjA1OSUyMG5vJTIwMTAucGRmP3ZlcnNpb249MTcyOTU2MDI1ODAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTMzNzc3M30sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=EcnMcIYwBehZKItNzUmJ~apgUiKxtiTm3HlXhpywGpvRcXxKxbdC8~maa48JKCO5QvJqEswXEWH5hSrdv1C1osI00pSovZDuIfxCZc4H8GpYaEKtL-9Hq3q3mAcgWxYrp6bjt6Xd47~EafpeFXS5xl6cHyN03BuW6~xFtVlQ6KJO4MLYoIp2mUCB5aZAxhVOVIMhMiXNsZKWMGtU~MMXyD0aaL5Ei2kGG0D8t1uWd5~aNDRRfxBxG22Xnh4oZ0vIsXX3dEj2FTmaeCJpH2Cac1IXIfXjbAxyCKZvvtg3PhTFcbuZ~AGfuNP-7dBOl8bWyqP4OTB0VHW3dyEp6FqQLA__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin November Vol 50 no 10</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2024/2024_RGSQ%20Bulletin%20December%20Vol%2059%20no%2011.pdf?version=1732582232000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDI0LzIwMjRfUkdTUSUyMEJ1bGxldGluJTIwRGVjZW1iZXIlMjBWb2wlMjA1OSUyMG5vJTIwMTEucGRmP3ZlcnNpb249MTczMjU4MjIzMjAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTMzNzc5MH0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=Mt892Cj5kcjR~wJSItcbtjeCL7PV3G8oth75EJMFLYkvj1QtFkA9k1fRX~3lav6jn1DIkgcc9diuL-0jRfrO4QoZDWgVbSYRTalZqiWKO6DwrcjhDDkqnVC3P1CgMqa9k7hdJqExWBJ4gM9hCu3hFrIxU6uzq2lYDoAt8S6b8815AtsnjIUeoJp~GEbWspkgjHNwMFzGtLGieQfevqV-dQFf~~TBS985MvoRl1XrNEl8I7Xv8Twsp34EzhVF0EFZ~-FNdaqJCiRbO13wY8tSZ0gHdPPOYRaYuOhILfNJfX5xfxrZVA0PpyhWBYeSYHB6Pm-DOMXKKYalOuACDXhmxg__&Key-Pair-Id=K27MGQSHTHAGGF">2024 RGSQ Bulletin December Vol 11 no 11</a>
+                    </li>
+                </ul>
+
+                <hr style="border: 1px solid black; margin: 20px 20px;">
+                
+                <h3 class="mb-3 mt-3" style="color:#0861af;">The Bulletin 2023:</h3>
+                <ul>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20December%20Vol%2058%20no%2011.pdf?version=1700786672000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwRGVjZW1iZXIlMjBWb2wlMjA1OCUyMG5vJTIwMTEucGRmP3ZlcnNpb249MTcwMDc4NjY3MjAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTM0MTIzNn0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=L86NPQKBEbiYwfLWMb8QmOpJxCFnqkHLX~2Kvt4Y5E0TIkA~tkPL1ukVm1sSOMzTam~bbh-hShtR3kM6h2bzK4QTeOfwAwNoEcCcFgx5my1HrAiQEc3HG8zJtMqWpQrVQkQ6ck~zOnJnsLR1u-m4sxCnnqH72SpBXslD6~SH610XqAs9Tzg1blM8EGAs6s7FozhKhCGLVyppXFdbc0rBqMek0ZjzdbNZv0QOfAvKo3tPdGhhT97aQFdWhq1-L5ALsl2lkI9iDGhw8UUUaC-0qj-HxDUKbzCbVGAY9EaVTzB2JoeQ6zRwF7w9mOpDD5yzP8XMHrFwsJP8BEgEX~vCqA__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin December Vol 58 no 11</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20November%20Vol%2058%20no%2010.pdf?version=1698107178000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwTm92ZW1iZXIlMjBWb2wlMjA1OCUyMG5vJTIwMTAucGRmP3ZlcnNpb249MTY5ODEwNzE3ODAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTM0MTI1Nn0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=cyFi-tNdRrYW0brnlKPsl0tMfBYfdXfSKANrsQ8H4eCabaoe0KH-krIiiBzomEzs97lyTFqg~dgsXRcBh6t2Ryr3iV7ga8HJCQhqQvH50viAlfdyOX2Ch0Uog46Z0-D6Jvu7ABgRlYqGJTHXPfrOUlnELwd~n7~Rg1jH5dirJkFoGATHxdlJiDQxej-o3bHubBa-icOoYYcSYj2j5t-Cjf8oaebeP6gVRqO2UczcGIEDnvGQe3rkfFfZFN~cY9fuZKP1v~hzahvhTTpePXXPh1ICi0GcMsM-at4EJTtpXIwKparIzvbbV1qhTMzOSL0T0ENCIGWmohIgK-xpSYVJaA__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin November Vol 58 no 10</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20October%20Vol%2058%20no%2009.pdf?version=1695432793000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwT2N0b2JlciUyMFZvbCUyMDU4JTIwbm8lMjAwOS5wZGY~dmVyc2lvbj0xNjk1NDMyNzkzMDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU1MzQxMjc2fSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=pKymnIOMIvyGTXPvLGpXEjgg2GprwJr6RXum3FKyHGS5TjT4xLEY1MMEY6sRUDhbg50bEqP7jwQuUy2alK9rU0Q-4yE4pdTZtznkLKZ7MXi2e1SDQJ-aLA3ujuXxPUsynFaWk9Hh6uT8cei4-L2AYKaTE8EJG14dRGhCGywmgoE1eyhvwkCM7fiixn5GQIK3Ee6JZTfsQ~nLTuMUoc9Oc1byRNWWLPpIm~lidMMV8xTv8E-vj5uii4uC1Dqv8YViQTWteTxRjijtnlCV5y9A1fJ9NRMQLAHHOPdFbPzTs-N~s9SnMZUxK2p976Bvn6pTnYpPvcDmxiWQSEGzjdEqKQ__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin October Vol 58 no 09</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20September%20Vol%2058%20no%2008.pdf?version=1692924158000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwU2VwdGVtYmVyJTIwVm9sJTIwNTglMjBubyUyMDA4LnBkZj92ZXJzaW9uPTE2OTI5MjQxNTgwMDAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTUzNDEyOTB9LCJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn19fV19&Signature=HvA1WYDVRFNEBZfI~sFgWEwDV8vDJSQn-Jg~4fRBsD90dkISjTSXYXqby4fvQv8eS-W725jPZdlObKlhL-UhPXxs5g4vDaGQ5L7zTCphMzzPFxscabo~~wxCamxalVU6Gh5AsEKeimxrtihI0IVxjNTUcFhu3Aas2pBbl0ngH~lhL2SXllsBJxEzecMRrVKqUWvt3TIucb9FXDJCJEXkQyYKtNH7al9dTBVQNlbuxjg0YZsUBp5BxXCQj3gHxrm5u-cPVxEn6PRy3MrLDH5L69YaBmeffp3hJnnmIkjV9Shet5uN9Yo7UoIloEusHbJH7reilf1DC5vluQq-JdB7ag__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin September Vol 58 no 08</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20August%20Vol%2058%20no%2007.pdf?version=1689901972000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwQXVndXN0JTIwVm9sJTIwNTglMjBubyUyMDA3LnBkZj92ZXJzaW9uPTE2ODk5MDE5NzIwMDAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTUzNDEzMDZ9LCJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn19fV19&Signature=HjJtr3LrfEBr40zrnJLjsN3btq3EqhriUOV2ytXAyKcMQCklJsw3k6G38ZQ5mpSmsotndvhdyseQl7kHh6rV-31bcZTDrYPvig6Yl2ewf3TsiQkPLpqZ1kQ4XNQgGNvpgE3t6rzqfwo5Z1fUaL4IN8OdhurzmUGHOKy3Su2fbzkHVoC81JXsAsEteUV7fwhif5xgApJCP9AbuIGd9JJXJbdtSH3ZifoZB3RZJORqEALterTbDWgm0IKEkDLq0CT8oNCOWd6S0CQeTN3-1cNIIcreGoFI6blULl~dY9KDirQtCl1CTpOW9PktT1T-hgOyvPyw4IW7VHDYNPAdeoUrbQ__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin August Vol 58 no 07</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20July%20Vol%2058%20no%2006.pdf?version=1687749069000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwSnVseSUyMFZvbCUyMDU4JTIwbm8lMjAwNi5wZGY~dmVyc2lvbj0xNjg3NzQ5MDY5MDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU1MzQxMzIyfSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=VDMdgd2~pPu9mKs7-tew9Ad0EUloXRq4pgfs9QW~NtXTuSmBXKoulMtgExQxEaxOyUafWNwO5JR7ITWP2lHaml-6YAHj80PH8wICKGqyQmbYuYmKTY4QrjFDlL5e0cWblUX-LNWKraMPvjPmUrX8S3PqaVaVGT4nZb4C52GIxTRwiAIDaiF~2i6UDwJTvcQ7GIYPiOkv4dcqbWbNfnGdgfr4c6hKogfSfBlJmojbx0~BzJbbeuRKCA6VV18oZh8nf2fMAkCEDNNVif2JU4-q48qQvAtqOSW8Kl0dc8y5GtvwS8uLVcPJnOcKTOmwCFIx3W94YGlPAF5ylQ8yTZzBHw__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin July Vol 58 no 06</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20June%20Vol%2058%20no%2005.pdf?version=1684462785000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwSnVuZSUyMFZvbCUyMDU4JTIwbm8lMjAwNS5wZGY~dmVyc2lvbj0xNjg0NDYyNzg1MDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU1MzQxMzM3fSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=IDuK1qYjVnXun5eVttzpuZmztSVkPODZgR4~8VH4VoTmLs~ZnjlOfGoAJzOL3Rv9WM4177Bb1cUQqIefr4PhNxp-6QWZ92wdo5refPrTB1d9rbXsXAIxBdlO8Kf2dKlj9c-mqIJ2KdJIvPMPFDc~vNkDC~X64dcKxQqriSiLfKRyXBXCCQLEcG0Ef3JJ-Hxnwh0USfK9AVRcL6IrJJQD4bVzYr1BH3EQ9dyP4YSnYaI5VtKzVgth2llwGHRvYrcK2j7BKNTgvzMsP17XAIh8cOvorSK1QqZJyXQtSeCPN5RcVVaeKKrvQjnX8r5qi2OOxzdWessin1ju69x1u8Iuyw__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin June Vol 58 no 05</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20May%20Vol%2058%20no%2004.pdf?version=1682036903000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwTWF5JTIwVm9sJTIwNTglMjBubyUyMDA0LnBkZj92ZXJzaW9uPTE2ODIwMzY5MDMwMDAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTUzNDEzNTJ9LCJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn19fV19&Signature=BDNRxzLTmsHtWIWVdUE9E19GmN6KDHUoB2YQR8MUEX0OFrlyoxmjpweChd~9CZOXRoXIWgVwh89Bq2iwcL4D0rMPRrBU2kv7etXmksj9o33VJ94almHiKvwkCx3fgu8JXZ1Ze7hlvvthhARM3ZOse4dngLJVjIQWx0ZlzTBJ6zSZ4rvmpRMytHQO4rzPi7cGOsneXpj5E7A-ECf07IZywDhBZlC2n2B9aOKLNl8iouVbSk4BbFJeIZNxjrCfiu2TqSHLexqQ9vgzAzc8G-iol7ElZ61lKuqFM~ThAawrYyS6R30ct~VIIII0gsia-eKW4JyvhhddWLcgI8l4NiKnkg__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin May Vol 58 no 04</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20April%20Vol%2058%20no%2003.pdf?version=1679879399000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwQXByaWwlMjBWb2wlMjA1OCUyMG5vJTIwMDMucGRmP3ZlcnNpb249MTY3OTg3OTM5OTAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTM0MTQwNH0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=qQ90VqQNtNQ1Xwjd8~2hUPbkdyrqAtRo55h87HWbffRc9RS1himYJzFDvnOaCY7z5Dt7qZUz~ztOd~AKFDL28w-e9iQOoMiGXX2w~DFVmaTFFn~9wynFwMQFVdp3xXXCVfyilv~QTXlYNrojKb8M4kSPxpsjWfYUOcj~8nLNsyPitvL2LZXeqeiK1cEwR5sZ~jeOC8hh2a~BZyT8ughJznTEy4a59t9TTGimIgrH5TvFYvj~PEovuXn~YnbNONwwxgjM4pPOyG4p200iyY8GSQm-PuZAibQTVSJMIGjU1Lf4wp6vJuL4u2WnaxQEQrEeqLWtoDl2QpKrSTmuBBEU8Q__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin April Vol 58 no 03</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20March%20Vol%2058%20no%2002.pdf?version=1677203877000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwTWFyY2glMjBWb2wlMjA1OCUyMG5vJTIwMDIucGRmP3ZlcnNpb249MTY3NzIwMzg3NzAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTM0MTQzM30sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=Z3qp7QCv2-fP99hD-n5K~wkvoN3HTddFPZaBvZSOtxmz3zr7kvOrfUmwTMasJNksZYgX9m291Vq4GwnSdVpD5IjVhz~sVdNnaRJux34xcwieyEMImb56MOHn56TZCfhoZ2Pe36A7b5-FTbXWhec3Xvu3p~UGpeYLjEska2NpvviEqR7DT9BYZkzMKL4X0Updt6u1SFLNFpQ5MtrFODDSVqinI7TaSfrzB3aLYym6AB8lokpyo8KTWv-8ixNfo4i-FUcdHQG7JXp4VyGo0pqMoPGvEkgAh3EBLqZn7guL-3fqsA8B3AcPm9v64~iVN3uvUUIYdkMDKU1KopoSVZbzXw__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin March Vol 58 no 02</a>
+                    </li>
+                    <li>
+                        <a href="https://cdn.wildapricot.com/240825/resources/Documents/Bulletin/2023/2023_RGSQ%20Bulletin%20February%20Vol%2058%20no%2001.pdf?version=1674012921000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9CdWxsZXRpbi8yMDIzLzIwMjNfUkdTUSUyMEJ1bGxldGluJTIwRmVicnVhcnklMjBWb2wlMjA1OCUyMG5vJTIwMDEucGRmP3ZlcnNpb249MTY3NDAxMjkyMTAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1NTM0MTQ1NX0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=TDzXT0AmeJDVWX2u4Posa5oSeRtaFtcfPj~yGKfigRCzz0rejZe~4DdXJnNKlBGStB18jfI4cJe8aF~L4CY-rz5qJPOekci0ThMm~AdgBu5chSj0ftHgCnV~k6W2scGj6xmd3vfcYYYwIIk9cmeYS-lTI5w-5yzGgiUesXsGs~B2EYKEilG7dNTg5an3beg6IdAK-m2XPXrxBWGeKoLqfDlGsjk~ht1r3YYH5V6UPeyW1BI8b1pDD9-7s9RJArUSQsIJEJpc3lbZSN7IV1Hkj3vr9ezmrkgodnHDn7MbOJ-DMyEB00BRbp2jDoqfAUsP5-tAx901KrVu8esVCNmwpw__&Key-Pair-Id=K27MGQSHTHAGGF">2023 RGSQ Bulletin February Vol 58 no 01</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-lg-6 rounded-3 shadow-sm">
+                <h3 class="mb-3 mt-3" style="color:#0861af;">RGSQ Bulletin Copy Due Dates</h3>
+                <p>We welcome stories and ideas contributed by our members. If you’d like your story published in the RGSQ Bulletin, please see copy due dates below. Articles should be emailed to <a href="info@rgsq.org.au">info@rgsq.org.au</a> If you have any questions, please feel free to contact us on <a href="tel:+617 3368 2066">07 3368 2066</a> or <a href="info@rgsq.org.au">info@rgsq.org.au</a></p>
+                
+                <div class="border mb-3 p-2">
+                    <img src="{{url_for('static', filename='images/bulletin 2025.png')}}" alt="RGSQ bulletin 2025" class="img-fluid" style="max-width: 500px; width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
