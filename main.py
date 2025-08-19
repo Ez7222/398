@@ -93,3 +93,7 @@ def venue_hire():
 def bulletin():
     return render_template('Bulletin.html')
 
+@app.route('/Geographywebsite.html')
+def geography_website():
+    return render_template('Geographywebsite.html')
+
