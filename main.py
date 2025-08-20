@@ -97,3 +97,7 @@ def bulletin():
 def geography_website():
     return render_template('Geographywebsite.html')
 
+@app.route('/Museums and other attractions.html')
+def Museums_and_other_attractions():
+    return render_template('Museums and other attractions.html')
+
