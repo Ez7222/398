@@ -104,3 +104,7 @@ def Museums_and_other_attractions():
 @app.route('/MapResources.html')
 def MapResources():
     return render_template('MapResources.html')
+
+@app.route('/PhilateliesCover.html')
+def PhilateliesCover():
+    return render_template('PhilateliesCover.html')
