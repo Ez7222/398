@@ -101,3 +101,6 @@ def geography_website():
 def Museums_and_other_attractions():
     return render_template('Museums and other attractions.html')
 
+@app.route('/MapResources.html')
+def MapResources():
+    return render_template('MapResources.html')
