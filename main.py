@@ -116,10 +116,18 @@ def PhilateliesCover():
 def Disclaimer():
     return render_template('Disclaimer.html')
 
-# showing the governance page
-@app.route('/governance')
-def governance():
+@app.route('/Committees.html')
+def committees_html():
+    return render_template('Committees.html')
+
+@app.route('/Governance.html')
+def governance_html():
     return render_template('Governance.html')
+ 
+
+@app.route('/AustraliaGeographyCompetitions.html')
+def australia_geography_competitions():
+    return render_template('AustraliaGeographyCompetitions.html')
 
 
 #  Society / News (demo, 2 posts) 

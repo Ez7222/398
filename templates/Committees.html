@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap + 你自己的样式 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Committees – RGSQ</title>
+  <style>
+    .section{padding:28px 0;border-top:1px solid #e9ecef}
+    .back-top{font-size:.9rem}
+    .lead-wrap{max-width:950px;margin:0 auto}
+    .menu-wrap{max-width:950px;margin:18px auto 28px}
+    .h1-title{background:#3b6e6f;color:#fff;border-radius:10px;padding:.75rem 1rem;text-transform:uppercase;letter-spacing:.12rem}
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('Home') }}">
+                <img src="{{url_for('static',filename='images/logo.png')}}" alt="Logo" class="navbar-logo">
+                <div class="navbar-title">RGSQ</div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('Home') }}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Society</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Aboutsociety.html">About the society</a>
+                            <a class="dropdown-item" href="Governance.html">Governance</a>
+                            <a class="dropdown-item" href="Committees.html">Committees</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Eventlist.html">Event List</a>
+                            <a class="dropdown-item" href="Create.html">Create Event</a>
+                            <a class="dropdown-item" href="Update Event.html">Update Event</a>
+                            <a class="dropdown-item" href="Disclaimer.html">Disclaimer</a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            PROJECTS
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="AustraliaGeographyCompitions.html">Australia Geography
+                                Compitions</a>
+                            <a class="dropdown-item" href="Lambertcenter.html">Lambert center</a>
+                            <a class="dropdown-item" href="Queenslandbydegrees.html">Queensland by Degrees</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            Resources
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Library.html">Library</a>
+                            <a class="dropdown-item" href="Venuehire.html">Venue Hire</a>
+                            <a class="dropdown-item" href="Bulletin.html">Bulletin</a>
+                            <div class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="collectionsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Collections
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="collectionsMenu">
+                                    <li>
+                                        <a class="dropdown-item" href="PhilateliesCover.html">Philatelies Cover</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a class="dropdown-item" href="Geographywebsite.html">Geography website</a>
+                            <a class="dropdown-item" href="Museums and other attractions.html"> Museums and other attractions</a>
+                            <a class="dropdown-item" href="MapResources.html">Map Resources</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Membership
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+                            <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                        </div>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Username
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+                            <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                            <a class="dropdown-item" href="Login.html">Login</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+<div class="container py-4">
+  <h1 class="h1-title text-center mb-4">Committees</h1>
+
+  <div class="lead-wrap">
+    <p class="lead">
+      Much of RGSQ’s work promoting geography is achieved through the work of its committees. We are deeply appreciative of members’ willingness to volunteer their time and expertise on these committees. We encourage all members to consider contributing in this way – not necessarily as a committee member; you may prefer some specific task to help the work of a committee. As well as providing vital support to the work of the Society, it is also a chance to get to know other members better.
+    </p>
+    <p>To find out more about a committee that interests you scroll down to browse or open this menu.</p>
+  </div>
+
+  <!-- 跳转菜单 -->
+  <div class="menu-wrap">
+    <select id="jumpMenu" class="form-select">
+      <option value="">Jump to…</option>
+      <option value="#agc">Australian Geography Competition</option>
+      <option value="#collections">Collections</option>
+      <option value="#finance">Finance</option>
+      <option value="#gic">Geography in Conversation</option>
+      <option value="#gmatters">Geography Matters</option>
+      <option value="#gwc">Geography Writing Competition</option>
+      <option value="#honours">Honours</option>
+      <option value="#it">Information Technology</option>
+      <option value="#mapgroup">Map Group</option>
+      <option value="#property">Property</option>
+      <option value="#publications">Publications</option>
+      <option value="#scientific">Scientific Studies</option>
+      <option value="#traveller">RGSQ Traveller</option>
+      <option value="#young">Young Geographers' Group</option>
+      <option value="#follow">Follow Us & Contact</option>
+    </select>
+  </div>
+
+  <!-- 各小节 -->
+  <section id="agc" class="section">
+    <h2>Australian Geography Competition</h2>
+    <p><strong>Members:</strong> K Berg and J Davis (Co-chairs), S Albertson, T Bourke, R Honey, J Tasker<br>
+       <strong>Geography's Big Week Out:</strong> M da Roza, R Honey, A Penz, J Tasker, E Williamson</p>
+    <p><em>Packing Competition certificates</em></p>
+    <p>
+      The Australian Geography Competition Committee manages the Competition, a joint project between the Society and the Australian Geography Teachers’ Association (AGTA). The Committee consists of two Society representatives (Kath Berg and John Tasker), two AGTA representatives (Julie Davis and Shane Albertson), an independent member (Terri Bourke) and the Competition Coordinator (Rachel Honey).
+    </p>
+    <p>
+      Schools from all around Australia enter their Year 7 to 12 students – over 70,000 per year. Since 2022, the Competition has been delivered online. The questions, based on the content of Australian Curriculum: Geography, test student’s geographical understanding and skills. Sixteen high-performing Year 11 students are invited to take part in Geography’s Big Week Out – a fieldwork-based event that challenges and extends these bright young students. Australia’s teams to the International Geography Olympiads are selected from these students.
+    </p>
+    <p>
+      Society members provide valuable assistance with our large mail-outs to schools. If you are interested in helping, please contact Rachel Honey – <a href="mailto:AGCcoordinator@rgsq.org.au">AGCcoordinator@rgsq.org.au</a>
+    </p>
+    <p>
+      For more information on the Competition, please see the website at
+      <a href="https://www.geographycompetition.org.au" target="_blank" rel="noopener">www.geographycompetition.org.au</a>
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="collections" class="section">
+    <h2>Collections</h2>
+    <p><strong>Members:</strong> R Cook (Chair), R Carlisle, L Darii, J Graham, K Raymond<br>
+       <strong>Archives, Artefacts &amp; Images:</strong> P Griggs<br>
+       <strong>Library:</strong> J Graham, N McManimm<br>
+       <strong>Maps:</strong> R Carlisle, P Nunan
+    </p>
+    <p><em>RGSQ Members at Carnarvon Gorge, Qld 1937</em></p>
+    <p>
+      The Society has an extensive collection of records, maps, books, magazines and artefacts dating back to when the Society was formed in 1885. Resulting from a 2017 study of the collections and their significance, the Collections Committee was formed to better manage the collections and make them more accessible and relevant to the Society’s activities.
+    </p>
+    <p>
+      Working with the National Library of Australia and the State Library of Queensland, the Committee has attracted grants to conserve valuable collection items and create an online catalogue accessible to all members as well as researchers and other interested members of the geographic community. This work is ongoing.
+    </p>
+    <p>
+      More recently the Committee has initiated work aimed at digitising parts of the collection to make it more accessible and creating a digital collection of material relevant to the geographic work conducted by the Society
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="finance" class="section">
+    <h2>Finance</h2>
+    <p><strong>Members:</strong> A Lau (Chair), R Cook, L Darii, N Nguyen, C Spriggs, J Tasker</p>
+    <p>
+      The Finance Committee provides advice and assistance to the Society’s Treasurer in managing the Society’s financial position, including monitoring all bank account activities, assets, and investments as part of the overall management of liquidity and the balance sheet. This Committee meets 2 to 3 times a year and discusses financial matters via emails regularly. The Committee is also responsible for the preparation of the annual financial budget for approval by the Council each year.
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="gic" class="section">
+    <h2>Geography in Conversation</h2>
+    <p><strong>Co-convenors:</strong> D Kelly, R Kernaghan, N Nguyen, G Rush, S Rush, B Skinner, N Tarsoo, P Tonkin, K Treschman</p>
+    <p>
+      This is a monthly Q&amp;A style forum with expert panellists and a moderator. The series is designed to engage the audience in robust conversations on current geographical topics, usually with an underlying theme of sustainability. The topics are recommended to the Committee via feedback form or direct application. The Committee organises the topics, speakers and questions on notice and facilitates the running of the evening.
+    </p>
+    <p>
+      On arrival attendees enjoy mingling over refreshments; wine, coffee, tea, finger food and a cheese platter. A small fee of $5.00 is charged to cover this. The speaker’s presentations usually make up 30-40 minutes, which leaves 50-60 minutes for discussion, overseen by a moderator. There is a further 30 minutes afterwards for further informal conversation. The events are held from 5:30-8:00 pm to facilitate attendance for office workers and those relying on public transport.
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="gmatters" class="section">
+    <h2>Geography Matters</h2>
+    <p><strong>Co-convenors:</strong> D Kelly, R Kernaghan, N Nguyen, G Rush, S Rush, B Skinner, N Tarsoo, P Tonkin</p>
+    <p>
+      A monthly webinar with an expert and an interviewer. Experts are invited to talk on their subject and then take part in an interview / discussion with a professional knowledgeable on the subject.
+    </p>
+    <p>
+      The series is on ZOOM which enables it to reach a wide audience. Topics of interest to regional and remote Queenslanders are selected. The expert speakers are from Regional or interstate institutions.
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="gwc" class="section">
+    <h2>Geography Writing Competition</h2>
+    <p><strong>Members:</strong> Jill Cross, Pamela Tonkin (Joint Chairs), Catherine Duffy, Giselle Pickering, Katie Teodorczuk and Connor Harvey (QWC Representative)</p>
+    <p>
+      The Geography Writing Competition is open to all writers, nationally and internationally, at any stage of their writing career. It is an opportunity to write a story themed on Queensland using imaginative, creative and wide interpretations on any geographical concept. The competition is a way to promote geography and encourage engagement with the Society. The inaugural competition will be held in 2024.
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="honours" class="section">
+    <h2>Honours</h2>
+    <p><strong>Members:</strong> D Wadley (Chair), K Berg, D Cook, J Holmes</p>
+    <p><em>Emeritus Prof Peter J Rimmer receiving a JP Thomson Medal from Dr David Wadley</em></p>
+    <p>
+      The Honours Committee develops and presents recommendations to the Council for granting the Society’s special awards to individuals who have made a significant contribution to the advancement of geography in a variety of ways. Such individuals may be academic geographers or members of the Society who have made an outstanding contribution to the furtherance of the objectives of the Society. The Committee may recommend to Council the establishment of additional Award categories, or variation to the eligibility criteria.
+    </p>
+    <p>
+      The Committee makes recommendations to Council each year for the JP Thomson Medal. The terms of the award made under the auspices of the Ken Sutton Trust are currently under review. When finalised, recommendations for this award will also be made by the Honours Committee.
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="it" class="section">
+    <h2>Information Technology</h2>
+    <p><strong>Members:</strong> R Cook (Chair), L Darii, L Kugelman, J Fairbairn, K Raymond, G Rees</p>
+    <p>
+      The purpose of the Information Technology Management Committee (ITMC) is to advise, plan, and implement best practices for managing the Society’s diverse uses of information technology and the ways that its use can be maximised to advance the Society’s objectives. Its current projects are to evaluate the Society's outsourced IT services, enhance engagement through the website, assist the Collections Committee with storage of the Society's digital collections, and improve the internet bandwidth at the Society's premises.
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="mapgroup" class="section">
+    <h2>Map Group</h2>
+    <p><strong>Co-convenors:</strong> L Lowry, N McManimm, K Rees</p>
+    <p><em>Monument for Surveyor Robert Dixons Base Line marker. Warrill View Peak Crossing Road, Harrisville</em></p>
+    <p>
+      The Map Group’s activities are a vibrant part of the Society and are coordinated by Len Lowry, Neville McManimm and Kay Rees, with a focus on maps and mapping-related activities. The Group meets monthly when possible – hosting lectures with external guest speakers or by members from within the Map Group, and visiting institutions holding map collections – and has been involved in special projects mapping areas of Milton and Nundah suburbs as part of the Open Street Map project. External visits have included private tours of map collections in Canberra, Brisbane and Toowoomba. Lecture topics have included Interpreting Aviation Charts, Lidar in Digital Mapping, Map Making for Orienteering, the Role of Drones in Modern Geography and Mapping the Night Sky.
+    </p>
+    <p>
+      The programme of events runs from February to December. We encourage anyone who has an interest in maps and mapping, whether historical or cutting-edge technology, to join the Map Group and share your mapping knowledge.
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="property" class="section">
+    <h2>Property</h2>
+    <p><strong>Members:</strong> P Tonkin (Chair), D Stephens, M Papageorgiou</p>
+    <p>
+      The Property Committee attends to all matters relating to the RGSQ property and equipment at Gregory Place. The Committee members work with the other committees when required, to provide the upgraded technical equipment, safety equipment and furniture needed to deliver first class lectures and other presentations on-site and by Zoom. Fire safety and emergency evacuation equipment, first aid kits, first aid training and a defibrillator are maintained by the Committee. They also assist in the provision of the storage facilities for rare and recent library books and magazines, the extensive map collection, and the precious artifacts owned by RGSQ. The premises are listed on Halls for Hire an on-line booking place for members of the public to make hall or room bookings. Hire agreements are reviewed annually.
+    </p>
+    <p>
+      The Property Committee is also available to all members and visitors to discuss the Workplace Health and Safety standards prepared and accepted by the RGSQ.
+    </p>
+    <p>Please address any comments to the Property Committee at <a href="mailto:info@rgsq.org.au">info@rgsq.org.au</a></p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="publications" class="section">
+    <h2>Publications</h2>
+    <p><strong>Members:</strong> I Childs (Chair), I Bailey, J Corcoran, K Rees</p>
+    <p>
+      RGSQ has a long tradition of geographical and scientific publication. The journals, Proceedings and Transactions of the Royal Geographical Society of Australasia (Queensland) were published from 1885-1899; the Queensland Geographical Journal from 1900 to 1993. These were seen as important for showcasing the work of academic geographers, maintaining contact with members outside of Brisbane and for exchanging with other scientific organisations. Geopinion, a small publication containing essays on contemporary geographical trends affecting Australia, was issued during 1996 and 1997. Since 1966 the Society has published monthly Bulletins and during the Covid lockdowns of 2020, which precluded in-person meetings at the Society, five extra newsletters, Member Connect were issued. The latter contained members’ “letters from the home front”, short geographical quizzes and articles.
+    </p>
+    <p>
+      In 1985 the Society published <em>A Dream in Trust</em>, a centenary history of the Society from 1885-1985. The Publications Committee is currently engaged in updating the Society’s history for the period 1985 to the present. The Society’s monograph series has included the Society’s Scientific Study reports, lecture presentations by Thomson medallists and Queensland Geographical Perspectives to showcase the work of local geographers for the International Geographical Union 2006 regional conference in Brisbane. Electronic copies of the RGSQ Scientific Study published reports from 1992 to 2012 are publicly available via both the University of Queensland’s eSpace and the National Library of Australia’s Trove database.
+    </p>
+    <p>
+      Since 2020 the Publications Committee has organised an annual photographic competition and in 2021 published a calendar utilising the best submitted images.
+    </p>
+    <p>For any inquiries please contact Iraphne Childs <a href="mailto:i.childs@uq.edu.au">i.childs@uq.edu.au</a></p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="scientific" class="section">
+    <h2>Scientific Studies</h2>
+    <p><strong>Members:</strong> I Childs (Chair), A Lau, P Moss, G Pickering, T Sigler, S Turton</p>
+    <p><em>Musselbrook Reserve Scientific Study</em></p>
+    <p>
+      The Society is proud of its record of assisting geographers and scientists to conduct research on the geography, geology, flora and fauna of remote areas of Queensland and Australia. In the past many Society members have volunteered their time and expertise to assist in these expeditions. The Society pioneered the exploration of the Carnarvon Ranges in Central Queensland during the 1930s to the 1950s, and organised scientific studies during the 1990s to 2010s. The latest endeavour of the Scientific Studies Committee was the Binna Burra walking tracks mapping project, a collaborative project with Binna Burra Lodge with the support of the School of Earth and Environmental Sciences at the University of Queensland. This project more accurately mapped existing and currently disused walking tracks at Binna Burra and assessed locations for possible future tracks.
+    </p>
+    <p>
+      Scientific study reports are available on the RGSQ website. The reports are also held in hard copy in the RGSQ library, at the State Library of Qld and electronic copies are publicly available via the University of Queensland’s eSpace and the National Library of Australia’s Trove database. There are a few spare hard copies and CDs of past scientific study reports available free of charge for members. If you are interested in any of these, or in the work of the Scientific Studies Committee, please contact Iraphne at <a href="mailto:i.childs@uq.edu.au">i.childs@uq.edu.au</a>
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="traveller" class="section">
+    <h2>RGSQ Traveller</h2>
+    <p><strong>Members:</strong> C Spriggs (Chair), R Andrews, R Carlisle, I Childs, R Grimley, J Lamont, B Reid</p>
+    <p><em>At Balancing Rock, Bicheno, Tasmania</em></p>
+    <p>
+      The main purpose of RGSQ Traveller is to identify, organise and conduct trips, treks and events supporting the objects of the Society to promote the study of geography in all its aspects.The Committee organises trips, treks and events every month except January. At times, extra events are scheduled, particularly if there is sufficient demand to repeat an event. Use of the waitlist is encouraged to judge this. Day trips are available to members and non-members, but longer treks are for members only. All events are organised away from the RGSQ office and include local trips within Brisbane and South East Queensland to settlements, towns and/or places of geographical interest. While generally trips are organised for a full day, at least one trip in the year will involve longer tours in Queensland or interstate. RGSQ Traveller will also assist RGSQ initiatives on coordinating overseas trips. We also convene the annual Christmas Party in December and the Welcoming Night in February. The Treks and Activities Manual is available on the website. It covers detailed event organisation, with a particular emphasis on safety and welfare of participants. 
+      We are always looking out for members to join our Committee and get involved with planning and organising our many and varied activities.
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="young" class="section">
+    <h2>Young Geographers' Group</h2>
+    <p><strong>Members:</strong> G Pickering (Co-Chair), N Ramsey (Co-Chair), B Houseman, I Sahama, J Tasker, A Zhang</p>
+    <p><em>Yabba Creek, Queensland 2018</em></p>
+    <p>
+      The Young Geographers group aims to bring together like-minded students and early-career professionals through social networking and personal development activities. Join us at one of our presentation evenings to learn about the career pathways, innovative research and life advice of our early-career members or improve your GIS skills at a bring-your-own project map-a-thon weekend. We also host regular social events throughout the year such as bushwalking, board games, camping, meet-ups, and documentary nights. If you’re interested in joining one of our events or learning more, you can find us on Facebook or reach out to <a href="mailto:info@rgsq.org">info@rgsq.org</a> and we’ll get in touch with you.
+    </p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+
+  <section id="follow" class="section">
+    <h2>Follow Us</h2>
+    <p>Be part of our community by following us on our social media accounts.</p>
+    <p><strong>The Royal Geographical Society of Queensland Ltd.</strong><br>
+      Level 1/28 Fortescue St, Spring Hill QLD 4000<br>
+      <a href="mailto:info@rgsq.org.au">info@rgsq.org.au</a>  |  +61 7 3368 2066<br>
+      ABN 87 014 673 068  |  ACN 636 005 068
+    </p>
+    <p><strong>Patron</strong><br>
+      Her Excellency the Honourable Dr Jeannette Young PSM, Governor of Queensland
+    </p>
+    <p><a href="#">Privacy Policy</a>  |  <a href="#">Contact Us</a>  |  © 2025 RGSQ | Site Map</p>
+    <p><em>Powered by Wild Apricot Membership Software</em></p>
+    <p class="back-top"><a href="#top">Top ↑</a></p>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.getElementById('jumpMenu').addEventListener('change', function(e){
+    const id = e.target.value;
+    if(id){ const el = document.querySelector(id); if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); } }
+  });
+</script>
+</body>
+</html>
