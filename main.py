@@ -112,3 +112,8 @@ def PhilateliesCover():
 @app.route('/Disclaimer.html')
 def Disclaimer():
     return render_template('Disclaimer.html')
+
+# showing the governance page
+@app.route('/governance')
+def governance():
+    return render_template('Governance.html')
