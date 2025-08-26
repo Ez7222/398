@@ -108,3 +108,7 @@ def MapResources():
 @app.route('/PhilateliesCover.html')
 def PhilateliesCover():
     return render_template('PhilateliesCover.html')
+
+@app.route('/Disclaimer.html')
+def Disclaimer():
+    return render_template('Disclaimer.html')
