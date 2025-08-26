@@ -127,7 +127,7 @@
 }
 
 .benefits-title {
-  background-color: #3f5f65;
+  background: #0861af;
   color: white;
   padding: 20px;
   border-radius: 8px;
@@ -155,7 +155,7 @@
 }
 
 .btn-join:hover {
-  background-color: #1c567d;
+  background: #0861af;
 }
 
 .benefit-card {
@@ -179,7 +179,7 @@
 
 /* Join RGSQ Page */
 .joinpage-title {
-  background-color: #3f5f65;
+  background: #0861af;
   color: white;
   padding: 12px 20px;
   border-radius: 8px;
