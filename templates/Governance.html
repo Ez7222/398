@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Governance – RGSQ</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .gov-bar{
+      background:#3b6e6f;color:#fff;letter-spacing:.18rem;font-weight:600;
+      border-radius:8px;padding:.7rem 1.2rem;width:min(820px,92%);margin:22px auto 28px;
+      text-transform:uppercase;
+    }
+    .gov-wrap{max-width:1150px;margin:0 auto;}
+    .gov-heading{color:#2c5f5f;font-weight:800}
+    .role{font-weight:700;margin-top:1.4rem}
+    .gov-list{list-style:none;padding-left:0;margin:.2rem 0 .8rem}
+    .gov-list li{margin:.3rem 0}
+    @media (min-width:992px){
+      .col-left{padding-right:60px}
+      .col-right{padding-left:60px}
+    }
+  </style>
+</head>
+<body>
+  {% include 'navbar.html' ignore missing %}
+
+  <main class="gov-wrap">
+    <div class="gov-bar">GOVERNANCE</div>
+
+    <section class="mb-4">
+      <h2 class="gov-heading mb-3">RGSQ Administration 2024/25</h2>
+      <p>
+        The Society is managed by a voluntary Council elected from its members.
+        The Council is supported by the office staff and various committees of members.
+      </p>
+    </section>
+
+    <section class="row g-4">
+      <!-- 左列 -->
+      <div class="col-lg-6 col-left">
+        <div class="role">President</div>
+        <ul class="gov-list"><li>Mr John Tasker</li></ul>
+
+        <div class="role">Vice President</div>
+        <ul class="gov-list"><li>Ms Giselle Pickering</li></ul>
+
+        <div class="role">Secretary</div>
+        <ul class="gov-list"><li>Ms Kath Berg</li></ul>
+
+        <div class="role">Treasurer</div>
+        <ul class="gov-list"><li>Dr Annie Lau</li></ul>
+
+        <div class="role">Staff</div>
+        <ul class="gov-list">
+          <li>Ms Lilia Darii (Business Manager)</li>
+          <li>Ms Rachel Honey (AGC Coordinator)</li>
+        </ul>
+      </div>
+
+      <!-- 右列 -->
+      <div class="col-lg-6 col-right">
+        <div class="role">Councillors</div>
+        <ul class="gov-list">
+          <li>Dr Iraphne Childs</li>
+          <li>Assoc Prof Duncan Cook</li>
+          <li>Mr Robert Cook</li>
+          <li>Mr Gavin Kennedy</li>
+          <li>Ms Pamela Tonkin</li>
+          <li>Mr Christopher Zinn</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  {% include 'footer.html' ignore missing %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
