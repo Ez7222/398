@@ -120,3 +120,23 @@ def Disclaimer():
 @app.route('/governance')
 def governance():
     return render_template('Governance.html')
+
+
+#  Society / News (demo, 2 posts) 
+@app.route('/SocietyNews.html')
+def SocietyNews():
+    """News list under Society (demo)."""
+    return render_template('SocietyNews.html')
+
+@app.route('/SocietyNews/writing-competition-2025.html')
+def SocietyNews_writing_competition_2025():
+    """Detail page: 2025 Geography Writing Competition - Long-Listed Stories."""
+    return render_template('SocietyNews_2025_writing_comp.html')
+
+@app.route('/SocietyNews/tsunami-boulder-tonga-2025.html')
+def SocietyNews_tsunami_boulder_2025():
+    """Detail page: Discovery of a 1200-ton tsunami boulder in Tonga."""
+    return render_template('SocietyNews_2025_tsunami_boulder.html')
+
+
+
