@@ -93,3 +93,22 @@ def venue_hire():
 def bulletin():
     return render_template('Bulletin.html')
 
+@app.route('/Geographywebsite.html')
+def geography_website():
+    return render_template('Geographywebsite.html')
+
+@app.route('/Museums and other attractions.html')
+def Museums_and_other_attractions():
+    return render_template('Museums and other attractions.html')
+
+@app.route('/MapResources.html')
+def MapResources():
+    return render_template('MapResources.html')
+
+@app.route('/PhilateliesCover.html')
+def PhilateliesCover():
+    return render_template('PhilateliesCover.html')
+
+@app.route('/Disclaimer.html')
+def Disclaimer():
+    return render_template('Disclaimer.html')
