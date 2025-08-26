@@ -89,13 +89,16 @@ def library():
 def venue_hire():
     return render_template('Venuehire.html')
 
+#showing the Bulletin page.
 @app.route('/Bulletin.html')
 def bulletin():
     return render_template('Bulletin.html')
 
+#showing the Geography website  page.
 @app.route('/Geographywebsite.html')
 def geography_website():
     return render_template('Geographywebsite.html')
+
 
 @app.route('/Museums and other attractions.html')
 def Museums_and_other_attractions():
