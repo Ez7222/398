@@ -123,3 +123,8 @@ def committees_html():
 @app.route('/Governance.html')
 def governance_html():
     return render_template('Governance.html')
+
+
+@app.route('/Competition.html')
+def competition_html():
+    return render_template('Competition.html')  
