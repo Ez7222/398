@@ -128,3 +128,11 @@ def governance_html():
 @app.route('/AustraliaGeographyCompetitions.html')
 def australia_geography_competitions():
     return render_template('AustraliaGeographyCompetitions.html')
+
+@app.route('/Lambertcenter.html')
+def lambert_center():
+    return render_template('Lambertcenter.html')
+
+@app.route('/Queenslandbydegrees.html')
+def queensland_by_degrees():
+    return render_template('Queenslandbydegrees.html')
