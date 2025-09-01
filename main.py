@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,redirect,url_for,flash,abort,session
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 
@@ -7,6 +7,9 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///events.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+app.secret_key = 'change_me'
+
+
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,6 +19,7 @@ class Event(db.Model):
     price = db.Column(db.String(20), nullable=False)
     image = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
+
 
 with app.app_context():
     db.create_all()
@@ -153,3 +157,44 @@ def SocietyNews_writing_competition_2025():
 def SocietyNews_tsunami_boulder_2025():
     """Detail page: Discovery of a 1200-ton tsunami boulder in Tonga."""
     return render_template('SocietyNews_2025_tsunami_boulder.html')
+
+def get_event(event_id : int):
+    try:
+        evt = Event.query.get(event_id)
+        if evt:
+            return {
+                "id": evt.id,
+                "title": evt.title,
+                "date": evt.date,
+                "location": evt.location,
+                "price": getattr(evt, "price", ""),
+            }
+    except Exception:
+        pass
+    return {
+        "id": event_id,
+        "title": "Geography writing competition" if event_id == 1 else f"Event #{event_id}",
+        "date": "Date to be announced",
+        "location": "Venue to be confirmed",
+        "price": "",
+    }
+    
+
+
+@app.route('/events/<int:event_id>/register', methods=["GET","POST"])
+def register_event(event_id):
+    event = get_event(event_id)
+
+    if request.method == "POST":
+        email = (request.form.get("email") or ""). strip()
+        if not email:
+            flash("Email is required.","error")
+        else:
+            flash("You have successfully registered for the event.","success")
+            return redirect(url_for("register_event_confirm",event_id=event_id))
+    return render_template("event_register.html",event=event)
+
+@app.route('/events/<int:event_id>/register/confirm')
+def register_event_confirm(event_id):
+    event = get_event(event_id)
+    return render_template("event_register_confirm.html",event=event)
