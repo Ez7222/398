@@ -597,3 +597,49 @@ blockquote {
     color: #555;
     margin-top: 5px;
 }
+
+
+/* ===== Society / Awards & Prizes ===== */
+.about-subtitle{
+  font-size: 1.5rem;   
+  font-weight: 700;
+  color: #0861af;  
+  letter-spacing: .2px;
+  margin: 28px 0 14px;
+  position: relative;
+}
+.about-subtitle::after{
+  content: "";
+  display: block;
+  width: 84px;
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: #cfe8ff; 
+}
+
+.awards-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+.awards-text{ flex: 1 1 55%; min-width: 300px; }
+.awards-media{ flex: 1 1 35%; min-width: 260px; text-align: center; }
+
+.awards-img{
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+.awards-note{
+  font-size: 12px;
+  color: #555;
+  margin-top: 8px;
+}
+
+@media (max-width: 992px){
+  .awards-row{ gap: 14px; }
+}

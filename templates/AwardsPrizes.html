@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -51,7 +50,6 @@
                             <a class="dropdown-item" href="Create.html">Create Event</a>
                             <a class="dropdown-item" href="Update Event.html">Update Event</a>
                             <a class="dropdown-item" href="Disclaimer.html">Disclaimer</a>
-
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -122,42 +120,60 @@
                 </ul>
             </div>
         </div>
-
     </nav>
 
-<section class="rgsq-section">
-  <div class="container" style="max-width:960px;margin:0 auto;padding:40px 16px;">
-    <h2 style="font-size:28px;letter-spacing:.08em;color:#2b4db4;margin:0 0 16px;">RGSQ NEWS</h2>
-    <p style="color:#666;margin:0 0 24px;">Selected news from the Society (demo, showing 2 items).</p>
+    <section class="about-section">
+        <div class="container">
+            <h2 class="about-title"> AWARDS &amp; PRIZES </h2>
 
-    <!-- News card 1 -->
-    <article class="news-card" style="background:#fff;border:1px solid #e9e9ef;border-radius:14px;padding:20px 18px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.03);">
-      <a href="{{ url_for('SocietyNews_writing_competition_2025') }}" style="text-decoration:none;">
-        <h3 style="margin:0 0 8px;color:#0f2f7f;font-size:20px;line-height:1.4;">
-          2025 Geography Writing Competition - Long-Listed Stories
-        </h3>
-      </a>
-      <div style="font-size:13px;color:#7a7a8a;margin-bottom:10px;">Anonymous | Tuesday, August 19, 2025 1:29 PM</div>
-      <p style="color:#333;line-height:1.75;margin:0 0 10px;">
-        Congratulations to the authors whose stories have been long-listed. Click to view a short summary and source note.
-      </p>
-      <a href="{{ url_for('SocietyNews_writing_competition_2025') }}" style="font-size:14px;">Read more →</a>
-    </article>
+            <div class="awards-row">
+            <div class="awards-media">
+                <img src="{{ url_for('static', filename='images/jp-thomson-medal.jpg') }}"
+                    class="awards-img" alt="J P Thomson Medal">
+                <p class="awards-note">
+                <a href="https://www.rgsq.org.au/resources/Documents/Administrative/Thomson%20medallists%20rev%202024.pdf" target="_blank">
+                    (1901 - 2024)
+                </a>
+                </p>
+            </div>
 
-    <!-- News card 2 -->
-    <article class="news-card" style="background:#fff;border:1px solid #e9e9ef;border-radius:14px;padding:20px 18px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.03);">
-      <a href="{{ url_for('SocietyNews_tsunami_boulder_2025') }}" style="text-decoration:none;">
-        <h3 style="margin:0 0 8px;color:#0f2f7f;font-size:20px;line-height:1.4;">
-          Discovery of a 1200-ton tsunami boulder in Tonga
-        </h3>
-      </a>
-      <div style="font-size:13px;color:#7a7a8a;margin-bottom:10px;">Anonymous | Monday, July 07, 2025 6:53 PM</div>
-      <p style="color:#333;line-height:1.75;margin:0 0 10px;">
-        A field note by Dr Annie Lau: discovery of one of the world's largest coastal boulders in Tonga. Click to read the overview.
-      </p>
-      <a href="{{ url_for('SocietyNews_tsunami_boulder_2025') }}" style="font-size:14px;">Read more →</a>
-    </article>
+            <div class="awards-text">
+                <h4 class="about-subtitle">J P Thomson Medal</h4>
+                <p class="about-text">
+                Each year in early May, the RGSQ awards its J P Thomson Medal which honours the achievements of the Society’s founder, James Park Thomson (1854 - 1941). The awarding of such a medal commenced in 1901. Up until then, the RGSQ had recognised contributions to geographical science and/or the Society only via Fellowships. However, the Council in 1900 decided to recognise its founding Secretary/Treasurer by the annual awarding of a medal, with Thomson himself being given the first. The medal is awarded for substantial contributions to geography or occasionally for eminent services to the RGSQ. Recipients of the medal deliver an address as part of the Society’s annual lecture program.
+                </p>
+                <p class="about-text">
+                On the obverse side of the Thomson Medal is a bust of a middle-aged and bearded Thomson. On the reverse side there is a wreath composed of wattle, bottlebrush and Sturt’s desert pea, all Australian plants. Allan Wyon, Chief Engraver to Queen Victoria, engraved the first Thomson Medal. His bill of £84 has been preserved in the Society’s archives.
+                </p>
+                <p class="about-text">
+                Past recipients of the medal fall into a number of categories. Some have included noted geographers such as Thomas Griffith Taylor (Australia’s first Professor of Geography) and John Oliver (climatologist and foundation Professor of Geography at James Cook University). Other medallists have provided excellent and sustained service to the RGSQ and include Sir Matthew Nathan (President 1920-1926 and instigator of The Queensland Place Names Committee and Great Barrier Reef Committee) and Mrs Henry Robertson (the Society’s first woman President from 1945 to 1951). Well-known individuals who advanced geographical knowledge such as Sir Douglas Mawson (for Antarctic exploration) and Bert Hinkler (for services to aviation) have also received a Thomson Medal.
+                <a href="https://www.rgsq.org.au/resources/Documents/Administrative/Thomson%20medallists%20rev%202024.pdf" target="_blank">List of Thomson medal recipients</a>.
+                </p>
+            </div>
+            </div>
 
-  </div>
-</section>
-
+            <!-- ========== University Prizes ========== -->
+            <div class="mt-5">
+                <h4 class="about-subtitle">University Prizes</h4>
+                <p class="about-text">
+                    The Society currently provides three annual prizes to high performing geography students at three Queensland Universities:
+                </p>
+                <ul class="about-text">
+                    <li>The University of Queensland</li>
+                    <li>James Cook University</li>
+                    <li>University of the Sunshine Coast</li>
+                </ul>
+                <p class="about-text">
+                    The Royal Geographical Society of Queensland prize for each university comprise $500 cash, an engraved medal and one year’s free membership to the RGSQ.
+                </p>
+                <p class="about-text">
+                    In 2014 the University of Queensland’s Royal Geographical Society of Queensland Prize was renamed in recognition of Keith Smith, RGSQ Life Member and Society Secretary/Manager from 1986 to 2012.
+                </p>
+                <p class="about-text">
+                    It is awarded by the Head of School to the student with the most distinction in the courses comprising a major in Geography or Geographical Sciences.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

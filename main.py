@@ -198,3 +198,11 @@ def register_event(event_id):
 def register_event_confirm(event_id):
     event = get_event(event_id)
     return render_template("event_register_confirm.html",event=event)
+
+# showing the Awards & Prizes page.
+@app.route('/AwardsPrizes.html')
+def AwardsPrizes():
+    return render_template('AwardsPrizes.html')
+
+
+
