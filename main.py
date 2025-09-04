@@ -127,6 +127,10 @@ def committees_html():
 @app.route('/Governance.html')
 def governance_html():
     return render_template('Governance.html')
+
+@app.route('/Honoursboard.html')
+def honours_board():
+    return render_template('Honoursboard.html')
  
 
 @app.route('/AustraliaGeographyCompetitions.html')
@@ -203,6 +207,7 @@ def register_event_confirm(event_id):
 @app.route('/AwardsPrizes.html')
 def AwardsPrizes():
     return render_template('AwardsPrizes.html')
+
 
 
 
