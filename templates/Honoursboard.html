@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
+  <title>Honours Board – RGSQ</title>
+  <style>
+    .h1-title{
+      background:#0861af; color:#fff; border-radius:10px;
+      padding:.75rem 1rem; text-transform:uppercase; letter-spacing:.12rem
+    }
+    .section{padding:28px 0;border-top:1px solid #e9ecef}
+    .menu-wrap{max-width:950px;margin:18px auto 28px}
+    .honours-list{max-width:980px;margin:0 auto}
+    .honours-list dt{
+      float:left; clear:left; width:160px; font-weight:700; color:#0b4f82;
+    }
+    .honours-list dd{
+      margin-left:180px; margin-bottom:.6rem;
+    }
+    @media (max-width: 576px){
+      .honours-list dt{float:none;width:auto}
+      .honours-list dd{margin-left:0}
+    }
+    .back-top{font-size:.9rem}
+  </style>
+</head>
+<body>
+
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('Home') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="navbar-logo">
+        <div class="navbar-title">RGSQ</div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('Home') }}">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownSociety" role="button" data-bs-toggle="dropdown" aria-expanded="false">Society</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownSociety">
+              <a class="dropdown-item" href="Aboutsociety.html">About the society</a>
+              <a class="dropdown-item" href="Governance.html">Governance</a>
+              <a class="dropdown-item" href="Committees.html">Committees</a>
+              <a class="dropdown-item active" href="HonoursBoard.html">Honours Board</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownEvent" role="button" data-bs-toggle="dropdown" aria-expanded="false">Event</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownEvent">
+              <a class="dropdown-item" href="Eventlist.html">Event List</a>
+              <a class="dropdown-item" href="Create.html">Create Event</a>
+              <a class="dropdown-item" href="Update Event.html">Update Event</a>
+              <a class="dropdown-item" href="Disclaimer.html">Disclaimer</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownProjects" role="button" data-bs-toggle="dropdown" aria-expanded="false">PROJECTS</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownProjects">
+              <a class="dropdown-item" href="AustraliaGeographyCompitions.html">Australia Geography Compitions</a>
+              <a class="dropdown-item" href="Lambertcenter.html">Lambert center</a>
+              <a class="dropdown-item" href="Queenslandbydegrees.html">Queensland by Degrees</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownResources" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Resources</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownResources">
+              <a class="dropdown-item" href="Library.html">Library</a>
+              <a class="dropdown-item" href="Venuehire.html">Venue Hire</a>
+              <a class="dropdown-item" href="Bulletin.html">Bulletin</a>
+              <div class="dropend">
+                <a class="dropdown-item dropdown-toggle" href="#" id="collectionsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Collections</a>
+                <ul class="dropdown-menu" aria-labelledby="collectionsMenu">
+                  <li><a class="dropdown-item" href="PhilateliesCover.html">Philatelies Cover</a></li>
+                </ul>
+              </div>
+              <a class="dropdown-item" href="Geographywebsite.html">Geography website</a>
+              <a class="dropdown-item" href="Museums and other attractions.html">Museums and other attractions</a>
+              <a class="dropdown-item" href="MapResources.html">Map Resources</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownMembership" role="button" data-bs-toggle="dropdown" aria-expanded="false">Membership</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMembership">
+              <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact Us</a></li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button" data-bs-toggle="dropdown" aria-expanded="false">Username</a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+              <a class="dropdown-item" href="Login.html">Login</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <h1 class="h1-title text-center mb-4">Honours Board</h1>
+
+    
+    <div class="menu-wrap text-center">
+      <a href="#presidents" class="btn btn-primary btn-sm me-2">Presidents</a>
+      <a href="#patrons" class="btn btn-outline-primary btn-sm">Patrons</a>
+    </div>
+
+    <!-- Presidents -->
+    <section id="presidents" class="section">
+      <h2 class="mb-3">Presidents<span class="text-muted">*</span></h2>
+      <dl class="honours-list">
+        <dt>1885 – 1888</dt><dd>The Honourable Sir AC GREGORY, CMG, MLC, FRGS</dd>
+        <dt>1888 – 1889</dt><dd>Dr JN WAUGH, MD</dd>
+        <dt>1889 – 1890</dt><dd>WH MISKIN ESQ, FRS</dd>
+        <dt>1890 – 1892</dt><dd>The Honourable Sir AC GREGORY, CMG, MLC, FRGS</dd>
+        <dt>1892 – 1893</dt><dd>The Right Honourable Sir SW GRIFFITH, KCMG, QC</dd>
+        <dt>1893 – 1897</dt><dd>Dr JP THOMSON, CBE, LLD, FRGS</dd>
+        <dt>1897 – 1898</dt><dd>The Honourable W ALLAN, FRGSA, MLC</dd>
+        <dt>1898 – 1899</dt><dd>RM COLLINS ESQ, MLA</dd>
+        <dt>1899 – 1906</dt><dd>The Right Honourable Sir HM NELSON, KCMG, DCL, FRGS</dd>
+        <dt>1906 – 1908</dt><dd>His Excellency The Right Honourable Lord CHELMSFORD, KCMG</dd>
+        <dt>1908 – 1909</dt><dd>His Excellency Sir William McGREGOR, GCM, CB, MG, LLD, DSc</dd>
+        <dt>1909 – 1910</dt><dd>The Honourable Sir Arthur MORGAN, MLA</dd>
+        <dt>1911 – 1912</dt><dd>AA SPOWERS ESQ, JP</dd>
+        <dt>1912 – 1913</dt><dd>The Honourable FT BRENTNALL, MLC, FRGSA</dd>
+        <dt>1913 – 1914</dt><dd>James STODART ESQ</dd>
+        <dt>1914 – 1915</dt><dd>The Honourable Sir James BLAIR, CJ</dd>
+        <dt>1915 – 1920</dt><dd>His Excellency Sir H GOOLD-ADAMS, GCMG, CB, FRGS</dd>
+        <dt>1920 – 1926</dt><dd>His Excellency The Right Honourable Sir Mathew NATHAN, GCMG, FRGS</dd>
+        <dt>1926 – 1927</dt><dd>His Excellency Sir John GOODWIN</dd>
+        <dt>1927 – 1931</dt><dd>His Grace The Most Reverend Archbishop DUHIG, DD, FRGSA</dd>
+        <dt>1931 – 1933</dt><dd>His Grace The Most Reverend Archbishop SHARP</dd>
+        <dt>1933 – 1936</dt><dd>Sir Donald CAMERON</dd>
+        <dt>1936 – 1939</dt><dd>Dr JJ BRADFIELD, CMG</dd>
+        <dt>1939 – 1940</dt><dd>AS HUYBERS, FRGSA, JP</dd>
+        <dt>1941 – 1942</dt><dd>RG GILLIES, FRGSA, JP</dd>
+        <dt>1943 – 1944</dt><dd>WH GREEN, FRGSA, JP</dd>
+        <dt>1944 – 1949</dt><dd>Mrs Henry ROBERTSON, MBE, FRGS, FRGSA, JP, SS, StJ</dd>
+        <dt>1949 – 1952</dt><dd>FJ MORGAN, FRGSA, JP</dd>
+        <dt>1953 – 1954</dt><dd>WH GREEN, FRGSA, JP</dd>
+        <dt>1954 – 1956</dt><dd>The Honourable Justice Sir AJ MANSFlELD, KCMG, SPJ, FRGSA</dd>
+        <dt>1956 – 1957</dt><dd>WH COULSON, FRGSA</dd>
+        <dt>1957 – 1959</dt><dd>LP HERDSMAN, FRGSA</dd>
+        <dt>1960 – 1961</dt><dd>Major Roy COOPER, ED, FRGSA, JP</dd>
+        <dt>1961 – 1962</dt><dd>DA O'BRIAN, FRGSA, FRES, JP, CD</dd>
+        <dt>1962 – 1963</dt><dd>HE CONROY, FRGSA, JP, AAFA</dd>
+        <dt>1963 – 1964</dt><dd>JJG CONROY ESQ</dd>
+        <dt>1964 – 1966</dt><dd>AW BOWMAN, JP, FRGSA, FRMeT</dd>
+        <dt>1966 – 1968</dt><dd>0I ORR, FRGSA</dd>
+        <dt>1968 – 1970</dt><dd>AJ CAMPBELL, FRGSA</dd>
+        <dt>1970 – 1971</dt><dd>SW McNAMARA</dd>
+        <dt>1971 – 1973</dt><dd>Archibald ARCHER, CMG, FRGSA</dd>
+        <dt>1973 – 1975</dt><dd>Sir Reginald McALLISTER, CMG, FRGSA</dd>
+        <dt>1975 – 1977</dt><dd>Colonel FJ MORGAN, JP, ED, FRGSA</dd>
+        <dt>1977 – 1979</dt><dd>Dr RS DICK, MSc, PhD, FRGSA</dd>
+        <dt>1979 – 1980</dt><dd>TC THYNNE, FRAIA, FRGSA</dd>
+        <dt>1980 – 1982</dt><dd>H DEAN, FRGSA, JP</dd>
+        <dt>1982 – 1985</dt><dd>KG SUTTON, BEd, FRGS, FRGSA, MACE</dd>
+        <dt>1986 – 1987</dt><dd>The Honourable JW GREENWOOD, QC</dd>
+        <dt>1987 – 1989</dt><dd>PL LLOYD BA, BEcon, FRGSA</dd>
+        <dt>1989 – 1991</dt><dd>LJ ISDALE, FAIC, FRGSA</dd>
+        <dt>1991 – 1993</dt><dd>PJ FEENEY, RFD, DipPhysEd, DipOutEd</dd>
+        <dt>1993 – 1995</dt><dd>Associate Professor RV GERBER, BA, BEd, MEdSt, PhD, FAIC</dd>
+        <dt>1995 – 1997</dt><dd>Professor Emeritus JH HOLMES, MA, DipEd, PhD</dd>
+        <dt>1997 – 1999</dt><dd>RN THWAITES, MSc, FRGS, CPSS, MEIA</dd>
+        <dt>1999 – 2001</dt><dd>DR ANDERSON, RFD, ED, BA</dd>
+        <dt>2001 – 2003</dt><dd>DE WORTH</dd>
+        <dt>2003 – 2005</dt><dd>Dr IRW CHILDS, MA, DipEd, PhD, FRGSQ</dd>
+        <dt>2005 – 2006</dt><dd>Associate Professor JG LIDSTONE, BSc, MA, PhD</dd>
+        <dt>2006 – 2008</dt><dd>PJ FEENEY, RFD, DipPhysEd, DipOutEd</dd>
+        <dt>2008 – 2010</dt><dd>KJ GRANGER, BAppSc, MA, HFSSSI</dd>
+        <dt>2010 – 2012</dt><dd>LM SCANLAN, FRGSQ</dd>
+        <dt>2012 – 2014</dt><dd>DR CARSTENS</dd>
+        <dt>2014 – 2016</dt><dd>LM SCANLAN, FRGSQ</dd>
+        <dt>2016 – 2017</dt><dd>Professor JP SHULMEISTER, BA(Mod), MSc, PhD,</dd>
+        <dt>2017 – 2021</dt><dd>Dr IRW CHILDS, MA, DipEd, PhD, FRGSQ</dd>
+        <dt>2021 –</dt><dd>JB TASKER B.SC. (HONS)</dd>
+      </dl>
+      <p class="back-top mt-3"><a href="#top">Top ↑</a></p>
+    </section>
+
+    <!-- Patrons -->
+    <section id="patrons" class="section">
+      <h2 class="mb-3">Patrons<span class="text-muted">*</span></h2>
+      <dl class="honours-list">
+        <dt>1885 – 1888</dt><dd>His Excellency Sir Anthony MUSGRAVE, GCMG</dd>
+        <dt>1888 – 1896</dt><dd>His Excellency General Sir H Wylie NORMAN, GCB, GCMG, CIE, FRGS</dd>
+        <dt>1896 – 1902</dt><dd>His Excellency The Right Honourable Lord LAMINGTON, KCMG, BA, FRGS, FRGA</dd>
+        <dt>1902 – 1906</dt><dd>His Excellency Major General Sir Herbert CHERMSIDE, GCMG, BA</dd>
+        <dt>1906 – 1910</dt><dd>His Excellency The Right Honourable Lord CHELMSFORD, KCMG</dd>
+        <dt>1910 – 1918</dt><dd>His Excellency Sir William McGREGOR, MD, CMG</dd>
+        <dt>1918 – 1922</dt><dd>His Excellency The Right Honourable Sir Ronald MUNRO-FERGUSON, PC, GCMG, LLD</dd>
+        <dt>1922 – 1923</dt><dd>His Excellency The Right Honourable Lord FORSTER, GCMG</dd>
+        <dt>1924 – 1931</dt><dd>His Excellency The Right Honourable Lord STONEHAVEN</dd>
+        <dt>1931 – 1939</dt><dd>His Excellency The Right Honourable Sir Isaac ISAACS</dd>
+        <dt>1939 – 1944</dt><dd>His Excellency The Right Honourable Brigadier General Lord GOWRIE, VC, GCMG, CB, CMG, DSO</dd>
+        <dt>1944 – 1946</dt><dd>HRH The Duke of Gloucester Governor General of Australia</dd>
+        <dt>1946 – 1952</dt><dd>The Right Honourable WJ McKELL, QC</dd>
+        <dt>1952 – 1956</dt><dd>His Excellency Field Marshall Sir W SLIM, CBC, KBC, DSO, MC, LLD, DCL, FRGSA</dd>
+        <dt>1957 – 1963</dt><dd>His Excellency The Right Honourable Viscount DUNROSSILL, PC, GCMG, MC, KStJ, QC</dd>
+        <dt>1963 – 1964</dt><dd>His Excellency The Right Honourable Viscount DE L'ISLE, VC, CGMC</dd>
+        <dt>1964 – 1968</dt><dd>His Excellency The Right Honourable Lord CASEY, PC, GCMG, CH, DSO, MC, KStJ</dd>
+        <dt>1968 – 1988</dt><dd>The Right Honourable J BJELKE-PETERSEN, MLA</dd>
+        <dt>1988 – 1992</dt><dd>His Excellency The Honourable Sir Walter CAMPBELL, AC, QC, Governor of Queensland</dd>
+        <dt>1992 – 1996</dt><dd>Her Excellency Mrs Leneen FORDE, Governor of Queensland</dd>
+        <dt>1997 – 2003</dt><dd>His Excellency Major General PM ARNISON, AO, Governor of Queensland</dd>
+        <dt>2003 – 2008</dt><dd>Her Excellency Ms Q BRYCE, AC, Governor of Queensland</dd>
+        <dt>2008 – 2014</dt><dd>Her Excellency Ms Penelope WENSLEY, AO, Governor of Queensland</dd>
+        <dt>2014 – 2021</dt><dd>His Excellency Mr Paul DE JERSEY, AC, Governor of Queensland</dd>
+        <dt>2021 –</dt><dd>Her Excellency the Honourable Dr Jeannette Young, PSM, Governor of Queensland</dd>
+      </dl>
+
+      <p class="small text-muted mt-3">
+        * The style used in these lists is drawn from the ‘Style Manual’, Commonwealth of Australia, ISBN 0 7016 3647 5.
+        The actual style used in the Honour Boards located in Gregory Place are variable according to the style in common use at the time.
+      </p>
+      <p class="back-top"><a href="#top">Top ↑</a></p>
+    </section>
+
+    
+    <section id="follow" class="section">
+      <h2>Follow Us</h2>
+      <p>Be part of our community by following us on our social media accounts.</p>
+      <p><strong>The Royal Geographical Society of Queensland Ltd.</strong><br>
+        Level 1/28 Fortescue St, Spring Hill QLD 4000<br>
+        <a href="mailto:info@rgsq.org.au">info@rgsq.org.au</a> | +61 7 3368 2066<br>
+        ABN 87 014 673 068 | ACN 636 005 068
+      </p>
+      <p><strong>Patron</strong><br>
+        Her Excellency the Honourable Dr Jeannette Young PSM, Governor of Queensland
+      </p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Contact Us</a> | © 2025 RGSQ | Site Map</p>
+      <p>
