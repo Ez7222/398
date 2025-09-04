@@ -204,5 +204,10 @@ def register_event_confirm(event_id):
 def AwardsPrizes():
     return render_template('AwardsPrizes.html')
 
+# showing the Student Research Grants page.
+@app.route('/StudentResearchGrants.html')
+def StudentResearchGrants():
+    return render_template('StudentResearchGrants.html')
+
 
 
