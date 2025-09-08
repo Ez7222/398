@@ -2,6 +2,10 @@
 from flask import Flask, render_template,request,redirect,url_for,flash,abort,session
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3
+import os
+import smtplib
+from email.message import EmailMessage
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///events.db'
@@ -62,6 +66,87 @@ def Memberbenefits():
 @app.route('/JoinRGSQ.html')
 def join_rgsq():
     return render_template('JoinRGSQ.html')
+
+# choosing the level of membership page.
+@app.route("/join", methods = ["GET"])
+def join_page():
+    return render_template('JoinRGSQ.html')
+
+LEVELS = {
+    "household": {"key": "household", "name": "Household Bundle", "price": "$90.00 (AUD)",
+                  "desc": "Bundle (up to 5 members) · Subscription: 1 year · No automatically recurring payments."},
+    "ordinary":  {"key": "ordinary",  "name": "Ordinary Member", "price": "$70.00 (AUD)",
+                  "desc": "Subscription: 1 year · No automatically recurring payments."},
+    "school":    {"key": "school",    "name": "School/Educational Institution", "price": "$85.00 (AUD)",
+                  "desc": "Subscription: 1 year · No automatically recurring payments."},
+    "student":   {"key": "student",   "name": "Student", "price": "N/A",
+                  "desc": "Subscription: 1 year · No automatically recurring payments."},
+    "under35":   {"key": "under35",   "name": "Under 35s", "price": "$35.00 (AUD)",
+                  "desc": "Subscription: 1 year · No automatically recurring payments."},
+    "youth":     {"key": "youth",     "name": "Youth", "price": "N/A",
+                  "desc": "Subscription: 1 year · No automatically recurring payments."},
+}
+
+SMTP_HOST = os.environ.get("SMTP_HOST","smtp.gmail.com")
+SMTP_PORT = int(os.environ.get("SMTP_PORT","587"))
+SMTP_USER = os.environ.get("SMTP_USER")
+SMTP_PASS = os.environ.get("SMTP_PASS")
+FROM_EMAIL = os.environ.get("FROM_EMAIL",SMTP_USER or "no-reply@RGSQ.org")
+
+def send_welcome_email(to_email: str, level:dict):
+    """Send a welcome email to the new member."""
+    if not (SMTP_HOST and SMTP_PORT and SMTP_USER and SMTP_PASS and FROM_EMAIL):
+        print("SMTP settings are not configured. Skipping email sending.")
+        return
+    meg = EmailMessage()
+    meg ["Subject"] = "Welcome to RGSQ"
+    meg ["From"] = FROM_EMAIL
+    meg ["To"] = to_email
+
+    body = f""" Hi there,
+Welcome to the Royal Geographical Society of Queensland (RGSQ)! Thanks for creating an account.
+Selected level: {level['name']} 
+Selected price:({level['price']})
+Details: {level['desc']}
+
+We are excited to have you as a member of our community. 
+If you have any questions or need assistance, feel free to reach out to us.
+    
+Best regards,
+RGSQ Team
+"""
+    meg.set_content(body)
+
+    try:
+        with smtplib.SMTP(SMTP_HOST,SMTP_PORT,timeout=15) as server:
+            server.starttls()
+            server.login(SMTP_USER,SMTP_PASS)
+            server.send_message(meg)
+            print(f"[OK] Welcome email sent to {to_email}")
+    except Exception as e:
+        print(f"[ERR] Failed to send email to {to_email}: {e}")
+
+   
+
+
+@app.route("/register", methods = ["GET","POST"])
+def register_account():
+    """ 
+    Get: Receive membership =? from the previous page, render the registration page, and pre-fill the level field.
+    Post: Submit the regidtration form."""
+
+    level_key = request.values.get("membership","ordinary")
+    level = LEVELS.get(level_key,LEVELS["ordinary"])
+    if request.method == "POST":
+        email = request.form.get("email").strip()
+        full_name = request.form.get("fullname","").strip()
+        password = request.form.get("password","").strip()
+        send_welcome_email(email,level)
+        return redirect(url_for("Home"))
+    return render_template("register.html",level=level, level_key = level_key)
+
+
+
 
 # shwoing the society page.
 @app.route('/Aboutsociety.html')
