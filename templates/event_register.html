@@ -161,7 +161,7 @@
             {% if messages %}
         <div class="mb-3">
             {% for category, msg in messages %}
-            <div class="alert alert-{{'warning' if category == 'danger' else category}} mb-2">{{ msg }}</div>
+            <div class="alert alert-success mb-2">{{ msg }}</div>
             {% endfor %}
         </div>
             {% endif %}
