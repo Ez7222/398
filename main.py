@@ -384,11 +384,12 @@ def register_event(event_id):
 
     if request.method == "POST":
         email = (request.form.get("email") or ""). strip()
-        if not email:
-            flash("Email is required.","error")
-        else:
-            flash("You have successfully registered for the event.","success")
+        if email:
+            flash("You have successfully registered for this event.","event")
             return redirect(url_for("register_event_confirm",event_id=event_id))
+        else:
+            flash("Email is required")
+            
     return render_template("event_register.html",event=event)
 
 @app.route('/events/<int:event_id>/register/confirm')
