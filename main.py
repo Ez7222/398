@@ -105,8 +105,11 @@ def send_welcome_email(to_email: str, level:dict):
 
     body = f""" Hi there,
 Welcome to the Royal Geographical Society of Queensland (RGSQ)! Thanks for creating an account.
+
 Selected level: {level['name']} 
+
 Selected price:({level['price']})
+
 Details: {level['desc']}
 
 We are excited to have you as a member of our community. 
