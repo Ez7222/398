@@ -139,7 +139,7 @@
 
     </nav>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% with messages = get_flashed_messages(with_categories=true, category_filter =['success','infor','warning','danger']) %}
         {% if messages %}
             {% for category, msg in messages %}
                 <div class="alert alert-{{ 'warning' if category == 'danger' else category }} alert-dismissible fade show" role="alert" style="margin:16px">
