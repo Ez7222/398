@@ -316,7 +316,7 @@ def SocietyNews_tsunami_boulder_2025():
     """Detail page: Discovery of a 1200-ton tsunami boulder in Tonga."""
     return render_template('SocietyNews_2025_tsunami_boulder.html')
 
-def get_event(event_id : int):
+## def get_event(event_id : int):
     try:
         evt = Event.query.get(event_id)
         if evt:
@@ -336,7 +336,46 @@ def get_event(event_id : int):
         "location": "Venue to be confirmed",
         "price": "",
     }
-    
+
+def get_event(event_id: int):
+    dummy_events = {
+        1: {
+            "id": 1,
+            "title": "Geography Writing Competition",
+            "date": "6:30 PM Oct 21, 2025",
+            "location": "Brisbane",
+            "price": "$1",
+        },
+        2: {
+            "id": 2,
+            "title": "Olympic Games – Elevate 2042 Legacy",
+            "date": "7:00 PM Aug 1, 2025",
+            "location": "Brisbane",
+            "price": "$12",
+        },
+        3: {
+            "id": 3,
+            "title": "Recovering Nature for the Benefit of People and Planet",
+            "date": "8:00 PM July 5, 2025",
+            "location": "Brisbane",
+            "price": "$30",
+        },
+        4: {
+            "id": 4,
+            "title": "Visit to the Queensland Communications Museum",
+            "date": "5:30 PM Aug 1, 2025",
+            "location": "Queensland Communications Museum",
+            "price": "$10",
+        }
+    }
+
+    return dummy_events.get(event_id, {
+        "id": event_id,
+        "title": f"Event #{event_id}",
+        "date": "Date to be announced",
+        "location": "Venue to be confirmed",
+        "price": "",
+    })
 
 
 @app.route('/events/<int:event_id>/register', methods=["GET","POST"])
@@ -355,7 +394,7 @@ def register_event(event_id):
 @app.route('/events/<int:event_id>/register/confirm')
 def register_event_confirm(event_id):
     event = get_event(event_id)
-    return render_template("event_register_confirm.html",event=event)
+    return render_template("register.html",event=event)
 
 # showing the Awards & Prizes page.
 @app.route('/AwardsPrizes.html')
