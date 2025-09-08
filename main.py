@@ -395,7 +395,8 @@ def register_event(event_id):
 @app.route('/events/<int:event_id>/register/confirm')
 def register_event_confirm(event_id):
     event = get_event(event_id)
-    return render_template("register.html",event=event)
+    email = session.pop('last_event_email', None)
+    return render_template("event_register_confirm.html",event=event,email=email)
 
 # showing the Awards & Prizes page.
 @app.route('/AwardsPrizes.html')
