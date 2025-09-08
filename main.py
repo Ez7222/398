@@ -72,7 +72,13 @@ def Home():
 def Eventlist():
     per_page = 6
     page = request.args.get('page',1,type=int)
-    event_list = [{"title": f"Event {i}"} for i in range(1, 21)]
+    event_list = [{
+            "id": i,
+            "title": f"Event {i}",
+            "date": "Date to be announced",
+            "location": "Venue to be confirmed",
+            "price": None,
+        } for i in range(1, 21)]
     events_paginated = event_list[(page-1)*per_page: page*per_page]
     total_pages = (len(event_list) + per_page - 1) // per_page
     return render_template('Eventlist.html',events = events_paginated, page=page, total_pages = total_pages)
