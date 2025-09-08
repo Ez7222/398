@@ -126,62 +126,63 @@
         </div>
     </nav>
     <div class="container">
-        <h2 class="joinpage-title">🎓 JOIN RGSQ</h2>
+        <h2 class="joinpage-title">JOIN RGSQ</h2>
         <p class="page-description">
             Membership of RGSQ opens the door to a wide variety of fascinating and interesting activities in a friendly and encouraging environment.
             Learning through geography, whether gained through formal learning or experience through travel, fieldwork and expeditions, helps us all to be more
             socially and environmentally sensitive, better informed, and more responsible in our community.
         </p>
 
-        <h3 class="section-title">📋 Please select membership option from the list below:</h3>
+        <h3 class="section-title">Please select membership option from the list below:</h3>
         
-        <form method="POST" action="/submit_membership">
+        <form method="GET" action="{{ url_for('register_account') }}" id = "selectLevelForm" class="vstack gap-3">
             <div class="membership-options">
-                <label class="membership-option">
+                <label class="border rounded-3 p-3 d-block" for="m_household">
                     <input type="radio" name="membership" value="household" checked>
                     <strong>Household Bundle - $90.00 (AUD)</strong><br>
                     <span class="option-description">Bundle (up to 5 members)<br>Subscription period: 1 year<br>No automatically recurring payments<br>
                     A group of up to 5 family members under 18 living at the same address, with one vote.</span>
                 </label>
 
-                <label class="membership-option">
+                <label class="border rounded-3 p-3 d-block" for="m_ordinary">
                     <input type="radio" name="membership" value="ordinary">
                     <strong>Ordinary Member - $70.00 (AUD)</strong><br>
                     <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
                     For individuals aged 18 and older with full member privileges.</span>
                 </label>
 
-                <label class="membership-option">
+                <label class="border rounded-3 p-3 d-block" for="m_school">
                     <input type="radio" name="membership" value="school">
                     <strong>School/Educational Institution - $85.00 (AUD)</strong><br>
                     <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
                     Membership for a school or educational organisation with one voting representative.</span>
                 </label>
 
-                <label class="membership-option">
+                <label class="border rounded-3 p-3 d-block" for="m_student">
                     <input type="radio" name="membership" value="student">
                     <strong>Student</strong><br>
                     <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
                     For full-time students in Australia. Under 18s need parental consent.</span>
                 </label>
 
-                <label class="membership-option">
+                <label class="border rounded-3 p-3 d-block" for="m_under35">
                     <input type="radio" name="membership" value="under35">
                     <strong>Under 35s - $35.00 (AUD)</strong><br>
                     <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
                     For members under age 35 with equivalent voting rights to ordinary members.</span>
                 </label>
 
-                <label class="membership-option">
+                <label class="border rounded-3 p-3 d-block" for="m_youth">
                     <input type="radio" name="membership" value="youth">
                     <strong>Youth</strong><br>
                     <span class="option-description">Subscription period: 1 year<br>No automatically recurring payments<br>
                     For people under the age of 18. Must have consent from a parent/legal guardian.</span>
                 </label>
             </div>
-            <form action="/#" method="get">
-                <button type="submit" class="btn btn-primary mt-3 margin-top: 20px">Next</button>
-            </form>
+            <div class="d-flex justify-content-end gap-2 mt-2">
+                <a href="{{ url_for('Home') }}" class="btn btn-outline-secondary">Back</a>
+                <button type="submit" class="btn btn-primary">Next</button>
+            </div>
         </form>
 
         <p class="consent-note">
