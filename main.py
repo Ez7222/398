@@ -5,6 +5,8 @@ import sqlite3
 import os
 import smtplib
 from email.message import EmailMessage
+from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.exc import IntegrityError
 
 
 app = Flask(__name__)
@@ -24,9 +26,41 @@ class Event(db.Model):
     image = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
 
+class User(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    email = db.Column(db.String(120),unique = True, nullable = False)
+    full_name = db.Column(db.String(120))
+    password_hash = db.Column(db.String(200),nullable = False)
+    membership = db.Column(db.String(50))
+
+    def set_password(self,raw_pwd:str):
+        self.password_hash = generate_password_hash(raw_pwd, method="pbkdf2:sha256")
+    
+    def check_password(self,password):
+        return check_password_hash(self.password_hash,password)
+
 
 with app.app_context():
     db.create_all()
+
+@app.context_processor
+def inject_current_user_name():
+    """ Injects the variable current_user_name into all templates"""
+    name = None
+    try:
+        uid = session.get('user_id')
+        if uid:
+            u = User.query.get(uid)
+            if u:
+                name = (u.full_name or '').strip()or (u.email.split('@')[0] if u.email else None)
+    except Exception:
+        name = None
+    return {'current_user_name':name}
+
+
+    
+
+
 
 # display the homepage
 @app.route('/')
@@ -141,11 +175,18 @@ def register_account():
     level_key = request.values.get("membership","ordinary")
     level = LEVELS.get(level_key,LEVELS["ordinary"])
     if request.method == "POST":
-        email = request.form.get("email").strip()
-        full_name = request.form.get("fullname","").strip()
-        password = request.form.get("password","").strip()
+        email = (request.form.get("email")or "").strip().lower()
+        full_name = (request.form.get("fullname")or "").strip()
+        password = (request.form.get("password")or "").strip()
+
+        user = User(email=email, full_name=full_name)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+
         send_welcome_email(email,level)
-        return redirect(url_for("Home"))
+        flash("Account created. Please login.","success")
+        return redirect(url_for("login"))
     return render_template("register.html",level=level, level_key = level_key)
 
 
@@ -157,9 +198,30 @@ def Aboutsociety():
     return render_template('Aboutsociety.html')
 
 # showing the login in page.
-@app.route('/Login.html')
+@app.route('/Login.html', methods = ['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        email = (request.form.get('email')or '').strip().lower()
+        password = (request.form.get('password')or '').strip()
+
+        user = User.query.filter_by(email=email).first()
+        if user and user.check_password(password):
+            session['user_id']= user.id
+            session['user_email']=user.email
+            flash ("Login successful","success")
+            return redirect(url_for('Home'))
+        else:
+            flash("Invaild email or password.", "danger")
     return render_template('Login.html')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash("Your have been logged out.","infor")
+    return redirect(url_for('login'))
+
+
+
 
 # showing the contact us page.
 @app.route('/Contact.html')
