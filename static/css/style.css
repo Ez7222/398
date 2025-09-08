@@ -147,13 +147,13 @@
 .member-benefit-button {
   background-color: #49656B;
   color: white;
-  padding: 12px 24px;
+  padding: 14px 24px;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 35px;
+  margin: 15px 0 30px 0;
   transition: background-color 0.3s ease;
 }
 
@@ -162,7 +162,8 @@
 }
 
 .member-benefit-section {
-  margin-bottom: 30px;
+  margin-top: 15px;
+  margin-bottom: 40px;
 }
 
 .member-benefit-section h3 {
@@ -576,115 +577,126 @@ blockquote {
 
 /* Queensland by Degrees */
 .QLD-page {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
 .QLD-title {
-    background-color: #49656B;
-    color: white;
-    padding: 12px 20px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-bottom: 20px;
+  background-color: #49656B;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .QLD-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .QLD-text {
-    font-size: 16px;
-    line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .QLD-text ol {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .QLD-image {
-    max-width: 100%;
-    display: block;
-    margin: 20px auto;
+  max-width: 100%;
+  display: block;
+  margin: 20px auto;
 }
 
 .image-caption {
-    display: block;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #555;
-    margin-top: 5px;
+  display: block;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 5px;
 }
 
 
 /* ===== Society / Awards & Prizes ===== */
-.about-subtitle{
-  font-size: 1.5rem;   
+.about-subtitle {
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #0861af;  
+  color: #0861af;
   letter-spacing: .2px;
   margin: 28px 0 14px;
   position: relative;
 }
-.about-subtitle::after{
+
+.about-subtitle::after {
   content: "";
   display: block;
   width: 84px;
   height: 4px;
   margin-top: 8px;
   border-radius: 999px;
-  background: #cfe8ff; 
+  background: #cfe8ff;
 }
 
-.awards-row{
+.awards-row {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   align-items: flex-start;
 }
-.awards-text{ flex: 1 1 55%; min-width: 300px; }
-.awards-media{ flex: 1 1 35%; min-width: 260px; text-align: center; }
 
-.awards-img{
+.awards-text {
+  flex: 1 1 55%;
+  min-width: 300px;
+}
+
+.awards-media {
+  flex: 1 1 35%;
+  min-width: 260px;
+  text-align: center;
+}
+
+.awards-img {
   max-width: 100%;
   height: auto;
   border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
 }
 
-.awards-note{
+.awards-note {
   font-size: 12px;
   color: #555;
   margin-top: 8px;
 }
 
-@media (max-width: 992px){
-  .awards-row{ gap: 14px; }
+@media (max-width: 992px) {
+  .awards-row {
+    gap: 14px;
+  }
 }
 
 /* Student Research Grants */
 .grants-section {
-    padding-top: 50px;   
-    padding-bottom: 60px;
+  padding-top: 50px;
+  padding-bottom: 60px;
 }
 
 .grants-section p {
-    font-size: 19px;     
-    line-height: 1.85;      
-    color: #222;
-    margin-bottom: 24px;
-    text-align: justify;    
+  font-size: 19px;
+  line-height: 1.85;
+  color: #222;
+  margin-bottom: 24px;
+  text-align: justify;
 }
 
 .grants-section .about-subtitle {
-    font-size: 28px;        
-    font-weight: 800;
-    text-align: center;    
-    text-transform: uppercase;
-    margin-bottom: 35px;
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 35px;
 }
-
