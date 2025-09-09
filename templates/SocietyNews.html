@@ -140,39 +140,104 @@
 
     </nav>
 
+
 <section class="rgsq-section">
   <div class="container" style="max-width:960px;margin:0 auto;padding:40px 16px;">
-    <h2 style="font-size:28px;letter-spacing:.08em;color:#2b4db4;margin:0 0 16px;">RGSQ NEWS</h2>
-    <p style="color:#666;margin:0 0 24px;">Selected news from the Society (demo, showing 2 items).</p>
 
-    <!-- News card 1 -->
-    <article class="news-card" style="background:#fff;border:1px solid #e9e9ef;border-radius:14px;padding:20px 18px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.03);">
-      <a href="{{ url_for('SocietyNews_writing_competition_2025') }}" style="text-decoration:none;">
-        <h3 style="margin:0 0 8px;color:#0f2f7f;font-size:20px;line-height:1.4;">
-          2025 Geography Writing Competition - Long-Listed Stories
-        </h3>
-      </a>
-      <div style="font-size:13px;color:#7a7a8a;margin-bottom:10px;">Anonymous | Tuesday, August 19, 2025 1:29 PM</div>
-      <p style="color:#333;line-height:1.75;margin:0 0 10px;">
-        Congratulations to the authors whose stories have been long-listed. Click to view a short summary and source note.
-      </p>
-      <a href="{{ url_for('SocietyNews_writing_competition_2025') }}" style="font-size:14px;">Read more →</a>
-    </article>
+    <h1 style="margin:0 0 6px 0;font-size:28px;color:#0f2f7f;">RGSQ NEWS</h1>
+    <p style="color:#7a7a8a;">Selected news from the Society.</p>
 
-    <!-- News card 2 -->
-    <article class="news-card" style="background:#fff;border:1px solid #e9e9ef;border-radius:14px;padding:20px 18px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.03);">
-      <a href="{{ url_for('SocietyNews_tsunami_boulder_2025') }}" style="text-decoration:none;">
-        <h3 style="margin:0 0 8px;color:#0f2f7f;font-size:20px;line-height:1.4;">
+    <!-- 2025 Long-listed -->
+    <div class="card" style="margin:18px 0;border-radius:10px;">
+      <div class="card-body">
+        <a href="SocietyNews_2025_writing_comp.html" class="card-title h5" style="color:#2457c5; text-decoration:none;">
+          2025 Geography Writing Competition – Long-Listed Stories
+        </a>
+        <div style="font-size:12px;color:#8a8fa3;margin-top:4px;">
+          Anonymous | Tuesday, August 19, 2025 1:29 PM
+        </div>
+        <p class="card-text" style="margin-top:8px;">
+          Congratulations to the authors whose stories have been long-listed.
+        </p>
+        <a href="SocietyNews_2025_writing_comp.html" class="card-link" style="font-size:13px;">Read more →</a>
+      </div>
+    </div>
+
+    <!-- 2025 Tonga boulder -->
+    <div class="card" style="margin:18px 0;border-radius:10px;">
+      <div class="card-body">
+        <a href="SocietyNews_2025_tsunami_boulder.html" class="card-title h5" style="color:#2457c5; text-decoration:none;">
           Discovery of a 1200-ton tsunami boulder in Tonga
-        </h3>
-      </a>
-      <div style="font-size:13px;color:#7a7a8a;margin-bottom:10px;">Anonymous | Monday, July 07, 2025 6:53 PM</div>
-      <p style="color:#333;line-height:1.75;margin:0 0 10px;">
-        A field note by Dr Annie Lau: discovery of one of the world's largest coastal boulders in Tonga. Click to read the overview.
-      </p>
-      <a href="{{ url_for('SocietyNews_tsunami_boulder_2025') }}" style="font-size:14px;">Read more →</a>
-    </article>
+        </a>
+        <div style="font-size:12px;color:#8a8fa3;margin-top:4px;">
+          Anonymous | Monday, July 07, 2025 6:53 PM
+        </div>
+        <p class="card-text" style="margin-top:8px;">
+          A newly documented giant coastal boulder in Tonga, contextualising extreme wave/tsunami events.
+        </p>
+        <a href="SocietyNews_2025_tsunami_boulder.html" class="card-link" style="font-size:13px;">Read more →</a>
+      </div>
+    </div>
+
+    <!-- 2024 GBWO -->
+    <div class="card" style="margin:18px 0;border-radius:10px;">
+      <div class="card-body">
+        <a href="SocietyNews_2024_gbwo.html" class="card-title h5" style="color:#2457c5; text-decoration:none;">
+          2024 Geography’s Big Week Out
+        </a>
+        <div style="font-size:12px;color:#8a8fa3;margin-top:4px;">
+          Anonymous | Wednesday, October 23, 2024 9:50 AM
+        </div>
+        <p class="card-text" style="margin-top:8px;">
+          Fieldwork in Kosciuszko National Park and Canberra kicked off this year’s GBWO, with Porcupine Rocks and Thredbo highlights.
+        </p>
+        <a href="SocietyNews_2024_gbwo.html" class="card-link" style="font-size:13px;">Read more →</a>
+      </div>
+    </div>
+
+    <!-- 2024 Souvenir Cover Exhibition -->
+    <div class="card" style="margin:18px 0;border-radius:10px;">
+      <div class="card-body">
+        <a href="SocietyNews_2024_souvenir_exhibition.html" class="card-title h5" style="color:#2457c5; text-decoration:none;">
+          Souvenir Cover Exhibition
+        </a>
+        <div style="font-size:12px;color:#8a8fa3;margin-top:4px;">
+          Anonymous | Wednesday, October 23, 2024 9:21 AM
+        </div>
+        <p class="card-text" style="margin-top:8px;">
+          Exhibition curated by Pam Tonkin with the Collections Committee, showing souvenir covers from 1944–1957.
+        </p>
+        <a href="SocietyNews_2024_souvenir_exhibition.html" class="card-link" style="font-size:13px;">Read more →</a>
+      </div>
+    </div>
+
+    <!-- Back to Top button -->
+    <button id="backToTopBtn" title="Back to top"
+      style="position:fixed;bottom:32px;right:24px;display:none;border:none;border-radius:24px;padding:10px 14px;
+             box-shadow:0 6px 18px rgba(0,0,0,.15);background:#0f2f7f;color:#fff;font-size:14px;z-index:999;">
+      ↑ Back to Top
+    </button>
 
   </div>
 </section>
+
+<script>
+  (function () {
+    const btn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', function () {
+      if (document.documentElement.scrollTop > 300 || document.body.scrollTop > 300) {
+        btn.style.display = 'block';
+      } else {
+        btn.style.display = 'none';
+      }
+    });
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>
+
+</body>
+</html>
+
 

@@ -352,15 +352,26 @@ def SocietyNews():
     """News list under Society (demo)."""
     return render_template('SocietyNews.html')
 
-@app.route('/SocietyNews/writing-competition-2025.html')
-def SocietyNews_writing_competition_2025():
+@app.route('/SocietyNews_2025_writing_comp.html')
+def SocietyNews_2025_writing_comp():
     """Detail page: 2025 Geography Writing Competition - Long-Listed Stories."""
     return render_template('SocietyNews_2025_writing_comp.html')
 
-@app.route('/SocietyNews/tsunami-boulder-tonga-2025.html')
-def SocietyNews_tsunami_boulder_2025():
+@app.route('/SocietyNews_2025_tsunami_boulder.html')
+def SocietyNews_2025_tsunami_boulder():
     """Detail page: Discovery of a 1200-ton tsunami boulder in Tonga."""
     return render_template('SocietyNews_2025_tsunami_boulder.html')
+
+@app.route('/SocietyNews_2024_gbwo.html')
+def SocietyNews_2024_gbwo():
+    """Detail page: 2024 Geography’s Big Week Out."""
+    return render_template('SocietyNews_2024_gbwo.html')
+
+@app.route('/SocietyNews_2024_souvenir_exhibition.html')
+def SocietyNews_2024_souvenir_exhibition():
+    """Detail page: Souvenir Cover Exhibition."""
+    return render_template('SocietyNews_2024_souvenir_exhibition.html')
+
 
 ## def get_event(event_id : int):
     try:
