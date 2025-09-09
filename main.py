@@ -192,7 +192,7 @@ def register_account():
 
         send_welcome_email(email,level)
         flash("Account created. Please login.","success")
-        return redirect(url_for("login"))
+        return redirect(url_for("Home"))
     return render_template("register.html",level=level, level_key = level_key)
 
 
