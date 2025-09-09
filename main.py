@@ -169,6 +169,46 @@ RGSQ Team
     except Exception as e:
         print(f"[ERR] Failed to send email to {to_email}: {e}")
 
+
+def send_event_confirmation_email(to_email:str,event:dict):
+    """
+    Send a confirmation email after user successfully registers for an event
+    """
+    if not (SMTP_HOST and SMTP_PORT and SMTP_USER and SMTP_PASS and FROM_EMAIL):
+        print("SMTP settings are not configured. Skipping email sending")
+        return
+    
+    meg = EmailMessage()
+    meg ["Subject"] = f"Confirmation: {event['title']}"
+    meg ["From"]=FROM_EMAIL
+    meg ["To"] = to_email
+
+    body = f""" Dear Participant,
+
+Thanks you for registering for the event: {event['title']}.
+
+Event Details:
+Title: {event['title']}
+Date: {event['date']}
+Location: {event ['location']}
+Price: {event ['price']}
+
+We look forward to seeing you there !
+
+Best regards.
+RGSQ Team
+"""
+    meg.set_content(body)
+
+    try:
+        with smtplib.SMTP(SMTP_HOST,SMTP_PORT,timeout=15) as server:
+            server.starttls()
+            server.login(SMTP_USER,SMTP_PASS)
+            server.send_message(meg)
+            print(f"[Ok] Event registration email sent to {to_email}")
+    except Exception as e:
+        print(f"[ERR] Failed to send event registration email to {to_email}:{e}")
+
    
 
 
@@ -192,7 +232,7 @@ def register_account():
 
         send_welcome_email(email,level)
         flash("Account created. Please login.","success")
-        return redirect(url_for("login"))
+        return redirect(url_for("Home"))
     return render_template("register.html",level=level, level_key = level_key)
 
 
@@ -391,6 +431,8 @@ def register_event(event_id):
     if request.method == "POST":
         email = (request.form.get("email") or ""). strip()
         if email:
+            send_event_confirmation_email(email,event)
+            session['last_event_email']= email
             flash("You have successfully registered for this event.","event")
             return redirect(url_for("register_event_confirm",event_id=event_id))
         else:
