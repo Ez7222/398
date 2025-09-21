@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=4">
   <title>Honours Board – RGSQ</title>
   <style>
     .h1-title{
@@ -16,21 +19,24 @@
     .menu-wrap{max-width:950px;margin:18px auto 28px}
     .honours-list{max-width:980px;margin:0 auto}
     .honours-list dt{
-      float:left; clear:left; width:160px; font-weight:700; color:#0b4f82;
+      float:left; clear:left; width:180px; font-weight:700; color:#0b4f82;
     }
     .honours-list dd{
-      margin-left:180px; margin-bottom:.6rem;
+      margin-left:200px; margin-bottom:.6rem;
     }
     @media (max-width: 576px){
       .honours-list dt{float:none;width:auto}
       .honours-list dd{margin-left:0}
     }
     .back-top{font-size:.9rem}
+    /* 防止其它模块（如横幅或图片）遮住下拉菜单 */
+    .navbar { position: relative; z-index: 2000; }
+    .dropdown-menu { z-index: 2001; }
   </style>
 </head>
 <body>
 
-  
+  <!-- 导航（复用你首页的结构） -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ url_for('Home') }}">
@@ -44,19 +50,18 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="{{ url_for('Home') }}">Home</a></li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdownSociety" role="button" data-bs-toggle="dropdown" aria-expanded="false">Society</a>
             <div class="dropdown-menu" aria-labelledby="dropdownSociety">
-                            <a class="dropdown-item" href="Aboutsociety.html">About the society</a>
-                            <a class="dropdown-item" href="Governance.html">Governance</a>
-                            <a class="dropdown-item" href="Committees.html">Committees</a>
-                            <a class="dropdown-item" href="SocietyNews.html">News</a>
-                            <a class="dropdown-item" href="AwardsPrizes.html">Awards & Prizes</a>
-                            <a class="dropdown-item" href="StudentResearchGrants.html">Student Research Grants</a>
-                            <a class="dropdown-item" href="Honoursboard.html">Honours Board</a>
-                            <a class="dropdown-item" href="Donate.html">Donate</a>
+              <a class="dropdown-item" href="Aboutsociety.html">About the society</a>
+              <a class="dropdown-item" href="Governance.html">Governance</a>
+              <a class="dropdown-item" href="Committees.html">Committees</a>
+              <a class="dropdown-item active" href="HonoursBoard.html">Honours Board</a>
+              <a class="dropdown-item" href="Donate.html">Donate</a>
             </div>
           </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdownEvent" role="button" data-bs-toggle="dropdown" aria-expanded="false">Event</a>
             <div class="dropdown-menu" aria-labelledby="dropdownEvent">
@@ -66,6 +71,7 @@
               <a class="dropdown-item" href="Disclaimer.html">Disclaimer</a>
             </div>
           </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdownProjects" role="button" data-bs-toggle="dropdown" aria-expanded="false">PROJECTS</a>
             <div class="dropdown-menu" aria-labelledby="dropdownProjects">
@@ -74,6 +80,7 @@
               <a class="dropdown-item" href="Queenslandbydegrees.html">Queensland by Degrees</a>
             </div>
           </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdownResources" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Resources</a>
             <div class="dropdown-menu" aria-labelledby="dropdownResources">
@@ -91,6 +98,7 @@
               <a class="dropdown-item" href="MapResources.html">Map Resources</a>
             </div>
           </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdownMembership" role="button" data-bs-toggle="dropdown" aria-expanded="false">Membership</a>
             <div class="dropdown-menu" aria-labelledby="dropdownMembership">
@@ -98,36 +106,24 @@
               <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
             </div>
           </li>
+
           <li class="nav-item"><a class="nav-link" href="Contact.html">Contact Us</a></li>
         </ul>
+
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+
         <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        {% if session.get('user_id') %}
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ current_user_name or session.get('user_email') or 'Account' }}
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
-                                <span class="dropdown-item-text text-muted">{{ session.get('user_email') }}</span>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
-                            </div>
-                        {% else %}
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Account
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
-                                <a class="dropdown-item" href="{{ url_for('join_rgsq') }}?membership=ordinary">Join RGSQ</a>
-                                <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
-                            </div>
-                        {% endif %}
-                    </li>
-                </ul>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button" data-bs-toggle="dropdown" aria-expanded="false">Username</a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+              <a class="dropdown-item" href="Login.html">Login</a>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -135,7 +131,7 @@
   <div class="container py-4">
     <h1 class="h1-title text-center mb-4">Honours Board</h1>
 
-    
+    <!-- 就地跳转 -->
     <div class="menu-wrap text-center">
       <a href="#presidents" class="btn btn-primary btn-sm me-2">Presidents</a>
       <a href="#patrons" class="btn btn-outline-primary btn-sm">Patrons</a>
@@ -253,7 +249,7 @@
       <p class="back-top"><a href="#top">Top ↑</a></p>
     </section>
 
-    
+    <!-- Follow Us -->
     <section id="follow" class="section">
       <h2>Follow Us</h2>
       <p>Be part of our community by following us on our social media accounts.</p>
@@ -266,4 +262,13 @@
         Her Excellency the Honourable Dr Jeannette Young PSM, Governor of Queensland
       </p>
       <p><a href="#">Privacy Policy</a> | <a href="#">Contact Us</a> | © 2025 RGSQ | Site Map</p>
-      <p>
+      <p><em>Powered by Wild Apricot Membership Software</em></p>
+      <p class="back-top"><a href="#top">Top ↑</a></p>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+</body>
+</html>
