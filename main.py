@@ -435,71 +435,41 @@ def SocietyNews_2024_souvenir_exhibition():
     return render_template('SocietyNews_2024_souvenir_exhibition.html')
 
 
-## def get_event(event_id : int):
+def get_event(event_id : int):
     try:
         evt = Event.query.get(event_id)
         if evt:
             return {
                 "id": evt.id,
                 "title": evt.title,
-                "date": evt.date,
+                "date": evt.event_time,
                 "location": evt.location,
-                "price": getattr(evt, "price", ""),
+                "price": f"${evt.price:.2f}" if evt.price is not None else "Free",
             }
     except Exception:
         pass
     return {
         "id": event_id,
-        "title": "Geography writing competition" if event_id == 1 else f"Event #{event_id}",
-        "date": "Date to be announced",
-        "location": "Venue to be confirmed",
-        "price": "",
-    }
-
-def get_event(event_id: int):
-    dummy_events = {
-        1: {
-            "id": 1,
-            "title": "Geography Writing Competition",
-            "date": "6:30 PM Oct 21, 2025",
-            "location": "Brisbane",
-            "price": "$1",
-        },
-        2: {
-            "id": 2,
-            "title": "Olympic Games – Elevate 2042 Legacy",
-            "date": "7:00 PM Aug 1, 2025",
-            "location": "Brisbane",
-            "price": "$12",
-        },
-        3: {
-            "id": 3,
-            "title": "Recovering Nature for the Benefit of People and Planet",
-            "date": "8:00 PM July 5, 2025",
-            "location": "Brisbane",
-            "price": "$30",
-        },
-        4: {
-            "id": 4,
-            "title": "Visit to the Queensland Communications Museum",
-            "date": "5:30 PM Aug 1, 2025",
-            "location": "Queensland Communications Museum",
-            "price": "$10",
-        }
-    }
-
-    return dummy_events.get(event_id, {
-        "id": event_id,
         "title": f"Event #{event_id}",
         "date": "Date to be announced",
         "location": "Venue to be confirmed",
         "price": "",
-    })
+    }
+
+
 
 
 @app.route('/events/<int:event_id>/register', methods=["GET","POST"])
 def register_event(event_id):
-    event = get_event(event_id)
+    ev = Event.query.get_or_404(event_id)
+
+    event={
+        "id": ev.id,
+        "title": ev.title,
+        "date": ev.event_time,
+        "location": ev.location,
+        "price": f"${ev.price:.2f}" if ev.price is not None else "Free",
+    }
 
     if request.method == "POST":
         email = (request.form.get("email") or ""). strip()
