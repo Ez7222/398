@@ -88,7 +88,7 @@ def inject_current_user_name():
 def Home():
     from datetime import datetime
     now_iso = datetime.now().isoformat(timespec='minutes')
-    upcoming = Event.query.filter(Event.event_time >= now_iso).order_by(Event.event_time.asc()).limit(6).all()
+    upcoming = Event.query.filter(Event.event_time >= now_iso).order_by(Event.event_time.asc()).limit(4).all()
     return render_template('homepage.html',upcoming_events=upcoming)
 
 # display the event list
