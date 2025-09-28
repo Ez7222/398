@@ -143,7 +143,11 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card h-100">
                     <a href="{{ url_for('register_event', event_id=ev.id) }}">
-                    <img src="{{ url_for('static', filename='images/1.png') }}" class="card-img-top" alt="Event image">
+                        {% if ev.image %}
+                            <img src="{{ url_for('static', filename=ev.image) }}" class="card-img-top" alt="Event image">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='images/hero.jpg') }}" class="card-img-top" alt="Default event image">
+                        {% endif %}
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ ev.title }}</h5>
@@ -156,7 +160,7 @@
         </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer mt-auto" style="position:fixed;bottom:0;width:100%">
         <div class="footer-container">
             <a href="https://cdn.wildapricot.com/240825/resources/Documents/Administrative/2018_RGSQ%20Ltd_Privacy%20Policy.pdf?version=1575264460000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9BZG1pbmlzdHJhdGl2ZS8yMDE4X1JHU1ElMjBMdGRfUHJpdmFjeSUyMFBvbGljeS5wZGY~dmVyc2lvbj0xNTc1MjY0NDYwMDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU0OTc4MjUxfSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=e-RdXWajsAbE4LFyQ~hwXrXoWC8wP5EwhHoDHEffWy3MGI55BfvRt4fYvNEVPtpaOIns3hBdhjKgt0-W37QYT5GfX3atUEKyYd9dXTh88512Ce4~nuqAfhDH4Gx2~YShFV9N9AlZ6AGqwnrJWm-maa4hTTBXIECnzDtBPNaFceQO3lEUHz9dXHM~iEQsxAAs7bNgtEbaoWr-vyfkl7VN4ShXo2d7QMB5kVqWvxTbh2naIVD0RZE8aN5RKxKnapZ4Mt4QpLBI6Nc5HOPt~cODJiQEyRxSzYYc-tp45ZsKKKtp3DaHoFQ~cjrTpJml1FzRNjw~IoacOCsITqHFtob2VA__&Key-Pair-Id=K27MGQSHTHAGGF" class="footer-link">Privacy Policy</a>
             <span class="footer-separator">|</span>
