@@ -1,9 +1,9 @@
-create Table events (
-    id Integer primary key generated autoincrement,
-    title text not null,
-    description text,
-    location text,
-    date text not null,
-    price real not null
-    image text,
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    description TEXT,
+    location TEXT,
+    event_date TEXT NOT NULL,
+    price REAL NOT NULL,
+    image TEXT,
 );
