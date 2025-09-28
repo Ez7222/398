@@ -144,58 +144,62 @@
                 <h3 class = "mb-0"> Create Event</h3>
             </div>
             <div class="card-body">
-                <form>
-                    <form method="post">
-                        <div class="row">
-                            <div class="col-12 col-md-8 mb-3">
-                                <label for="eventname" class="form-label">Event Name</label>
-                                <input type="text" class="form-control" id="eventName" name="eventname" required>
-                            </div>
-                            <div class="col-12 col-md-4 mb-3">
-                                <label for "artistName" class="form-label">Authors Name/s</label>
-                                <input type="text" class="form-control" id="AuthorName" name="authorName" placeholder="Enter Your Name" required>
-                            </div>
+                <form action="{{url_for('Create')}}" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-12 col-md-8 mb-3">
+                            <label for="title" class="form-label">Event Name</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for "SelectUser" class="form-label">Select User</label>
-                                <select class="form-select" id="SelectUser" name="selectUser">
-                                    <option selected>Choose</option>
-                                    <option value="Public User">Public User</option>
-                                    <option value="Memeber-Only">Member-Only</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for "eventImage" class="form-label">Event Image Upload</label>
-                                <input type="file" class="form-control" id="eventImage" name="eventImage" accept="image/*">
-                            </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <label for="author" class="form-label">Authors Name/s</label>
+                            <input type="text" class="form-control" id="author" name="author" placeholder="Enter Your Name" required>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-md-6 mb-3">
-                                <label for "eventLocation" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="eventLocation" name="eventLocation" placeholder="Enter Event Location" required>
-                            </div>
-                            <div class="col-12 col-md-6 mb-3">
-                                <label for "eventTime" class="form-label">dd/mm/yyyy</label>
-                                <input type="datetime-local" class="form-control" id="eventTime" name="eventTime" required>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="visibility" class="form-label">Select User</label>
+                            <select class="form-select" id="visibility" name="visibility">
+                                <option selected>Choose</option>
+                                <option value="public">Public User</option>
+                                <option value="memeber">Member-Only</option>
+                            </select>
                         </div>
-                        <div class="row ">
-                            <div class="col-12 col-md-6 mb-3">
-                                <label for "totalTickets" class="form-label">Total Tickets</label>
-                                <input type="number" class="form-control" id="totalTickets" name="totalTickets" min="1">
-                            </div>
-                            <div class="col-12 col-md-6 mb-3">
-                                <label for "ticketPrice" class="form-label">Ticket Price</label>
-                                <input type="number" class="form-control" id="ticketPrice" name="ticketPrice" min="0" step="0.01"
-                            placeholder="Enter Ticket Price">
-                            </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="image" class="form-label">Event Image Upload</label>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
                         </div>
-                        <div class="d-flex justify-content-end mt-4">
-                            <a href="{{ url_for('Home') }}" class="btn btn-outline-danger me-2">Cancel</a>
-                            <button type="submit" class="btn btn-outline-success">Create Event</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="Enter Event Location" required>
                         </div>
-                    </form>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="event_time" class="form-label">dd/mm/yyyy</label>
+                            <input type="datetime-local" class="form-control" id="event_time" name="event_time" required>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="total_tickets" class="form-label">Total Tickets</label>
+                            <input type="number" class="form-control" id="total_tickets" name="total_tickets" min="1">
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="price" class="form-label">Ticket Price</label>
+                            <input type="number" class="form-control" id="price" name="price" min="0" step="0.01"
+                        placeholder="Enter Ticket Price">
+                        </div>    
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Event Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"
+                            placeholder="Enter Event Description"></textarea>
+                    </div>
+                        
+                    <div class="d-flex justify-content-end mt-4">
+                        <a href="{{ url_for('Home') }}" class="btn btn-outline-danger me-2">Cancel</a>
+                        <button type="submit" class="btn btn-outline-success">Create Event</button>
+                    </div>
                 </form>
             </div>
         </div>
