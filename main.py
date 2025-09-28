@@ -7,6 +7,7 @@ import smtplib
 from email.message import EmailMessage
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.exc import IntegrityError
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -14,17 +15,26 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///events.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app.secret_key = 'change_me'
+UPLOAD_FOLDER = os.path.join('static','uploads')
+os.makedirs(UPLOAD_FOLDER,exist_ok=True)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = {'png','jpg','jpeg','gif','webp'}
+
+def allowed_file(filename:str)->bool:
+    return "." in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 
 
 class Event(db.Model):
+    __tablename__ = "event"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    date = db.Column(db.String(50), nullable=False)
+    event_time = db.Column(db.String(50), nullable=False)
     location = db.Column(db.String(100), nullable=False)
-    price = db.Column(db.String(20), nullable=False)
-    image = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    image = db.Column(db.String(100), nullable=True)
+    description = db.Column(db.Text, nullable=True)
 
 class User(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -39,9 +49,20 @@ class User(db.Model):
     def check_password(self,password):
         return check_password_hash(self.password_hash,password)
 
+def migrate_event_table():
+    with db.engine.begin() as conn:
+        cols = conn.exec_driver_sql("PRAGMA table_info(event);").fetchall()
+        col_names = [c[1] for c in cols]
+        if 'event_time' not in col_names:
+            conn.exec_driver_sql("ALTER TABLE event ADD COLUMN event_time TEXT;")
+            if 'date' in col_names:
+                conn.exec_driver_sql("UPDATE event SET event_time = date;")
 
 with app.app_context():
     db.create_all()
+    migrate_event_table()
+
+
 
 @app.context_processor
 def inject_current_user_name():
@@ -65,28 +86,69 @@ def inject_current_user_name():
 # display the homepage
 @app.route('/')
 def Home():
-    return render_template('homepage.html')
+    from datetime import datetime
+    now_iso = datetime.now().isoformat(timespec='minutes')
+    upcoming = Event.query.filter(Event.event_time >= now_iso).order_by(Event.event_time.asc()).limit(6).all()
+    return render_template('homepage.html',upcoming_events=upcoming)
 
 # display the event list
 @app.route('/Eventlist.html')
 def Eventlist():
     per_page = 6
     page = request.args.get('page',1,type=int)
-    event_list = [{
-            "id": i,
-            "title": f"Event {i}",
-            "date": "Date to be announced",
-            "location": "Venue to be confirmed",
-            "price": None,
-        } for i in range(1, 21)]
-    events_paginated = event_list[(page-1)*per_page: page*per_page]
-    total_pages = (len(event_list) + per_page - 1) // per_page
-    return render_template('Eventlist.html',events = events_paginated, page=page, total_pages = total_pages)
-
+    q = Event.query.order_by(Event.event_time.asc())
+    total = q.count()
+    events_paginated = q.offset((page-1) * per_page).limit(per_page).all()
+    total_pages = (total + per_page -1)//per_page
+    return render_template('Eventlist.html',events=events_paginated, page=page, total_pages=total_pages)
+    
 # display the create event page.
-@app.route('/Create.html')
+@app.route('/Create.html', methods = ['GET', 'POST'])
 def Create():
+    if request.method == 'POST':
+        title = (request.form.get('title')or '').strip()
+        event_time = (request.form.get('event_time')or request.form.get('date') or '').strip()
+        location = (request.form.get('location')or '').strip()
+        price_raw = (request.form.get('price')or '').strip()
+        description = (request.form.get('description')or '').strip()
+
+        if not title or not event_time or not location or not price_raw:
+            flash("Title, Date, Location and Price are required.","danger")
+            return redirect(url_for('Create'))
+        try:
+            price_val = float(price_raw)
+        except ValueError:
+            flash("Price must be a number.","danger")
+            return redirect(url_for('Create'))
+        
+        image_rel = None
+        file = request.files.get('image')
+        if file and file.filename and allowed_file(file.filename):
+            ext = file.filename.rsplit('.',1)[1].lower()
+            from datetime import datetime
+            safe_name = f"{int(datetime.now().timestamp())}_{title.replace(' ','_')}.{ext}" 
+            save_path = os.path.join(app.config['UPLOAD_FOLDER'],safe_name) 
+            file.save(save_path)
+            image_rel = f"uploads/{safe_name}"
+            
+
+        evt = Event(
+            title = title,
+            event_time = event_time,
+            location = location,
+            price = price_val,
+            image = image_rel,
+            description = description or None
+        )
+        
+        db.session.add(evt)
+        db.session.commit()
+        flash("Event created successfully.","success")
+        return redirect(url_for('Eventlist'))
     return render_template('Create.html')
+            
+                        
+            
 
 # handle the creation of a new event.
 def get_events():
@@ -263,7 +325,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.clear()
-    flash("Your have been logged out.","infor")
+    flash("Your have been logged out.","info")
     return redirect(url_for('login'))
 
 
