@@ -489,6 +489,23 @@ def register_event_confirm(event_id):
     email = session.pop('last_event_email', None)
     return render_template("event_register_confirm.html",event=event,email=email)
 
+@app.route('/events/<int:event_id>/delete', methods=["POST"])
+def delete_event(event_id):
+    ev = Event.query.get_or_404(event_id)
+    if ev.image:
+        try:
+            from os.path import basename, join
+            img_file = basename(ev.image)
+            abs_path = join(app.config['UPLOAD_FOLDER'],img_file)
+            if os.path.exists(abs_path):
+                os.remove(abs_path)
+        except Exception:
+            pass
+    db.session.delete(ev)
+    db.session.commit()
+    flash("Event deleted.","success")
+    return redirect(url_for("Eventlist"))
+
 # showing the Awards & Prizes page.
 @app.route('/AwardsPrizes.html')
 def AwardsPrizes():
