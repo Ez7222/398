@@ -518,5 +518,130 @@ def StudentResearchGrants():
 
 
 
+# ===============================================================
+# Admin Center routes (additive only)
+# - /admin/signup  : create admin via invite code TEAM305
+# - /admin/login   : admin-only login
+# ===============================================================
+from flask import render_template, request, redirect, url_for, flash, session
+from werkzeug.security import generate_password_hash, check_password_hash
+
+ADMIN_INVITE_CODE = "TEAM305"
+
+def _hash_password(raw: str) -> str:
+    """Prefer project's helper if present; else use werkzeug; fallback to sha256."""
+    try:
+        return hash_password(raw)  # if your project already defines it
+    except Exception:
+        try:
+            return generate_password_hash(raw, method="pbkdf2:sha256")
+        except Exception:
+            import hashlib
+            return hashlib.sha256((raw or "").encode("utf-8")).hexdigest()
+
+def _check_password(user, raw: str) -> bool:
+    """Prefer model's method; else use werkzeug; else sha256 compare."""
+    try:
+        if hasattr(user, "check_password"):
+            return user.check_password(raw)
+        if getattr(user, "password_hash", None):
+            return check_password_hash(user.password_hash, raw)
+    except Exception:
+        pass
+    import hashlib
+    return (user.password_hash or "") == hashlib.sha256((raw or "").encode("utf-8")).hexdigest()
+
+@app.route("/admin/signup", methods=["GET", "POST"])
+def admin_signup():
+    """Admin self-registration with fixed invite code."""
+    if request.method == "POST":
+        code = (request.form.get("code") or "").strip()
+        email = (request.form.get("email") or "").strip()
+        full_name = (request.form.get("full_name") or "").strip()
+        password = (request.form.get("password") or "").strip()
+        password2 = (request.form.get("password2") or "").strip()
+
+        if code != ADMIN_INVITE_CODE:
+            flash("Invalid invite code.", "danger")
+            return render_template("admin_signup.html", email=email, full_name=full_name)
+
+        if not email or "@" not in email:
+            flash("Please enter a valid email.", "warning")
+            return render_template("admin_signup.html", email=email, full_name=full_name)
+        if not password or len(password) < 8:
+            flash("Password must be at least 8 characters.", "warning")
+            return render_template("admin_signup.html", email=email, full_name=full_name)
+        if password != password2:
+            flash("Passwords do not match.", "warning")
+            return render_template("admin_signup.html", email=email, full_name=full_name)
+        if User.query.filter_by(email=email).first():
+            flash("This email is already registered.", "warning")
+            return render_template("admin_signup.html", email=email, full_name=full_name)
+
+        try:
+            u = User(email=email, full_name=(full_name or None), password_hash=_hash_password(password))
+            # Role / is_active only if columns exist
+            if hasattr(u, "role"):
+                u.role = "admin"
+            if hasattr(u, "is_active"):
+                u.is_active = 1
+
+            db.session.add(u)
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            flash("Failed to create admin account. Please try again.", "danger")
+            return render_template("admin_signup.html", email=email, full_name=full_name)
+
+        session["user_id"] = u.id
+        session["user_email"] = u.email
+        session["current_user_name"] = u.full_name
+        flash("Admin account created. Welcome!", "success")
+        try:
+            return redirect(url_for("admin.dashboard"))
+        except Exception:
+            return redirect(url_for("Home"))
+
+    # GET -> show page; default active tab is Sign Up
+    return render_template("admin_signup.html")
+
+@app.route("/admin/login", methods=["GET", "POST"])
+def admin_login():
+    """Admin-only login; members should use /login."""
+    if request.method == "POST":
+        email = (request.form.get("email") or "").strip()
+        password = (request.form.get("password") or "")
+        u = User.query.filter_by(email=email).first()
+
+        if not u or not _check_password(u, password):
+            flash("Invalid email or password.", "danger")
+            # show admin tab on this page
+            return render_template("admin_signup.html", active_tab="login")
+
+        role = (getattr(u, "role", None) or "member").lower()
+        if role not in ("admin", "staff"):
+            flash("You don't have admin access.", "danger")
+            return render_template("admin_signup.html", active_tab="login")
+
+        if hasattr(u, "is_active") and not u.is_active:
+            flash("This account is disabled.", "warning")
+            return render_template("admin_signup.html", active_tab="login")
+
+        session["user_id"] = u.id
+        session["user_email"] = u.email
+        session["current_user_name"] = u.full_name
+        flash("Welcome back.", "success")
+        try:
+            return redirect(url_for("admin.dashboard"))
+        except Exception:
+            return redirect(url_for("Home"))
+
+    # GET -> show page with login tab open
+    return render_template("admin_signup.html", active_tab="login")
+
+
+
+from admin import admin_bp
+app.register_blueprint(admin_bp)
 
 
