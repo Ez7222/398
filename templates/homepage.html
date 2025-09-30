@@ -202,6 +202,8 @@
                         <p class="card-text">
                         {{ ev.event_time |replace("T"," ") }}
                         </p>
+                         <p class="card-text">Price:${{ ev.price }}</p>
+                        <p class="card-text">{{ ev.description }}</p>
                         <a href="{{ url_for('register_event', event_id=ev.id) }}" class="btn btn-primary btn-sm mt-3">Register</a>
                     </div>
                 </div>
