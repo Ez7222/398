@@ -164,6 +164,7 @@
                         <h5 class="card-title">{{ ev.title }}</h5>
                         <p class="card-text text-muted">{{ ev.event_time }}</p>
                         <p class="card-text text-muted">{{ ev.location }}</p>
+                        <p class="card-text">Price:${{ ev.price }}</p>
                         <p class="card-text">{{ ev.description }}</p>
                         <div class="mt-auto d-flex align-items-center gap-3">
                             <a class="btn btn-primary" href="{{ url_for('register_event', event_id=ev.id) }}">Register</a>
