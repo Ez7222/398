@@ -164,6 +164,11 @@ def get_events():
 def Memberbenefits():
     return render_template('Memberbenefits.html')
 
+# showing the RGSQ Staff page.
+@app.route('/RGSQStaff.html')
+def rgsq_staff_html():
+    return render_template('RGSQStaff.html')
+
 # shwoing the join RGSQ page.
 @app.route('/JoinRGSQ.html')
 def join_rgsq():
@@ -643,5 +648,6 @@ def admin_login():
 
 from admin import admin_bp
 app.register_blueprint(admin_bp)
+
 
 
