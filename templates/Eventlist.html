@@ -50,7 +50,6 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="Eventlist.html">Event List</a>
                             <a class="dropdown-item" href="Create.html">Create Event</a>
-                            <a class="dropdown-item" href="Update Event.html">Update Event</a>
                             <a class="dropdown-item" href="Disclaimer.html">Disclaimer</a>
 
                         </div>
@@ -168,8 +167,9 @@
                         <p class="card-text text-muted">{{ ev.location }}</p>
                         <p class="card-text">Price:${{ ev.price }}</p>
                         <p class="card-text">{{ ev.description }}</p>
-                        <div class="mt-auto d-flex align-items-center gap-3">
+                        <div class="mt-auto d-flex justify-content-between">
                             <a class="btn btn-primary" href="{{ url_for('register_event', event_id=ev.id) }}">Register</a>
+                            <a href="#" class="btn btn-primary gap-10 ">Details</a>
                             {% if session.get('user_id') %}
                                 <form action="{{ url_for('delete_event', event_id=ev.id) }}" method="post"
                                         onsubmit="return confirm('Delete this event?');" class="ms-2">
