@@ -169,6 +169,18 @@ def Memberbenefits():
 def rgsq_staff_html():
     return render_template('RGSQStaff.html')
 
+@app.route('/StaffMembersOverview.html')
+def staff_members_overview():
+    return render_template('StaffMembersOverview.html')
+
+@app.route('/StaffMembersCount.html')
+def staff_members_count():
+    return render_template('StaffMembersCount.html')
+
+@app.route('/StaffMembersList.html')
+def staff_members_list():
+    return render_template('StaffMembersList.html')
+
 # shwoing the join RGSQ page.
 @app.route('/JoinRGSQ.html')
 def join_rgsq():
@@ -648,6 +660,7 @@ def admin_login():
 
 from admin import admin_bp
 app.register_blueprint(admin_bp)
+
 
 
 
