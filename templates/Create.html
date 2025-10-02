@@ -144,7 +144,7 @@
                 <h3 class = "mb-0"> Create Event</h3>
             </div>
             <div class="card-body">
-                <form id="createForm" action="{{url_for('Create_preview')}}" method="POST" enctype="multipart/form-data">
+                <form id="createForm" action="{{url_for('Create')}}" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-12 col-md-8 mb-3">
                             <label for="title" class="form-label">Event Name</label>
@@ -198,7 +198,7 @@
                         
                     <div class="d-flex justify-content-end mt-4">
                         <a href="{{ url_for('Home') }}" class="btn btn-outline-danger me-2">Cancel</a>
-                        <button type="submit" id="openConfirm" class="btn btn-outline-success">Create Event</button>
+                        <button type="submit" class="btn btn-outline-success" onclick="return confirm('Please make sure all information are correct');">Create Event</button>
                     </div>
                 </form>
             </div>
