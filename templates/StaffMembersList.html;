@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Members List – RGSQ Staff</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>
+    .page-title{background:#0861af;color:#fff;border-radius:10px;padding:.75rem 1rem;letter-spacing:.08rem}
+    th.sortable{cursor:pointer; white-space:nowrap}
+    th.sortable .bi{opacity:.4; margin-left:.25rem}
+    th.sortable.active .bi{opacity:1}
+    .table thead th{position:sticky; top:0; background:#f8f9fa; z-index:1}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar (same as other pages) -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('Home') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="navbar-logo">
+        <div class="navbar-title">RGSQ</div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('Home') }}">Home</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSociety" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">Society</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownSociety">
+              <a class="dropdown-item" href="Aboutsociety.html">About the society</a>
+              <a class="dropdown-item" href="Governance.html">Governance</a>
+              <a class="dropdown-item" href="Committees.html">Committees</a>
+              <a class="dropdown-item" href="Honoursboard.html">Honours Board</a>
+              <a class="dropdown-item" href="Donate.html">Donate</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEvent" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">Event</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownEvent">
+              <a class="dropdown-item" href="Eventlist.html">Event List</a>
+              <a class="dropdown-item" href="Create.html">Create Event</a>
+              <a class="dropdown-item" href="Update Event.html">Update Event</a>
+              <a class="dropdown-item" href="Disclaimer.html">Disclaimer</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProjects" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">PROJECTS</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownProjects">
+              <a class="dropdown-item" href="AustraliaGeographyCompitions.html">Australia Geography Compitions</a>
+              <a class="dropdown-item" href="Lambertcenter.html">Lambert center</a>
+              <a class="dropdown-item" href="Queenslandbydegrees.html">Queensland by Degrees</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownResources" role="button"
+               data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Resources</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownResources">
+              <a class="dropdown-item" href="Library.html">Library</a>
+              <a class="dropdown-item" href="Venuehire.html">Venue Hire</a>
+              <a class="dropdown-item" href="Bulletin.html">Bulletin</a>
+              <div class="dropend">
+                <a class="dropdown-item dropdown-toggle" href="#" id="collectionsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Collections</a>
+                <ul class="dropdown-menu" aria-labelledby="collectionsMenu">
+                  <li><a class="dropdown-item" href="PhilateliesCover.html">Philatelies Cover</a></li>
+                </ul>
+              </div>
+              <a class="dropdown-item" href="Geographywebsite.html">Geography website</a>
+              <a class="dropdown-item" href="Museums and other attractions.html">Museums and other attractions</a>
+              <a class="dropdown-item" href="MapResources.html">Map Resources</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMember" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">Membership</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMember">
+              <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+              <a class="dropdown-item" href="RGSQStaff.html">RGSQ Staff</a>
+            </div>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact Us</a></li>
+        </ul>
+
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">Username</a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+              <a class="dropdown-item" href="Login.html">Login</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <h1 class="page-title m-0">Members List</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a href="RGSQStaff.html">RGSQ Staff</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Members List</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Controls -->
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="row g-2 align-items-end">
+          <div class="col-12 col-md-4">
+            <label class="form-label">Search</label>
+            <input id="searchInput" type="text" class="form-control" placeholder="Name, email, city…">
+          </div>
+          <div class="col-6 col-md-2">
+            <label class="form-label">Status</label>
+            <select id="statusSelect" class="form-select">
+              <option value="">All</option>
+              <option>Active</option>
+              <option>Lapsed</option>
+              <option>Pending</option>
+            </select>
+          </div>
+          <div class="col-6 col-md-2">
+            <label class="form-label">Type</label>
+            <select id="typeSelect" class="form-select">
+              <option value="">All</option>
+              <option>Full</option>
+              <option>Student</option>
+              <option>Honorary</option>
+            </select>
+          </div>
+          <div class="col-6 col-md-2">
+            <label class="form-label">Page size</label>
+            <select id="pageSizeSelect" class="form-select">
+              <option>10</option>
+              <option selected>25</option>
+              <option>50</option>
+            </select>
+          </div>
+          <div class="col-6 col-md-2 text-md-end">
+            <button id="resetBtn" class="btn btn-outline-secondary w-100 w-md-auto"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <div class="small text-muted"><span id="countShown">0</span> of <span id="countTotal">0</span> members</div>
+      <div class="d-flex gap-2">
+        <button id="exportBtn" class="btn btn-outline-secondary btn-sm"><i class="bi bi-download"></i> Export CSV (filtered)</button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive mt-2">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th class="sortable" data-key="name">Name <i class="bi bi-arrow-down-up"></i></th>
+            <th class="sortable" data-key="email">Email <i class="bi bi-arrow-down-up"></i></th>
+            <th class="sortable" data-key="type">Type <i class="bi bi-arrow-down-up"></i></th>
+            <th class="sortable" data-key="status">Status <i class="bi bi-arrow-down-up"></i></th>
+            <th class="sortable" data-key="joined">Joined <i class="bi bi-arrow-down-up"></i></th>
+            <th class="sortable" data-key="renewal">Renewal <i class="bi bi-arrow-down-up"></i></th>
+            <th class="sortable" data-key="city">City <i class="bi bi-arrow-down-up"></i></th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <nav>
+      <ul id="pager" class="pagination justify-content-center mt-2"></ul>
+    </nav>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="detailTitle" class="modal-title">Member</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <dl class="row mb-0">
+            <dt class="col-4">Email</dt><dd id="dEmail" class="col-8">—</dd>
+            <dt class="col-4">Type</dt><dd id="dType" class="col-8">—</dd>
+            <dt class="col-4">Status</dt><dd id="dStatus" class="col-8">—</dd>
+            <dt class="col-4">Joined</dt><dd id="dJoined" class="col-8">—</dd>
+            <dt class="col-4">Renewal</dt><dd id="dRenewal" class="col-8">—</dd>
+            <dt class="col-4">City</dt><dd id="dCity" class="col-8">—</dd>
+          </dl>
+        </div>
+        <div class="modal-footer">
+          <a id="mailtoBtn" class="btn btn-primary" href="#"><i class="bi bi-envelope"></i> Email</a>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+  <script>
+    // --- Demo data (same style as other pages) ---
+    const members = [
+      {name:"Alex Johnson",  email:"alex.johnson@example.com",  status:"Active",  type:"Full",     joined:"2024-11-12", renewal:"2025-11-12", city:"Brisbane"},
+      {name:"Bethany Lee",   email:"bethany.lee@example.com",   status:"Active",  type:"Student",  joined:"2025-02-03", renewal:"2026-02-03", city:"Brisbane"},
+      {name:"Chris Walker",  email:"chris.walker@example.com",  status:"Lapsed",  type:"Full",     joined:"2023-09-20", renewal:"2024-09-20", city:"Gold Coast"},
+      {name:"Dylan Smith",   email:"dylan.smith@example.com",   status:"Active",  type:"Full",     joined:"2025-05-18", renewal:"2026-05-18", city:"Sunshine Coast"},
+      {name:"Emma Davis",    email:"emma.davis@example.com",    status:"Pending", type:"Full",     joined:"2025-06-22", renewal:"2026-06-22", city:"Brisbane"},
+      {name:"Frank Moore",   email:"frank.moore@example.com",   status:"Active",  type:"Honorary", joined:"2022-06-01", renewal:"—",         city:"Townsville"},
+      {name:"Grace Parker",  email:"grace.parker@example.com",  status:"Active",  type:"Full",     joined:"2025-07-01", renewal:"2026-07-01", city:"Brisbane"},
+      {name:"Henry Brown",   email:"henry.brown@example.com",   status:"Lapsed",  type:"Student",  joined:"2024-03-10", renewal:"2025-03-10", city:"Cairns"},
+      {name:"Isla Nguyen",   email:"isla.nguyen@example.com",   status:"Active",  type:"Full",     joined:"2025-07-15", renewal:"2026-07-15", city:"Brisbane"},
+      {name:"Jack Wilson",   email:"jack.wilson@example.com",   status:"Active",  type:"Full",     joined:"2025-01-22", renewal:"2026-01-22", city:"Ipswich"},
+      {name:"Karen Green",   email:"karen.green@example.com",   status:"Active",  type:"Student",  joined:"2025-03-02", renewal:"2026-03-02", city:"Brisbane"},
+      {name:"Leo Martinez",  email:"leo.martinez@example.com",  status:"Pending", type:"Full",     joined:"2025-07-28", renewal:"2026-07-28", city:"Brisbane"},
+      {name:"Mia Thompson",  email:"mia.thompson@example.com",  status:"Active",  type:"Full",     joined:"2024-08-14", renewal:"2025-08-14", city:"Toowoomba"},
+      {name:"Noah Evans",    email:"noah.evans@example.com",    status:"Active",  type:"Full",     joined:"2025-06-05", renewal:"2026-06-05", city:"Brisbane"},
+      {name:"Olivia Young",  email:"olivia.young@example.com",  status:"Pending", type:"Student",  joined:"2025-07-23", renewal:"2026-07-23", city:"Brisbane"},
+      {name:"Paul Harris",   email:"paul.harris@example.com",   status:"Active",  type:"Full",     joined:"2023-11-30", renewal:"2024-11-30", city:"Cairns"},
+      {name:"Quinn Lewis",   email:"quinn.lewis@example.com",   status:"Lapsed",  type:"Full",     joined:"2023-05-19", renewal:"2024-05-19", city:"Gold Coast"},
+      {name:"Ruby Allen",    email:"ruby.allen@example.com",    status:"Active",  type:"Honorary", joined:"2021-09-09", renewal:"—",         city:"Brisbane"},
+      {name:"Sam Carter",    email:"sam.carter@example.com",    status:"Active",  type:"Full",     joined:"2025-04-12", renewal:"2026-04-12", city:"Sunshine Coast"},
+      {name:"Tina Brooks",   email:"tina.brooks@example.com",   status:"Active",  type:"Full",     joined:"2022-12-01", renewal:"2025-12-01", city:"Townsville"},
+      {name:"Uma Patel",     email:"uma.patel@example.com",     status:"Active",  type:"Student",  joined:"2025-06-30", renewal:"2026-06-30", city:"Brisbane"},
+      {name:"Victor Zhao",   email:"victor.zhao@example.com",   status:"Pending", type:"Full",     joined:"2025-07-20", renewal:"2026-07-20", city:"Brisbane"},
+      {name:"Wendy Ross",    email:"wendy.ross@example.com",    status:"Lapsed",  type:"Full",     joined:"2022-04-02", renewal:"2023-04-02", city:"Ipswich"},
+      {name:"Yara King",     email:"yara.king@example.com",     status:"Active",  type:"Full",     joined:"2025-05-25", renewal:"2026-05-25", city:"Brisbane"}
+    ];
+
+    // --- State ---
+    let currentPage = 1;
+    let pageSize = 25;
+    let sortKey = "name";
+    let sortDir = "asc"; // 'asc' | 'desc'
+    const el = (id) => document.getElementById(id);
+
+    // --- Helpers ---
+    const parseDate = s => s === "—" ? null : new Date(s+"T00:00:00");
+    function compare(a,b,key){
+      let va = a[key], vb = b[key];
+      if(key==="joined"||key==="renewal"){ va = parseDate(va)||new Date(0); vb = parseDate(vb)||new Date(0); }
+      if(typeof va==="string") va = va.toLowerCase();
+      if(typeof vb==="string") vb = vb.toLowerCase();
+      if(va<vb) return -1;
+      if(va>vb) return 1;
+      return 0;
+    }
+    function badge(status){
+      const map = {Active:"success", Lapsed:"secondary", Pending:"warning"};
+      return `<span class="badge bg-${map[status]||'light'}">${status}</span>`;
+    }
+
+    function getFilters(){
+      return {
+        q: el("searchInput").value.trim().toLowerCase(),
+        status: el("statusSelect").value,
+        type: el("typeSelect").value
+      };
+    }
+
+    function filterData(){
+      const {q,status,type} = getFilters();
+      return members.filter(m=>{
+        const hay = (m.name+" "+m.email+" "+m.city).toLowerCase();
+        const okQ = !q || hay.includes(q);
+        const okS = !status || m.status===status;
+        const okT = !type || m.type===type;
+        return okQ && okS && okT;
+      });
+    }
+
+    function sortData(arr){
+      const s = [...arr].sort((a,b)=>compare(a,b,sortKey));
+      return sortDir==="asc" ? s : s.reverse();
+    }
+
+    function paginate(arr){
+      const total = arr.length;
+      const pages = Math.max(1, Math.ceil(total / pageSize));
+      currentPage = Math.min(currentPage, pages);
+      const start = (currentPage-1)*pageSize;
+      const end = start + pageSize;
+      return {slice: arr.slice(start,end), total, pages};
+    }
+
+    function renderTable(){
+      const filtered = filterData();
+      const sorted = sortData(filtered);
+      const {slice, total, pages} = paginate(sorted);
+
+      // counts
+      el("countTotal").textContent = members.length;
+      el("countShown").textContent = total;
+
+      // body
+      const tbody = el("tbody");
+      tbody.innerHTML = slice.map((m,i)=>`
+        <tr>
+          <td>${m.name}</td>
+          <td><a href="mailto:${m.email}">${m.email}</a></td>
+          <td>${m.type}</td>
+          <td>${badge(m.status)}</td>
+          <td>${m.joined}</td>
+          <td>${m.renewal}</td>
+          <td>${m.city}</td>
+          <td><button class="btn btn-sm btn-outline-primary" data-idx="${i}" data-name="${m.name}"><i class="bi bi-eye"></i> View</button></td>
+        </tr>
+      `).join("");
+
+      // actions: view buttons open modal using absolute index in full sorted list
+      // map back to global index via name+email match (unique in demo)
+      tbody.querySelectorAll("button[data-idx]").forEach((btn, i)=>{
+        const row = slice[i];
+        btn.addEventListener("click", ()=>{
+          showDetail(row);
+        });
+      });
+
+      renderPager(pages);
+      highlightSort();
+    }
+
+    function renderPager(pages){
+      const ul = el("pager");
+      ul.innerHTML = "";
+      function addItem(label, page, disabled=false, active=false){
+        const li = document.createElement("li");
+        li.className = `page-item ${disabled?'disabled':''} ${active?'active':''}`;
+        const a = document.createElement("a");
+        a.className = "page-link";
+        a.href = "#";
+        a.textContent = label;
+        a.addEventListener("click", e=>{
+          e.preventDefault();
+          if(disabled) return;
+          currentPage = page;
+          renderTable();
+        });
+        li.appendChild(a);
+        ul.appendChild(li);
+      }
+      addItem("«", Math.max(1,currentPage-1), currentPage===1);
+      // show up to 7 numbers centered
+      let start = Math.max(1, currentPage-3);
+      let end = Math.min(pages, start+6);
+      start = Math.max(1, end-6);
+      for(let p=start;p<=end;p++){
+        addItem(String(p), p, false, p===currentPage);
+      }
+      addItem("»", Math.min(pages,currentPage+1), currentPage===pages);
+    }
+
+    function highlightSort(){
+      document.querySelectorAll("th.sortable").forEach(th=>{
+        th.classList.remove("active");
+        const icon = th.querySelector(".bi");
+        if(icon){ icon.className = "bi bi-arrow-down-up"; }
+        if(th.dataset.key === sortKey){
+          th.classList.add("active");
+          const icon = th.querySelector(".bi");
+          if(icon){ icon.className = sortDir==="asc" ? "bi bi-sort-down" : "bi bi-sort-up"; }
+        }
+      });
+    }
+
+    function showDetail(m){
+      el("detailTitle").textContent = m.name;
+      el("dEmail").innerHTML = `<a href="mailto:${m.email}">${m.email}</a>`;
+      el("dType").textContent = m.type;
+      el("dStatus").textContent = m.status;
+      el("dJoined").textContent = m.joined;
+      el("dRenewal").textContent = m.renewal;
+      el("dCity").textContent = m.city;
+      el("mailtoBtn").href = `mailto:${m.email}?subject=RGSQ%20Membership`;
+      const modal = new bootstrap.Modal(document.getElementById("detailModal"));
+      modal.show();
+    }
+
+    // --- Events ---
+    document.querySelectorAll("th.sortable").forEach(th=>{
+      th.addEventListener("click", ()=>{
+        const key = th.dataset.key;
+        if(sortKey===key){
+          sortDir = (sortDir==="asc"?"desc":"asc");
+        }else{
+          sortKey = key;
+          sortDir = "asc";
+        }
+        renderTable();
+      });
+    });
+
+    el("searchInput").addEventListener("input", debounce(()=>{
+      currentPage = 1; renderTable();
+    }, 200));
+    el("statusSelect").addEventListener("change", ()=>{ currentPage=1; renderTable(); });
+    el("typeSelect").addEventListener("change", ()=>{ currentPage=1; renderTable(); });
+    el("pageSizeSelect").addEventListener("change", ()=>{
+      pageSize = parseInt(el("pageSizeSelect").value,10)||25;
+      currentPage=1; renderTable();
+    });
+    el("resetBtn").addEventListener("click", ()=>{
+      el("searchInput").value = "";
+      el("statusSelect").value = "";
+      el("typeSelect").value = "";
+      el("pageSizeSelect").value = "25";
+      pageSize = 25; sortKey="name"; sortDir="asc"; currentPage=1;
+      renderTable();
+    });
+
+    el("exportBtn").addEventListener("click", ()=>{
+      const filtered = sortData(filterData());
+      const header = ["Name","Email","Type","Status","Joined","Renewal","City"];
+      const rows = filtered.map(m=>[m.name,m.email,m.type,m.status,m.joined,m.renewal,m.city]);
+      const csv = [header, ...rows].map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\n");
+      const blob = new Blob([csv], {type:"text/csv;charset=utf-8;"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = "members_filtered.csv";
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // small debounce util
+    function debounce(fn, wait){
+      let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), wait); };
+    }
+
+    // initial
+    renderTable();
+  </script>
+</body>
+</html>
