@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
     <title>RGSQ</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url_for('Home') }}">
@@ -181,10 +181,29 @@
             </div>
         {% endfor %}
         </div>
+
+        {% if total_pages and total_pages > 1 %}
+        <nav aria-label="Event pagination" class="mt-4 mb-10">
+            <ul class="pagination justify-content-center">
+                <li class="page-item {{'disabled' if page <= 1 }}">
+                    <a class="page-link" href="{{ url_for('Eventlist', page=page-1) }}" tabindex="-1" 
+                    aria-disabled="{{'true' if page <= 1 else 'false' }}">Previous</a>
+                </li>
+                {% for p in range(1, total_pages + 1) %}
+                    <li class="page-item {{'active' if p == page}}">
+                        <a class="page-link" href="{{ url_for('Eventlist', page=p) }}">{{ p }}</a>
+                    </li>
+                {% endfor %}
+                <li class="page-item {{'disabled' if page >= total_pages }}">
+                    <a class="page-link" href="{{ url_for('Eventlist', page=page+1) }}" aria-disabled="{{'true' if page >= total_pages else 'false' }}">Next</a>
+                </li>
+            </ul>
+        </nav>
+        {% endif %}
     </div>
 
-    <footer class="footer mt-auto" style="position:fixed;bottom:0;width:100%">
-        <div class="footer-container">
+    <footer class="footer mt-auto text-center" style="width:100%;">
+        <div class="footer-container py-3">
             <a href="https://cdn.wildapricot.com/240825/resources/Documents/Administrative/2018_RGSQ%20Ltd_Privacy%20Policy.pdf?version=1575264460000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9BZG1pbmlzdHJhdGl2ZS8yMDE4X1JHU1ElMjBMdGRfUHJpdmFjeSUyMFBvbGljeS5wZGY~dmVyc2lvbj0xNTc1MjY0NDYwMDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU0OTc4MjUxfSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=e-RdXWajsAbE4LFyQ~hwXrXoWC8wP5EwhHoDHEffWy3MGI55BfvRt4fYvNEVPtpaOIns3hBdhjKgt0-W37QYT5GfX3atUEKyYd9dXTh88512Ce4~nuqAfhDH4Gx2~YShFV9N9AlZ6AGqwnrJWm-maa4hTTBXIECnzDtBPNaFceQO3lEUHz9dXHM~iEQsxAAs7bNgtEbaoWr-vyfkl7VN4ShXo2d7QMB5kVqWvxTbh2naIVD0RZE8aN5RKxKnapZ4Mt4QpLBI6Nc5HOPt~cODJiQEyRxSzYYc-tp45ZsKKKtp3DaHoFQ~cjrTpJml1FzRNjw~IoacOCsITqHFtob2VA__&Key-Pair-Id=K27MGQSHTHAGGF" class="footer-link">Privacy Policy</a>
             <span class="footer-separator">|</span>
             <a href="Contact.html" class="footer-link">Contact Us</a>
