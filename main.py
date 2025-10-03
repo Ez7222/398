@@ -96,11 +96,14 @@ def Home():
 def Eventlist():
     per_page = 6
     page = request.args.get('page',1,type=int)
-    q = Event.query.order_by(Event.event_time.asc())
-    total = q.count()
-    events_paginated = q.offset((page-1) * per_page).limit(per_page).all()
-    total_pages = (total + per_page -1)//per_page
-    return render_template('Eventlist.html',events=events_paginated, page=page, total_pages=total_pages)
+    events_paginated = Event.query.order_by(Event.event_time.asc()).paginate(
+        page = page ,per_page=per_page,error_out=False)
+    return render_template(
+        'Eventlist.html',
+        events=events_paginated.items, 
+        page=events_paginated.page, 
+        total_pages=events_paginated.pages
+    )
     
 # display the create event page.
 @app.route('/Create.html', methods = ['GET', 'POST'])
