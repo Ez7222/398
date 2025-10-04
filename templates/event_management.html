@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>RGSQ</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('Home') }}">
+                <img src="{{url_for('static',filename='images/logo.png')}}" alt="Logo" class="navbar-logo">
+                <div class="navbar-title">RGSQ</div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('Home') }}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Society</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Aboutsociety.html">About the society</a>
+                            <a class="dropdown-item" href="Governance.html">Governance</a>
+                            <a class="dropdown-item" href="Committees.html">Committees</a>
+                            <a class="dropdown-item" href="SocietyNews.html">News</a>
+                            <a class="dropdown-item" href="AwardsPrizes.html">Awards & Prizes</a>
+                            <a class="dropdown-item" href="StudentResearchGrants.html">Student Research Grants</a>
+                            <a class="dropdown-item" href="Honoursboard.html">Honours Board</a>
+                            <a class="dropdown-item" href="Donate.html">Donate</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Eventlist.html">Event List</a>
+                            <a class="dropdown-item" href="Disclaimer.html">Disclaimer</a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            PROJECTS
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="AustraliaGeographyCompetitions.html">Australia Geography
+                                Competitions</a>
+                            <a class="dropdown-item" href="Lambertcenter.html">Lambert center</a>
+                            <a class="dropdown-item" href="Queenslandbydegrees.html">Queensland by Degrees</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            Resources
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Library.html">Library</a>
+                            <a class="dropdown-item" href="Venuehire.html">Venue Hire</a>
+                            <a class="dropdown-item" href="Bulletin.html">Bulletin</a>
+                            <div class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="collectionsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Collections
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="collectionsMenu">
+                                    <li>
+                                        <a class="dropdown-item" href="PhilateliesCover.html">Philatelies Cover</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a class="dropdown-item" href="Geographywebsite.html">Geography website</a>
+                            <a class="dropdown-item" href="Museums and other attractions.html"> Museums and other attractions</a>
+                            <a class="dropdown-item" href="MapResources.html">Map Resources</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Membership
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+                            <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                            <a class="dropdown-item" href="RGSQStaff.html">RGSQ Staff</a>
+                        </div>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        {% if session.get('user_id') %}
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ current_user_name or session.get('user_email') or 'Account' }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+                                <span class="dropdown-item-text text-muted">{{ session.get('user_email') }}</span>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+                            </div>
+                        {% else %}
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+                                <a class="dropdown-item" href="{{ url_for('join_rgsq') }}?membership=ordinary">Join RGSQ</a>
+                                <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="{{ url_for('admin_signup') }}">Admin Center</a>
+                            </div>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mt-3">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'success' if category == 'success' else category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main class="flex-shrink-0">
+        <div class="container py-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="h2 mb-0">Event Management</h3>
+            </div>
+
+            {% set first_item = (page -1) * per_page + 1 if total_count > 0 else 0 %}
+            {% set last_item = (page -1) * per_page + (events|length) %}
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">{{ first_item }}-{{ last_item }} of {{ total_count }} events</span>
+                <form class="d-flex" method="get" action="{{ url_for('event_management') }}">
+                    <input class="form-control form-control-sm me-2" name="q" placeholder="Search events" value="{{ request.args.get('q', '') }}">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </form>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 45%;">Title</th>
+                            <th style="width: 20%;">Event Time</th>
+                            <th style="width: 20%;">Location</th>
+                            <th style="width: 15%; text-align: right;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if events %}
+                            {% for ev in events %}
+                            <tr>
+                                <td class="fw-semibold text-truncate" style="max-width: 520px;">{{ ev.title }}</td>
+                                <td class="text-muted">{{ ev.event_time }}</td>
+                                <td class="text-muted">{{ ev.location }}</td>
+                                <td class="text-end">
+                                    <a class="btn btn-primary" href="{{ url_for('register_event', event_id=ev.id) }}">View</a>
+                                    <form action="{{url_for('delete_event', event_id=ev.id) }}" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this event?');">
+                                        <input type="hidden" name="next" value="{{ url_for('event_management', page=page)}}">
+                                        <button type="submit" class="btn btn-outline-danger mt-3">Delete</button>
+                                    </form>   
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">No events found.</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% if total_pages and total_pages > 1 %}
+
+            <nav aria-label="Event pagination" class="mt-3">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item {{ 'disabled' if page <= 1 }}">
+                        <a class="page-link" href="{{ url_for('event_management', page=page-1) }}">Previous</a>
+                    </li>
+                {% for p in range(1, total_pages + 1) %}
+                    <li class="page-item {{ 'active' if p == page }}">
+                        <a class="page-link" href="{{ url_for('event_management', page=p) }}">{{ p }}</a>
+                    </li>
+                {% endfor %}
+                <li class="page-item {{ 'disabled' if page >= total_pages }}">
+                <a class="page-link" href="{{ url_for('event_management', page=page+1) }}">Next</a>
+                </li>
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer class="footer mt-auto text-center" style="width:100%;">
+        <div class="footer-container py-3">
+            <a href="https://cdn.wildapricot.com/240825/resources/Documents/Administrative/2018_RGSQ%20Ltd_Privacy%20Policy.pdf?version=1575264460000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNDA4MjUvcmVzb3VyY2VzL0RvY3VtZW50cy9BZG1pbmlzdHJhdGl2ZS8yMDE4X1JHU1ElMjBMdGRfUHJpdmFjeSUyMFBvbGljeS5wZGY~dmVyc2lvbj0xNTc1MjY0NDYwMDAwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzU0OTc4MjUxfSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=e-RdXWajsAbE4LFyQ~hwXrXoWC8wP5EwhHoDHEffWy3MGI55BfvRt4fYvNEVPtpaOIns3hBdhjKgt0-W37QYT5GfX3atUEKyYd9dXTh88512Ce4~nuqAfhDH4Gx2~YShFV9N9AlZ6AGqwnrJWm-maa4hTTBXIECnzDtBPNaFceQO3lEUHz9dXHM~iEQsxAAs7bNgtEbaoWr-vyfkl7VN4ShXo2d7QMB5kVqWvxTbh2naIVD0RZE8aN5RKxKnapZ4Mt4QpLBI6Nc5HOPt~cODJiQEyRxSzYYc-tp45ZsKKKtp3DaHoFQ~cjrTpJml1FzRNjw~IoacOCsITqHFtob2VA__&Key-Pair-Id=K27MGQSHTHAGGF" class="footer-link">Privacy Policy</a>
+            <span class="footer-separator">|</span>
+            <a href="Contact.html" class="footer-link">Contact Us</a>
+            <span>© 2025 RGSQ</span>
+            <span class="footer-separator">|</span>
+            <a href="#" class="footer-link">Site Map</a>
+        </div>
+    </footer>
+    
+</body>
+
+</html>
