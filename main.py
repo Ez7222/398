@@ -102,8 +102,34 @@ def Eventlist():
         'Eventlist.html',
         events=events_paginated.items, 
         page=events_paginated.page, 
-        total_pages=events_paginated.pages
+        total_pages=events_paginated.pages,
+        total_count=events_paginated.total,
+        per_page=per_page
     )
+
+@app.route('/event_management.html')
+def event_management():
+    per_page = 20
+    page = request.args.get('page',1,type=int)
+    q = Event.query.order_by(Event.event_time.desc())
+    pagination = q.paginate(page=page,per_page=per_page,error_out=False)
+
+    return render_template('event_management.html',
+        events = pagination.items,
+        page = pagination.page,
+        total_pages = pagination.pages,
+        total_count = pagination.total,
+        per_page = per_page
+    )
+
+@app.post("/events/<int:event_id>/delete")
+def delete_event(event_id):
+    event = Event.query.get_or_404(event_id)
+    db.session.delete(event)
+    db.session.commit()
+    flash("Event deleted.", "success")
+    next_url = request.form.get("next") or url_for("event_management", page=1)
+    return redirect(next_url)
     
 # display the create event page.
 @app.route('/Create.html', methods = ['GET', 'POST'])
@@ -509,22 +535,7 @@ def register_event_confirm(event_id):
     email = session.pop('last_event_email', None)
     return render_template("event_register_confirm.html",event=event,email=email)
 
-@app.route('/events/<int:event_id>/delete', methods=["POST"])
-def delete_event(event_id):
-    ev = Event.query.get_or_404(event_id)
-    if ev.image:
-        try:
-            from os.path import basename, join
-            img_file = basename(ev.image)
-            abs_path = join(app.config['UPLOAD_FOLDER'],img_file)
-            if os.path.exists(abs_path):
-                os.remove(abs_path)
-        except Exception:
-            pass
-    db.session.delete(ev)
-    db.session.commit()
-    flash("Event deleted.","success")
-    return redirect(url_for("Eventlist"))
+
 
 # showing the Awards & Prizes page.
 @app.route('/AwardsPrizes.html')
