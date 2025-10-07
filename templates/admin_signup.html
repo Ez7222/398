@@ -70,13 +70,19 @@
               <a class="dropdown-item" href="MapResources.html">Map Resources</a>
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="membership" role="button" data-bs-toggle="dropdown" aria-expanded="false">Membership</a>
-            <div class="dropdown-menu" aria-labelledby="membership">
-              <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
-              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
-            </div>
-          </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                         data-bs-toggle="dropdown" aria-expanded="false">
+                        Membership
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+                        <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                        {% if is_admin %}
+                          <a class="dropdown-item" href="{{ url_for('rgsq_staff_html') }}">RGSQ Staff</a>
+                        {% endif %}
+                      </div>
+                    </li>
           <li class="nav-item"><a class="nav-link" href="Contact.html">Contact Us</a></li>
         </ul>
 
@@ -85,7 +91,7 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
 
-        <!-- Account dropdown（保持你原有逻辑） -->
+        <!-- Account dropdown -->
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             {% if session.get('user_id') %}

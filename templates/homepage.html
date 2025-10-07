@@ -91,15 +91,17 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Membership
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
-                            <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
-                            <a class="dropdown-item" href="RGSQStaff.html">RGSQ Staff</a>
-                        </div>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                         data-bs-toggle="dropdown" aria-expanded="false">
+                        Membership
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+                        <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                        {% if is_admin %}
+                          <a class="dropdown-item" href="{{ url_for('rgsq_staff_html') }}">RGSQ Staff</a>
+                        {% endif %}
+                      </div>
                     </li>
                      <li class="nav-item">
                         <a class="nav-link" href="Contact.html">Contact Us</a>
