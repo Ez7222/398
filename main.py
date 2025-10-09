@@ -319,6 +319,12 @@ def register_event_confirm(event_id: int):
 def register_event_legacy(event_id: int):
     return register_event(event_id)
 
+@app.route('/event/<int:event_id>')
+def event_detail(event_id):
+    event = Event.query.get_or_404(event_id)
+    return render_template('event_detail.html', event=event)
+
+
 # -----------------------------
 # Staff pages (admin only)
 # -----------------------------
@@ -336,12 +342,6 @@ def staff_members_overview():
 @admin_required
 def staff_members_list():
     return render_template("StaffMembersList.html")
-
-# 如果你本地有该模板，保留；没有就可先注释掉
-# @app.route("/StaffMembersCount.html")
-# @admin_required
-# def staff_members_count():
-#     return render_template("StaffMembersCount.html")
 
 # -----------------------------
 # Static content pages (restored for navbar links)
