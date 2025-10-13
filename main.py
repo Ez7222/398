@@ -475,6 +475,10 @@ def staff_members_overview():
 def staff_members_list():
     return render_template("StaffMembersList.html")
 
+@app.route('/StaffMembersCount.html')
+def staff_members_count():
+    return render_template('StaffMembersCount.html')
+
 # -----------------------------
 # Static content pages (restored for navbar links)
 # -----------------------------
@@ -602,5 +606,6 @@ app.register_blueprint(admin_bp)
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
