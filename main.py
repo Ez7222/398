@@ -120,8 +120,12 @@ def Home():
 
 @app.route("/Eventlist.html")
 def Eventlist():
-    events = Event.query.order_by(Event.event_time.asc()).all()
-    return render_template("Eventlist.html", events=events)
+    page = request.args.get("page", 1, type=int)
+    per_page = 6
+    base_q = Event.query.order_by(Event.event_time.asc())
+    pagination = base_q.paginate(page=page, per_page=per_page, error_out=False)
+    events = pagination.items
+    return render_template("Eventlist.html", events=events, pagination=pagination)
 
 # -----------------------------
 # Auth (member)
@@ -239,8 +243,20 @@ from auth_helpers import admin_required
 @app.route("/event_management.html")
 @admin_required
 def event_management():
-    events = Event.query.order_by(Event.event_time.desc()).all()
-    return render_template("event_management.html", events=events)
+    page = request.args.get("page", 1, type=int)
+    per_page = 10
+
+    base_q = Event.query.order_by(Event.event_time.desc())
+    total_count = base_q.count()
+    pagination = base_q.paginate(page=page, per_page=per_page, error_out=False)
+    events = pagination.items
+
+    return render_template(
+        'event_management.html', 
+        events=events, 
+        pagination=pagination, 
+        total_count=total_count
+    )
 
 @app.post("/events/<int:event_id>/delete")
 @admin_required
