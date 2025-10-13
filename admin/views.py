@@ -1,17 +1,8 @@
-
 from . import admin_bp
-
-
-try:
-    from auth_helpers import admin_required
-except Exception:
-    def admin_required(view):
-        def wrapper(*a, **kw): return view(*a, **kw)
-        wrapper.__name__ = getattr(view, "__name__", "wrapped")
-        return wrapper
+from flask import redirect, url_for
+from auth_helpers import admin_required
 
 @admin_bp.route("/")
 @admin_required
 def dashboard():
-
-    return "Admin dashboard OK"
+    return redirect(url_for("rgsq_staff_html"))
