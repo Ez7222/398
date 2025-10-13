@@ -7,11 +7,20 @@ import smtplib
 from email.message import EmailMessage
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///events.db"
+
+# Ensure the instance folder exists (Flask writes runtime files here)
+os.makedirs(app.instance_path, exist_ok=True)
+
+# Point SQLAlchemy to an absolute path under instance/, avoids "two DB files" confusion
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(app.instance_path, 'events.db')}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# Keep your secret key as is (change for production)
 app.secret_key = "change_me"
 
 db = SQLAlchemy(app)
+
+
 
 # -----------------------------
 # Models
