@@ -23,7 +23,7 @@
 </head>
 <body>
 
-  <!-- Navbar (same as other pages) -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ url_for('Home') }}">
@@ -89,35 +89,41 @@
             </div>
           </li>
 
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Membership
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
-                        <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
-                        {% if is_admin %}
-                          <a class="dropdown-item" href="{{ url_for('rgsq_staff_html') }}">RGSQ Staff</a>
-                        {% endif %}
-                      </div>
-                    </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMember" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">Membership</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMember">
+              <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+              {% if is_admin %}
+                <a class="dropdown-item" href="{{ url_for('rgsq_staff_html') }}">RGSQ Staff</a>
+              {% endif %}
+            </div>
+          </li>
 
           <li class="nav-item"><a class="nav-link" href="Contact.html">Contact Us</a></li>
         </ul>
 
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
 
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">Username</a>
+               data-bs-toggle="dropdown" aria-expanded="false">
+              {{ current_user_name or 'Username' }}
+            </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
-              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
-              <a class="dropdown-item" href="Login.html">Login</a>
+              {% if current_user_name %}
+                <span class="dropdown-item-text">Signed in as <strong>{{ current_user_name }}</strong></span>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+                <a class="dropdown-item" href="{{ url_for('join_rgsq') }}">Join RGSQ</a>
+                <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
+              {% endif %}
             </div>
           </li>
         </ul>
@@ -279,9 +285,7 @@
               </table>
             </div>
           </div>
-          <div class="card-footer small text-muted">
-            Demo data only. Replace with your data/API later.
-          </div>
+          <div class="card-footer small text-muted"></div>
         </div>
       </div>
     </div>
@@ -294,12 +298,12 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
   <script>
-    // ------- Demo dataset (same structure as Overview) -------
+    // -------- Dataset (matched to Members Overview) --------
     const members = [
-      {name:"Alex Johnson",  email:"alex.johnson@example.com",  status:"Active",  type:"Full",     joined:"2024-11-12", renewal:"2025-11-12", city:"Brisbane"},
-      {name:"Bethany Lee",   email:"bethany.lee@example.com",   status:"Active",  type:"Student",  joined:"2025-02-03", renewal:"2026-02-03", city:"Brisbane"},
-      {name:"Chris Walker",  email:"chris.walker@example.com",  status:"Lapsed",  type:"Full",     joined:"2023-09-20", renewal:"2024-09-20", city:"Gold Coast"},
-      {name:"Dylan Smith",   email:"dylan.smith@example.com",   status:"Active",  type:"Full",     joined:"2025-05-18", renewal:"2026-05-18", city:"Sunshine Coast"},
+      {name:"Tongkai Chen",  email:"n11572591@qut.edu.au",  status:"Active",  type:"Student",  joined:"2025-10-02", renewal:"2026-10-02", city:"Gold Coast"},
+      {name:"Gavin Yu",      email:"n11784709@qut.edu.au",  status:"Active",  type:"Student",  joined:"2025-10-02", renewal:"2026-10-02", city:"Brisbane"},
+      {name:"Gary Wu",       email:"n10451765@qut.edu.au",  status:"Active",  type:"Student",  joined:"2025-10-02", renewal:"2026-10-02", city:"Brisbane"},
+      {name:"Jayden Cui",    email:"n11196718@qut.edu.au",  status:"Active",  type:"Student",  joined:"2025-10-02", renewal:"2026-10-02", city:"Brisbane"},
       {name:"Emma Davis",    email:"emma.davis@example.com",    status:"Pending", type:"Full",     joined:"2025-06-22", renewal:"2026-06-22", city:"Brisbane"},
       {name:"Frank Moore",   email:"frank.moore@example.com",   status:"Active",  type:"Honorary", joined:"2022-06-01", renewal:"—",         city:"Townsville"},
       {name:"Grace Parker",  email:"grace.parker@example.com",  status:"Active",  type:"Full",     joined:"2025-07-01", renewal:"2026-07-01", city:"Brisbane"},
@@ -396,7 +400,7 @@
           <td>${m.name}</td>
           <td>${m.email}</td>
           <td>${m.type}</td>
-          <td><span class="badge bg-success">${m.status}</span></td>
+          <td><span class="badge ${m.status==='Active'?'bg-success':'bg-secondary'}">${m.status}</span></td>
           <td>${m.renewal}</td>
           <td>${m.city}</td>
         `;
