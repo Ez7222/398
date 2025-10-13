@@ -42,6 +42,26 @@ class User(db.Model):
 
     def check_password(self, raw: str) -> bool:
         return check_password_hash(self.password_hash, raw or "")
+    
+
+# -----------------------------
+# Membership levels (for register flow)
+# -----------------------------
+MEMBERSHIP_LEVELS = {
+    "household": {"name": "Household Bundle", "price": "$90.00 (AUD)",
+                  "desc": "Bundle (up to 5 members). 1-year subscription; no automatic recurring payments."},
+    "ordinary":  {"name": "Ordinary Member", "price": "$70.00 (AUD)",
+                  "desc": "1-year subscription; no automatic recurring payments."},
+    "school":    {"name": "School/Educational Institution", "price": "$85.00 (AUD)",
+                  "desc": "1-year subscription; one voting representative."},
+    "student":   {"name": "Student", "price": "",
+                  "desc": "1-year subscription; full-time students in Australia."},
+    "under35":   {"name": "Under 35s", "price": "$35.00 (AUD)",
+                  "desc": "1-year subscription; same voting rights as ordinary members."},
+    "youth":     {"name": "Youth", "price": "",
+                  "desc": "1-year subscription; under 18s require parental consent."},
+}
+
 
 # -----------------------------
 # Lightweight migrations
@@ -189,32 +209,68 @@ def logout():
     flash("Logged out.", "info")
     return redirect(url_for("Home"))
 
+
 @app.route("/register", methods=["GET", "POST"])
 def register_account():
-    if request.method == "POST":
-        email = (request.form.get("email") or "").strip().lower()
-        fullname = (request.form.get("fullname") or "").strip()
-        password = (request.form.get("password") or "")
-        if not email or "@" not in email:
-            flash("Please enter a valid email.", "warning")
-            return render_template("register.html")
-        if len(password) < 6:
-            flash("Password must be at least 6 characters.", "warning")
-            return render_template("register.html")
-        if User.query.filter_by(email=email).first():
-            flash("This email is already registered.", "warning")
-            return render_template("register.html")
-        u = User(email=email, full_name=fullname or None)
-        u.set_password(password)
-        db.session.add(u)
-        db.session.commit()
-        sent = send_welcome_email(u.email, "member")
-        if sent:
-            flash("Account created. Welcome email sent.", "success")
-        else:
-            flash("Account created. Could not send welcome email.", "warning")
-        return redirect(url_for("login"))
-    return render_template("register.html")
+    # GET: arrived from Join page with ?membership=xxx
+    if request.method == "GET":
+        level_key = (request.args.get("membership") or "").strip().lower()
+        if level_key not in MEMBERSHIP_LEVELS:
+            flash("Please select a membership level first.", "warning")
+            return redirect(url_for("join_rgsq"))
+        return render_template("register.html", level_key=level_key, level=MEMBERSHIP_LEVELS[level_key])
+
+    # POST: create account
+    email = (request.form.get("email") or "").strip().lower()
+    # accept both "fullName" (template default) and "fullname" (fallback)
+    fullname = (request.form.get("fullName") or request.form.get("fullname") or "").strip()
+    password = (request.form.get("password") or "")
+    membership = (request.form.get("membership") or "").strip().lower()
+
+    # basic validation
+    if not email or "@" not in email:
+        flash("Please enter a valid email.", "warning")
+        level = MEMBERSHIP_LEVELS.get(membership)
+        return render_template("register.html", level_key=membership, level=level)
+
+    if len(password) < 6:
+        flash("Password must be at least 6 characters.", "warning")
+        level = MEMBERSHIP_LEVELS.get(membership)
+        return render_template("register.html", level_key=membership, level=level)
+
+    if User.query.filter_by(email=email).first():
+        flash("This email is already registered.", "warning")
+        level = MEMBERSHIP_LEVELS.get(membership)
+        return render_template("register.html", level_key=membership, level=level)
+
+    # create user with selected membership
+    u = User(
+        email=email,
+        full_name=fullname or None,
+        membership=membership if membership in MEMBERSHIP_LEVELS else None
+    )
+    u.set_password(password)
+    u.role = "member"   # ensure public signups are members
+    u.is_active = True
+
+    db.session.add(u)
+    db.session.commit()
+
+    # optional welcome email
+    sent = False
+    try:
+        display_name = MEMBERSHIP_LEVELS.get(membership, {}).get("name", "member")
+        sent = send_welcome_email(u.email, display_name)
+    except Exception:
+        sent = False
+
+    if sent:
+        flash("Account created. Welcome email sent.", "success")
+    else:
+        flash("Account created. Could not send welcome email.", "warning")
+
+    return redirect(url_for("login"))
+
 
 # -----------------------------
 # Admin Center (signup/login)
