@@ -58,7 +58,9 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEvent" role="button"
                data-bs-toggle="dropdown" aria-expanded="false">Event</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownEvent">
-              <a class="dropdown-item" href="{{ url_for('Eventlist') }}">Event List</a>
+              <a class="dropdown-item" href="Eventlist.html">Event List</a>
+              <a class="dropdown-item" href="Create.html">Create Event</a>
+              <a class="dropdown-item" href="Update Event.html">Update Event</a>
               <a class="dropdown-item" href="Disclaimer.html">Disclaimer</a>
             </div>
           </li>
@@ -94,19 +96,15 @@
             </div>
           </li>
 
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Membership
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
-                        <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
-                        {% if is_admin %}
-                          <a class="dropdown-item" href="{{ url_for('rgsq_staff_html') }}">RGSQ Staff</a>
-                        {% endif %}
-                      </div>
-                    </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMember" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">Membership</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMember">
+              <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+              <a class="dropdown-item" href="RGSQStaff.html">RGSQ Staff</a>
+            </div>
+          </li>
 
           <li class="nav-item"><a class="nav-link" href="Contact.html">Contact Us</a></li>
         </ul>
@@ -291,7 +289,7 @@
             </div>
           </div>
           <div class="card-footer small text-muted">
-            Demo data only. Hook to your database/API later.
+        
           </div>
         </div>
       </div>
@@ -307,10 +305,10 @@
   <script>
     // -------- Demo dataset (replace with real API later) --------
     const members = [
-      {name:"Alex Johnson",  email:"alex.johnson@example.com",  status:"Active",  type:"Full",     joined:"2024-11-12", renewal:"2025-11-12", city:"Brisbane"},
-      {name:"Bethany Lee",   email:"bethany.lee@example.com",   status:"Active",  type:"Student",  joined:"2025-02-03", renewal:"2026-02-03", city:"Brisbane"},
-      {name:"Chris Walker",  email:"chris.walker@example.com",  status:"Lapsed",  type:"Full",     joined:"2023-09-20", renewal:"2024-09-20", city:"Gold Coast"},
-      {name:"Dylan Smith",   email:"dylan.smith@example.com",   status:"Active",  type:"Full",     joined:"2025-05-18", renewal:"2026-05-18", city:"Sunshine Coast"},
+      {name:"Tongkai Chen",  email:"n11572591@qut.edu.au",  status:"Active",  type:"Student",     joined:"2025-10-02", renewal:"2026-10-2", city:"Gold Coast"},
+      {name:"Gavin Yu",   email:"n11784709@qut.edu.au",   status:"Active",  type:"Student",  joined:"2025-10-02", renewal:"2026-10-02", city:"Brisbane"},
+      {name:"Gary Wu",  email:"n10451765@qut.edu.au",  status:"Active",  type:"Student",     joined:"2025-10-02", renewal:"2026-10-02", city:"Brisbane"},
+      {name:"Jayden Cui",   email:"n11196718@qut.edu.au",   status:"Active",  type:"Student",     joined:"2025-10-02", renewal:"2026-10-02", city:"Brisbane"},
       {name:"Emma Davis",    email:"emma.davis@example.com",    status:"Pending", type:"Full",     joined:"2025-06-22", renewal:"2026-06-22", city:"Brisbane"},
       {name:"Frank Moore",   email:"frank.moore@example.com",   status:"Active",  type:"Honorary", joined:"2022-06-01", renewal:"—",         city:"Townsville"},
       {name:"Grace Parker",  email:"grace.parker@example.com",  status:"Active",  type:"Full",     joined:"2025-07-01", renewal:"2026-07-01", city:"Brisbane"},
