@@ -22,7 +22,7 @@
 </head>
 <body>
 
-  <!-- Navbar (same as other pages) -->
+  <!-- Navbar (same as other staff pages) -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ url_for('Home') }}">
@@ -94,7 +94,9 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMember">
               <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
               <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
-              <a class="dropdown-item" href="RGSQStaff.html">RGSQ Staff</a>
+              {% if is_admin %}
+                <a class="dropdown-item" href="{{ url_for('rgsq_staff_html') }}">RGSQ Staff</a>
+              {% endif %}
             </div>
           </li>
 
@@ -102,17 +104,25 @@
         </ul>
 
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
 
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">Username</a>
+               data-bs-toggle="dropdown" aria-expanded="false">
+              {{ current_user_name or 'Username' }}
+            </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
-              <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
-              <a class="dropdown-item" href="Login.html">Login</a>
+              {% if current_user_name %}
+                <span class="dropdown-item-text">Signed in as <strong>{{ current_user_name }}</strong></span>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+                <a class="dropdown-item" href="{{ url_for('join_rgsq') }}">Join RGSQ</a>
+                <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
+              {% endif %}
             </div>
           </li>
         </ul>
@@ -237,12 +247,12 @@
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
           crossorigin="anonymous"></script>
   <script>
-    // --- Demo data (same style as other pages) ---
+    // --- Dataset synced with Members Overview (12 members) ---
     const members = [
-      {name:"Alex Johnson",  email:"alex.johnson@example.com",  status:"Active",  type:"Full",     joined:"2024-11-12", renewal:"2025-11-12", city:"Brisbane"},
-      {name:"Bethany Lee",   email:"bethany.lee@example.com",   status:"Active",  type:"Student",  joined:"2025-02-03", renewal:"2026-02-03", city:"Brisbane"},
-      {name:"Chris Walker",  email:"chris.walker@example.com",  status:"Lapsed",  type:"Full",     joined:"2023-09-20", renewal:"2024-09-20", city:"Gold Coast"},
-      {name:"Dylan Smith",   email:"dylan.smith@example.com",   status:"Active",  type:"Full",     joined:"2025-05-18", renewal:"2026-05-18", city:"Sunshine Coast"},
+      {name:"Tongkai Chen",  email:"n11572591@qut.edu.au",  status:"Active",  type:"Student",  joined:"2025-10-02", renewal:"2026-10-02", city:"Gold Coast"},
+      {name:"Gavin Yu",      email:"n11784709@qut.edu.au",  status:"Active",  type:"Student",  joined:"2025-10-02", renewal:"2026-10-02", city:"Brisbane"},
+      {name:"Gary Wu",       email:"n10451765@qut.edu.au",  status:"Active",  type:"Student",  joined:"2025-10-02", renewal:"2026-10-02", city:"Brisbane"},
+      {name:"Jayden Cui",    email:"n11196718@qut.edu.au",  status:"Active",  type:"Student",  joined:"2025-10-02", renewal:"2026-10-02", city:"Brisbane"},
       {name:"Emma Davis",    email:"emma.davis@example.com",    status:"Pending", type:"Full",     joined:"2025-06-22", renewal:"2026-06-22", city:"Brisbane"},
       {name:"Frank Moore",   email:"frank.moore@example.com",   status:"Active",  type:"Honorary", joined:"2022-06-01", renewal:"—",         city:"Townsville"},
       {name:"Grace Parker",  email:"grace.parker@example.com",  status:"Active",  type:"Full",     joined:"2025-07-01", renewal:"2026-07-01", city:"Brisbane"},
@@ -250,19 +260,7 @@
       {name:"Isla Nguyen",   email:"isla.nguyen@example.com",   status:"Active",  type:"Full",     joined:"2025-07-15", renewal:"2026-07-15", city:"Brisbane"},
       {name:"Jack Wilson",   email:"jack.wilson@example.com",   status:"Active",  type:"Full",     joined:"2025-01-22", renewal:"2026-01-22", city:"Ipswich"},
       {name:"Karen Green",   email:"karen.green@example.com",   status:"Active",  type:"Student",  joined:"2025-03-02", renewal:"2026-03-02", city:"Brisbane"},
-      {name:"Leo Martinez",  email:"leo.martinez@example.com",  status:"Pending", type:"Full",     joined:"2025-07-28", renewal:"2026-07-28", city:"Brisbane"},
-      {name:"Mia Thompson",  email:"mia.thompson@example.com",  status:"Active",  type:"Full",     joined:"2024-08-14", renewal:"2025-08-14", city:"Toowoomba"},
-      {name:"Noah Evans",    email:"noah.evans@example.com",    status:"Active",  type:"Full",     joined:"2025-06-05", renewal:"2026-06-05", city:"Brisbane"},
-      {name:"Olivia Young",  email:"olivia.young@example.com",  status:"Pending", type:"Student",  joined:"2025-07-23", renewal:"2026-07-23", city:"Brisbane"},
-      {name:"Paul Harris",   email:"paul.harris@example.com",   status:"Active",  type:"Full",     joined:"2023-11-30", renewal:"2024-11-30", city:"Cairns"},
-      {name:"Quinn Lewis",   email:"quinn.lewis@example.com",   status:"Lapsed",  type:"Full",     joined:"2023-05-19", renewal:"2024-05-19", city:"Gold Coast"},
-      {name:"Ruby Allen",    email:"ruby.allen@example.com",    status:"Active",  type:"Honorary", joined:"2021-09-09", renewal:"—",         city:"Brisbane"},
-      {name:"Sam Carter",    email:"sam.carter@example.com",    status:"Active",  type:"Full",     joined:"2025-04-12", renewal:"2026-04-12", city:"Sunshine Coast"},
-      {name:"Tina Brooks",   email:"tina.brooks@example.com",   status:"Active",  type:"Full",     joined:"2022-12-01", renewal:"2025-12-01", city:"Townsville"},
-      {name:"Uma Patel",     email:"uma.patel@example.com",     status:"Active",  type:"Student",  joined:"2025-06-30", renewal:"2026-06-30", city:"Brisbane"},
-      {name:"Victor Zhao",   email:"victor.zhao@example.com",   status:"Pending", type:"Full",     joined:"2025-07-20", renewal:"2026-07-20", city:"Brisbane"},
-      {name:"Wendy Ross",    email:"wendy.ross@example.com",    status:"Lapsed",  type:"Full",     joined:"2022-04-02", renewal:"2023-04-02", city:"Ipswich"},
-      {name:"Yara King",     email:"yara.king@example.com",     status:"Active",  type:"Full",     joined:"2025-05-25", renewal:"2026-05-25", city:"Brisbane"}
+      {name:"Leo Martinez",  email:"leo.martinez@example.com",  status:"Pending", type:"Full",     joined:"2025-07-28", renewal:"2026-07-28", city:"Brisbane"}
     ];
 
     // --- State ---
@@ -345,8 +343,7 @@
         </tr>
       `).join("");
 
-      // actions: view buttons open modal using absolute index in full sorted list
-      // map back to global index via name+email match (unique in demo)
+      // actions: view buttons open modal
       tbody.querySelectorAll("button[data-idx]").forEach((btn, i)=>{
         const row = slice[i];
         btn.addEventListener("click", ()=>{
@@ -378,7 +375,6 @@
         ul.appendChild(li);
       }
       addItem("«", Math.max(1,currentPage-1), currentPage===1);
-      // show up to 7 numbers centered
       let start = Math.max(1, currentPage-3);
       let end = Math.min(pages, start+6);
       start = Math.max(1, end-6);
@@ -395,8 +391,8 @@
         if(icon){ icon.className = "bi bi-arrow-down-up"; }
         if(th.dataset.key === sortKey){
           th.classList.add("active");
-          const icon = th.querySelector(".bi");
-          if(icon){ icon.className = sortDir==="asc" ? "bi bi-sort-down" : "bi bi-sort-up"; }
+          const icon2 = th.querySelector(".bi");
+          if(icon2){ icon2.className = sortDir==="asc" ? "bi bi-sort-down" : "bi bi-sort-up"; }
         }
       });
     }
