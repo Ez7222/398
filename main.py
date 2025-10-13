@@ -95,7 +95,8 @@ FROM_EMAIL = os.environ.get("FROM_EMAIL", SMTP_USER or "no-reply@rgsq.org")
 
 def send_welcome_email(to_email: str, level_name: str):
     if not (SMTP_HOST and SMTP_USER and SMTP_PASS):
-        return
+        print("SMTP not configured, skipping welcome email.")
+        return False
     msg = EmailMessage()
     msg["Subject"] = "Welcome to RGSQ"
     msg["From"] = FROM_EMAIL
@@ -106,15 +107,53 @@ def send_welcome_email(to_email: str, level_name: str):
             s.starttls()
             s.login(SMTP_USER, SMTP_PASS)
             s.send_message(msg)
-    except Exception:
-        pass
+        print(f"Sent welcome email to {to_email}")
+        return True
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+    return False
+
+def send_event_registration_email(to_email: str, ev: Event):
+    if not (SMTP_HOST and SMTP_USER and SMTP_PASS):
+        print("[MAIL] SMTP not configured: missing SMTP_HOST/SMTP_USER/SMTP_PASS")
+        return False
+
+    msg = EmailMessage()
+    msg["Subject"] = f"Event registration confirmed: {ev.title}"
+    msg["From"] = FROM_EMAIL
+    msg["To"] = to_email
+
+    body_lines = [
+        "Thank you for registering!",
+        "",
+        f"Event: {ev.title}",
+        f"Time:  {ev.event_time}",
+        f"Place: {ev.location}",
+    ]
+    if ev.price is not None:
+        body_lines.append(f"Price: ${ev.price:.2f}")
+    if ev.description:
+        body_lines += ["", "Details:", ev.description]
+
+    msg.set_content("\n".join(body_lines))
+
+    try:
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=15) as s:
+            s.starttls()
+            s.login(SMTP_USER, SMTP_PASS)
+            s.send_message(msg)
+        print(f"[MAIL] Event registration email sent to {to_email} for event #{ev.id}")
+        return True
+    except Exception as e:
+        print(f"[MAIL][ERROR] Failed to send event registration email to {to_email}: {e}")
+        return False
 
 # -----------------------------
 # Home / Events (public)
 # -----------------------------
 @app.route("/")
 def Home():
-    events = Event.query.order_by(Event.event_time.asc()).limit(6).all()
+    events = Event.query.order_by(Event.event_time.asc()).limit(4).all()
     # provide both names to fit different templates
     return render_template("homepage.html", events=events, upcoming_events=events)
 
@@ -169,7 +208,11 @@ def register_account():
         u.set_password(password)
         db.session.add(u)
         db.session.commit()
-        flash("Account created. Please login.", "success")
+        sent = send_welcome_email(u.email, "member")
+        if sent:
+            flash("Account created. Welcome email sent.", "success")
+        else:
+            flash("Account created. Could not send welcome email.", "warning")
         return redirect(url_for("login"))
     return render_template("register.html")
 
@@ -244,7 +287,7 @@ from auth_helpers import admin_required
 @admin_required
 def event_management():
     page = request.args.get("page", 1, type=int)
-    per_page = 10
+    per_page = 30
 
     base_q = Event.query.order_by(Event.event_time.desc())
     total_count = base_q.count()
@@ -328,6 +371,14 @@ def register_event_confirm(event_id: int):
         "price": f"${ev.price:.2f}" if ev.price is not None else "",
     }
     email = session.pop("last_event_email", None)
+    if email:
+        sent = send_event_registration_email(email, ev)
+        if sent:
+            flash("Registration confirmed. A confirmation email has been sent.", "success")
+        else:
+            flash("Registration confirmed. Could not send confirmation email.", "warning")
+    else:
+        flash("No email provided. Registration not confirmed.", "warning")
     return render_template("event_register_confirm.html", event=event, email=email)
 
 # Backward compatible alias (old links)
