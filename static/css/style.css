@@ -702,3 +702,21 @@ blockquote {
   text-transform: uppercase;
   margin-bottom: 35px;
 }
+
+.event-description {
+  max-width: 70%;
+  margin: 0 auto 30px;
+  border-radius:12px;
+  background-color: #ffffff;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.event-description .description-text{
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
+  text-align: justify;
+  white-space: pre-line;
+  hyphens: auto;
+}
