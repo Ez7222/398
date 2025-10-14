@@ -208,24 +208,34 @@
                 </table>
             </div>
 
-            {% if total_pages and total_pages > 1 %}
+            <div class="d-flex justify-content-between align-items-center my-3">
+                <a href="{{url_for('rgsq_staff_html')}}" class="btn btn-outline-primary">Back to RGSQ staff page</a>
+                <a href="{{ url_for('Create') }}" class="btn btn-primary">Go to Create a new event</a>
+            </div>
 
-            <nav aria-label="Event pagination" class="mt-3">
+            {% if pagination and pagination.pages > 1 %}
+            <nav aria-label="Event pagination" class="mt-4 mb-10">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item {{ 'disabled' if page <= 1 }}">
-                        <a class="page-link" href="{{ url_for('event_management', page=page-1) }}">Previous</a>
+                    <li class="page-item {{'disabled' if not pagination.has_prev}}">
+                        <a class="page-link" href="{{ url_for('event_management', page=1) }}">First</a>
                     </li>
-                {% for p in range(1, total_pages + 1) %}
-                    <li class="page-item {{ 'active' if p == page }}">
-                        <a class="page-link" href="{{ url_for('event_management', page=p) }}">{{ p }}</a>
+                    <li class="page-item {{ 'disabled' if not pagination.has_prev }}">
+                        <a class="page-link" href="{{ url_for('event_management', page=pagination.prev_num or 1) }}">Previous</a>
                     </li>
-                {% endfor %}
-                <li class="page-item {{ 'disabled' if page >= total_pages }}">
-                <a class="page-link" href="{{ url_for('event_management', page=page+1) }}">Next</a>
+                {% for p in range(1, pagination.pages + 1) %}
+                <li class="page-item {{'active' if p == pagination.page}}">
+                    <a class="page-link" href="{{ url_for('event_management', page=p) }}">{{ p }}</a>
                 </li>
-                </ul>
-            </nav>
-            {% endif %}
+                {% endfor %}
+                <li class="page-item {{'disabled' if not pagination.has_next }}">
+                    <a class="page-link" href="{{ url_for('event_management', page=pagination.next_num or pagination.pages) }}">Next</a>
+                </li>
+                <li class="page-item {{'disabled' if not pagination.has_next}}">
+                    <a class="page-link" href="{{ url_for('event_management', page=pagination.pages) }}">Last</a>
+                </li>
+            </ul>
+        </nav>
+        {% endif %}
         </div>
     </main>
 
