@@ -308,7 +308,7 @@ def register_account():
     else:
         flash("Account created. Could not send welcome email.", "warning")
 
-    return redirect(url_for("login"))
+    return redirect(url_for("Home"))
 
 
 # -----------------------------
