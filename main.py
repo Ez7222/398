@@ -3,8 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import os
+import uuid
 import smtplib
 from email.message import EmailMessage
+from werkzeug.utils import secure_filename
+
 
 app = Flask(__name__)
 
@@ -14,6 +17,14 @@ os.makedirs(app.instance_path, exist_ok=True)
 # Point SQLAlchemy to an absolute path under instance/, avoids "two DB files" confusion
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(app.instance_path, 'events.db')}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+#image upload config
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = os.path.join(app.static_folder, 'uploads')
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Keep your secret key as is (change for production)
 app.secret_key = "change_me"
@@ -416,6 +427,22 @@ def Create():
         description = (request.form.get("description") or "").strip()
         raw_vis = (request.form.get("visibility") or "").strip().lower()
 
+        image_rel_path = None
+        file = request.files.get("image")
+        if file and file.filename:
+            if not allowed_file(file.filename):
+                flash("Image upload not supported yet.", "warning")
+                return redirect(request.url)
+            
+            original_name = secure_filename(file.filename)
+            ext = os.path.splitext(original_name)[1].lower()
+            unique_name = f"{uuid.uuid4().hex}{ext}"
+            save_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_name)
+            file.save(save_path)
+            image_rel_path = f"uploads/{unique_name}"
+        
+
+
         if raw_vis in ("member-only", "member only", "member", "members", "private"):
             visibility = "member"
         elif raw_vis in ("public", "everyone", "all", "anyone", "public user"):
@@ -432,13 +459,16 @@ def Create():
         except ValueError:
             flash("Price must be a number.", "warning")
             return render_template("Create.html")
+        
+    
 
         evt = Event(title=title, 
                     event_time=event_time, 
                     location=location,
                     price=price, 
                     description=description or None,
-                    visibility=visibility
+                    visibility=visibility,
+                    image=image_rel_path
                     )
         
         db.session.add(evt)
