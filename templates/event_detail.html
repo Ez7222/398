@@ -143,18 +143,20 @@
         </div>
     </nav>
     <div class="container text-center mt-5">
-        <img src="{{ url_for('static', filename=event.image) }}" alt="{{ event.title }}"
-            class="img-fluid rounded shadow mb-4" style="max-width: 55%; height: auto;">
+        {% if ev.image %}
+            <img src="{{ url_for('static', filename=ev.image) }}" class="card-img-top" alt="Event image">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/hero.jpg') }}" class="card-img-top" alt="Default event image">
+        {% endif %}
+        <h3 class="fw-bold mb-3">{{ ev.title  }}</h3>
 
-        <h3 class="fw-bold mb-3">{{ event.title }}</h3>
+        <p><strong>Date & Time:</strong> {{ ev.event_time }}</p>
+        <p><strong>Location:</strong> {{ ev.location }}</p>
+        <p><strong>Price:</strong> ${{ ev.price }}</p>
 
-        <p><strong>Date & Time:</strong> {{ event.event_time }}</p>
-        <p><strong>Location:</strong> {{ event.location }}</p>
-        <p><strong>Price:</strong> ${{ event.price }}</p>
-
-        {% if event.description %}
+        {% if ev.description %}
         <p class="mt-4" style="max-width: 70%; margin: 0 auto; font-size: 1.1em;">
-            {{ event.description }}
+            {{ ev.description }}
         </p>
         {% endif %}
         <div class="mt-4 d-flex justify-content-center gap-3">
