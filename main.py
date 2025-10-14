@@ -393,9 +393,9 @@ from auth_helpers import admin_required
 @admin_required
 def event_management():
     page = request.args.get("page", 1, type=int)
-    per_page = 30
+    per_page = 8
 
-    base_q = Event.query.order_by(Event.event_time.desc())
+    base_q = Event.query.order_by(Event.event_time.asc())
     total_count = base_q.count()
     pagination = base_q.paginate(page=page, per_page=per_page, error_out=False)
     events = pagination.items
