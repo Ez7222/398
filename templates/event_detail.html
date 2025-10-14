@@ -13,8 +13,8 @@
     <title>RGSQ</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+<body class="d-flex flex-column min-vh-100">
+     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url_for('Home') }}">
                 <img src="{{url_for('static',filename='images/logo.png')}}" alt="Logo" class="navbar-logo">
@@ -72,12 +72,11 @@
                             Resources
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Library.html">Library</a>
+                            <a class="dropdown-item" href="Library.html">Libaray</a>
                             <a class="dropdown-item" href="Venuehire.html">Venue Hire</a>
                             <a class="dropdown-item" href="Bulletin.html">Bulletin</a>
                             <div class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" id="collectionsMenu" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="collectionsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Collections
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="collectionsMenu">
@@ -87,23 +86,22 @@
                                 </ul>
                             </div>
                             <a class="dropdown-item" href="Geographywebsite.html">Geography website</a>
-                            <a class="dropdown-item" href="Museums and other attractions.html"> Museums and other
-                                attractions</a>
+                            <a class="dropdown-item" href="Museums and other attractions.html"> Museums and other attractions</a>
                             <a class="dropdown-item" href="MapResources.html">Map Resources</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Membership
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
-                            <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
-                            {% if is_admin %}
-                            <a class="dropdown-item" href="{{ url_for('rgsq_staff_html') }}">RGSQ Staff</a>
-                            {% endif %}
-                        </div>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                         data-bs-toggle="dropdown" aria-expanded="false">
+                        Membership
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="Memberbenefits.html">Benefits</a>
+                        <a class="dropdown-item" href="JoinRGSQ.html">Join RGSQ</a>
+                        {% if is_admin %}
+                          <a class="dropdown-item" href="{{ url_for('rgsq_staff_html') }}">RGSQ Staff</a>
+                        {% endif %}
+                      </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Contact.html">Contact Us</a>
@@ -116,26 +114,26 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         {% if session.get('user_id') %}
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ current_user_name or session.get('user_email') or 'Account' }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
-                            <span class="dropdown-item-text text-muted">{{ session.get('user_email') }}</span>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
-                        </div>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ current_user_name or session.get('user_email') or 'Account' }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+                                <span class="dropdown-item-text text-muted">{{ session.get('user_email') }}</span>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+                            </div>
                         {% else %}
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Account
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
-                            <a class="dropdown-item" href="{{ url_for('join_rgsq') }}?membership=ordinary">Join RGSQ</a>
-                            <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="{{ url_for('admin_signup') }}">Admin Center</a>
-                        </div>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetting" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSetting">
+                                <a class="dropdown-item" href="{{ url_for('join_rgsq') }}?membership=ordinary">Join RGSQ</a>
+                                <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="{{ url_for('admin_signup') }}">Admin Center</a>
+                            </div>
                         {% endif %}
                     </li>
                 </ul>
