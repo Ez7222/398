@@ -72,7 +72,7 @@
                             Resources
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Library.html">Libaray</a>
+                            <a class="dropdown-item" href="Library.html">Library</a>
                             <a class="dropdown-item" href="Venuehire.html">Venue Hire</a>
                             <a class="dropdown-item" href="Bulletin.html">Bulletin</a>
                             <div class="dropend">
@@ -141,7 +141,9 @@
                 </ul>
             </div>
         </div>
+
     </nav>
+
     <div class="container text-center mt-5">
         {% if ev.image %}
         <img src="{{ url_for('static', filename=ev.image) }}" class="img-fluid rounded mx-auto d-block"
@@ -167,7 +169,6 @@
             <a href="{{ url_for('Eventlist') }}" class="btn btn-secondary px-4">Back to Events</a>
         </div>
     </div>
-
     <hr style="border: 1px solid black; margin: 40px 40px;">
 
     <footer class="footer">
