@@ -501,7 +501,7 @@ def event_detail(event_id):
     if event.visibility == "member" and not is_member_user():
         flash("This event is for members only. Please log in.", "warning")
         return redirect(url_for("login"))
-    return render_template('event_detail.html', event=event)
+    return render_template('event_detail.html', event=event, ev=event)
 
 
 # -----------------------------
