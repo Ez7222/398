@@ -34,6 +34,7 @@ class Event(db.Model):
     price = db.Column(db.Float, nullable=True)
     image = db.Column(db.String(200), nullable=True)
     description = db.Column(db.Text, nullable=True)
+    visibility = db.Column(db.String(20), nullable=False, default="public")  # public/private
 
 class User(db.Model):
     __tablename__ = "user"
@@ -84,6 +85,14 @@ def migrate_event_table():
             if "date" in names:
                 conn.exec_driver_sql("UPDATE event SET event_time = date;")
 
+def migrate_event_visibility():
+    with db.engine.begin() as conn:
+        cols = conn.exec_driver_sql("PRAGMA table_info(event);").fetchall()
+        names = [c[1] for c in cols]
+        if "visibility" not in names:
+            conn.exec_driver_sql("ALTER TABLE event ADD COLUMN visibility TEXT DEFAULT 'public';")
+        
+
 def migrate_user_table():
     with db.engine.begin() as conn:
         cols = conn.exec_driver_sql("PRAGMA table_info(user);").fetchall()
@@ -97,6 +106,7 @@ with app.app_context():
     db.create_all()
     migrate_event_table()
     migrate_user_table()
+    migrate_event_visibility()
 
 # -----------------------------
 # Template globals
@@ -113,6 +123,21 @@ def inject_user_flags():
             is_admin = (u.role or "member").lower() in ("admin", "staff")
     return {"current_user_name": name, "is_admin": is_admin}
 
+# ------------------------------
+# Auth helers
+# ------------------------------
+def get_current_user():
+    uid = session.get("user_id")
+    if not uid:
+        return None
+    return User.query.get(uid)
+
+def is_member_user():
+    u = get_current_user()
+    if not u:
+        return False
+    role = (u.role or "").lower()
+    return role in ("member", "admin", "staff")
 # -----------------------------
 # Email helpers (optional)
 # -----------------------------
@@ -182,15 +207,20 @@ def send_event_registration_email(to_email: str, ev: Event):
 # -----------------------------
 @app.route("/")
 def Home():
-    events = Event.query.order_by(Event.event_time.asc()).limit(4).all()
-    # provide both names to fit different templates
+    base_q = Event.query
+    if not is_member_user():
+        base_q = base_q.filter(Event.visibility == "public")
+    events = base_q.order_by(Event.event_time.asc()).limit(4).all()
     return render_template("homepage.html", events=events, upcoming_events=events)
 
 @app.route("/Eventlist.html")
 def Eventlist():
     page = request.args.get("page", 1, type=int)
     per_page = 6
-    base_q = Event.query.order_by(Event.event_time.asc())
+    base_q = Event.query
+    if not is_member_user():
+        base_q = base_q.filter(Event.visibility == "public")
+    base_q = base_q.order_by(Event.event_time.asc())
     pagination = base_q.paginate(page=page, per_page=per_page, error_out=False)
     events = pagination.items
     return render_template("Eventlist.html", events=events, pagination=pagination)
@@ -384,6 +414,14 @@ def Create():
         location = (request.form.get("location") or "").strip()
         price_raw = (request.form.get("price") or "").strip()
         description = (request.form.get("description") or "").strip()
+        raw_vis = (request.form.get("visibility") or "").strip().lower()
+
+        if raw_vis in ("member-only", "member only", "member", "members", "private"):
+            visibility = "member"
+        elif raw_vis in ("public", "everyone", "all", "anyone", "public user"):
+            visibility = "public"
+        else:
+            visibility = raw_vis if raw_vis in ("public", "member") else "public"
 
         if not title or not event_time or not location:
             flash("Title, Date and Location are required.", "warning")
@@ -395,8 +433,14 @@ def Create():
             flash("Price must be a number.", "warning")
             return render_template("Create.html")
 
-        evt = Event(title=title, event_time=event_time, location=location,
-                    price=price, description=description or None)
+        evt = Event(title=title, 
+                    event_time=event_time, 
+                    location=location,
+                    price=price, 
+                    description=description or None,
+                    visibility=visibility
+                    )
+        
         db.session.add(evt)
         db.session.commit()
         flash("Event created.", "success")
@@ -454,6 +498,9 @@ def register_event_legacy(event_id: int):
 @app.route('/event/<int:event_id>')
 def event_detail(event_id):
     event = Event.query.get_or_404(event_id)
+    if event.visibility == "member" and not is_member_user():
+        flash("This event is for members only. Please log in.", "warning")
+        return redirect(url_for("login"))
     return render_template('event_detail.html', event=event)
 
 
