@@ -178,6 +178,7 @@
                             <th style="width: 45%;">Title</th>
                             <th style="width: 20%;">Event Time</th>
                             <th style="width: 20%;">Location</th>
+                            <th style="width: 20%;">Registrations</th>
                             <th style="width: 15%; text-align: right;">Actions</th>
                         </tr>
                     </thead>
@@ -188,6 +189,10 @@
                                 <td class="fw-semibold text-truncate" style="max-width: 520px;">{{ ev.title }}</td>
                                 <td class="text-muted">{{ ev.event_time }}</td>
                                 <td class="text-muted">{{ ev.location }}</td>
+                                <td>
+                                    <span class="badge bg-secondary">{{ ev.registrations.count() }}</span>
+                                </td>
+                                
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end align-items-center gap-3">
                                         <a class="btn btn-primary" href="{{ url_for('event_detail', event_id=ev.id) }}">View</a>
