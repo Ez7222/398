@@ -47,6 +47,13 @@ class Event(db.Model):
     description = db.Column(db.Text, nullable=True)
     visibility = db.Column(db.String(20), nullable=False, default="public")  # public/private
 
+    registrations = db.relationship(
+        "Registration",
+        backref="event",
+        lazy="dynamic",
+        cascade="all, delete-orphan"
+    )
+
 class User(db.Model):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
@@ -64,6 +71,12 @@ class User(db.Model):
     def check_password(self, raw: str) -> bool:
         return check_password_hash(self.password_hash, raw or "")
     
+class Registration(db.Model):
+    __tablename__ = "registration"
+    id = db.Column(db.Integer, primary_key=True)
+    event_id = db.Column(db.Integer, db.ForeignKey("event.id"), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    registered_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 # -----------------------------
 # Membership levels (for register flow)
@@ -113,11 +126,24 @@ def migrate_user_table():
         if "is_active" not in names:
             conn.exec_driver_sql("ALTER TABLE user ADD COLUMN is_active INTEGER DEFAULT 1;")
 
+def migrate_registration_table():
+    with db.engine.begin() as conn:
+        conn.exec_driver_sql("""
+            CREATE TABLE IF NOT EXISTS registration(
+                             id INTEGER PRIMARY KEY AUTOINCREMENT,
+                             event_id INTEGER NOT NULL,
+                             email TEXT NOT NULL,
+                             created_at TEXT DEFAULT (datetime('now')),
+                             FOREIGN KEY(event_id) REFERENCES event(id) ON DELETE CASCADE
+                             );
+        """)
+        
 with app.app_context():
     db.create_all()
     migrate_event_table()
     migrate_user_table()
     migrate_event_visibility()
+    migrate_registration_table()
 
 # -----------------------------
 # Template globals
@@ -393,9 +419,9 @@ from auth_helpers import admin_required
 @admin_required
 def event_management():
     page = request.args.get("page", 1, type=int)
-    per_page = 30
+    per_page = 8
 
-    base_q = Event.query.order_by(Event.event_time.desc())
+    base_q = Event.query.order_by(Event.event_time.asc())
     total_count = base_q.count()
     pagination = base_q.paginate(page=page, per_page=per_page, error_out=False)
     events = pagination.items
@@ -511,13 +537,24 @@ def register_event_confirm(event_id: int):
     }
     email = session.pop("last_event_email", None)
     if email:
-        sent = send_event_registration_email(email, ev)
-        if sent:
-            flash("Registration confirmed. A confirmation email has been sent.", "success")
-        else:
-            flash("Registration confirmed. Could not send confirmation email.", "warning")
-    else:
-        flash("No email provided. Registration not confirmed.", "warning")
+        from sqlalchemy import and_
+        existing = Registration.query.filter(and_(
+            Registration.event_id == ev.id,
+            Registration.email == email
+        )).first()
+
+        if not existing:
+            db.session.add(Registration(event_id=ev.id, email=email))
+            db.session.commit()
+            try:
+                send = send_event_registration_email(email, ev)
+                if send:
+                    app.logger.info(f"Sent event registration email to {email} for event #{ev.id}")
+                else:
+                    app.logger.warning(f"Failed to send event registration email to {email} for event #{ev.id}")
+            except Exception as e:
+                app.logger.error(f"Error sending event registration email to {email} for event #{ev.id}: {e}")
+
     return render_template("event_register_confirm.html", event=event, email=email)
 
 # Backward compatible alias (old links)
