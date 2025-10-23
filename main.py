@@ -548,13 +548,13 @@ def register_event_confirm(event_id: int):
             db.session.commit()
             try:
                 send = send_event_registration_email(email, ev)
-                if sent:
+                if send:
                     app.logger.info(f"Sent event registration email to {email} for event #{ev.id}")
                 else:
                     app.logger.warning(f"Failed to send event registration email to {email} for event #{ev.id}")
             except Exception as e:
                 app.logger.error(f"Error sending event registration email to {email} for event #{ev.id}: {e}")
-                
+
     return render_template("event_register_confirm.html", event=event, email=email)
 
 # Backward compatible alias (old links)
